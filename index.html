@@ -3,28 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Piles &amp; accumulateurs — réviser le DS</title>
-<meta name="description" content="Révision complète du chapitre « Stocker de l'énergie électrique avec un système électrochimique » : cours, calculs, équations, QCM et DS blanc corrigé.">
+<title>Piles &amp; accumulateurs — du vocabulaire au DS</title>
+<meta name="description" content="Cours progressif et exercices sur l'oxydoréduction, les piles et les accumulateurs : vocabulaire, lecture des équations, 51 exercices en trois niveaux, mini-DS et DS blanc corrigés.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
 :root{
-  --bg:#EFF2F4;
-  --surface:#FFFFFF;
-  --surface-2:#E3E9ED;
-  --ink:#141A1F;
-  --muted:#5B6873;
-  --rule:#D2DAE0;
-  --copper:#A9551F;
-  --copper-soft:#F3E5DA;
-  --blue:#1A6CA4;
-  --blue-soft:#DDEAF3;
-  --zinc:#6F7D87;
-  --ok:#186E4D;
-  --ok-soft:#DCEEE4;
-  --no:#A82A1E;
-  --no-soft:#F7E1DD;
+  --bg:#EFF2F4; --surface:#FFFFFF; --surface-2:#E3E9ED; --ink:#141A1F; --muted:#5B6873;
+  --rule:#D2DAE0; --copper:#A9551F; --copper-soft:#F3E5DA; --blue:#1A6CA4; --blue-soft:#DDEAF3;
+  --zinc:#6F7D87; --ok:#186E4D; --ok-soft:#DCEEE4; --no:#A82A1E; --no-soft:#F7E1DD;
   --shadow:0 1px 2px rgba(20,26,31,.05), 0 14px 30px -22px rgba(20,26,31,.45);
   --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
   --serif:"IBM Plex Serif",Georgia,"Times New Roman",serif;
@@ -57,77 +45,111 @@ p{margin:0}
 a{color:inherit}
 b{font-weight:600}
 
-/* ---------- hero ---------- */
+/* hero */
 .hero{padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(1.5rem,4vw,2.5rem);border-bottom:1px solid var(--rule)}
 .eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
 .eyebrow span::after{content:"·";margin-left:.6rem;color:var(--rule)}
 .eyebrow span:last-child::after{content:""}
-h1{font-size:clamp(2.3rem,8vw,3.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.02;margin:.7rem 0 0}
+h1{font-size:clamp(2.2rem,7.5vw,3.7rem);font-weight:800;letter-spacing:-.03em;line-height:1.03;margin:.7rem 0 0}
 h1 em{font-style:normal;color:var(--copper)}
 .lede{margin-top:1.1rem;font-size:1.125rem;color:var(--muted);max-width:36rem}
-.plan{margin-top:1.6rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.plan{margin-top:1.6rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
 .plan a{background:var(--surface);padding:.85rem 1rem;text-decoration:none;display:block}
 .plan a:hover{background:var(--surface-2)}
-.plan .k{font-family:var(--mono);font-size:.65rem;letter-spacing:.11em;text-transform:uppercase;color:var(--copper);display:block}
-.plan .v{font-family:var(--sans);font-weight:700;font-size:.95rem;display:block;margin-top:.15rem}
-.plan .d{font-size:.82rem;color:var(--muted);display:block;line-height:1.35;margin-top:.1rem}
+.plan .k{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;color:var(--copper);display:block}
+.plan .v{font-family:var(--sans);font-weight:700;font-size:.93rem;display:block;margin-top:.15rem}
+.plan .d{font-size:.8rem;color:var(--muted);display:block;line-height:1.35;margin-top:.1rem}
 
-/* ---------- nav ---------- */
+/* nav */
 .rail{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
 .rail nav{max-width:60rem;margin:0 auto;padding:.55rem clamp(1rem,4vw,2.5rem);display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none}
 .rail nav::-webkit-scrollbar{display:none}
-.rail a{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .6rem;border-radius:4px;white-space:nowrap}
+.rail a{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .55rem;border-radius:4px;white-space:nowrap}
 .rail a:hover{color:var(--ink);background:var(--surface-2)}
 
-/* ---------- sections ---------- */
+/* sections */
 section{padding:clamp(2.5rem,6vw,4rem) 0;border-bottom:1px solid var(--rule)}
 .shead{display:flex;gap:1rem;align-items:baseline;margin-bottom:1.6rem}
 .snum{font-family:var(--mono);font-size:.95rem;font-weight:600;color:var(--copper);border:1px solid var(--rule);border-radius:3px;padding:.05rem .45rem;flex:none}
 h2{font-size:clamp(1.5rem,4.2vw,2rem);font-weight:700;letter-spacing:-.02em;line-height:1.15}
 .sub{color:var(--muted);font-size:.95rem;margin-top:.2rem}
-h3{font-size:.78rem;font-family:var(--mono);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:2rem 0 .7rem}
+h3{font-size:.78rem;font-family:var(--mono);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:2.2rem 0 .7rem}
 .stack{display:flex;flex-direction:column;gap:1rem}
 
-/* ---------- mémo ---------- */
-.memo{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
-.memo div{background:var(--surface);padding:1.1rem 1.2rem}
-.memo dt{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--copper);margin-bottom:.35rem}
-.memo dd{margin:0;font-size:.95rem;line-height:1.5}
+/* vocabulaire */
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.8rem;margin-top:1rem}
+.vc{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1rem 1.1rem}
+.vc .n{font-family:var(--mono);font-size:.65rem;font-weight:600;letter-spacing:.11em;color:var(--copper)}
+.vc .t{font-family:var(--sans);font-weight:700;font-size:1rem;margin:.15rem 0 .4rem;line-height:1.25}
+.vc p{font-size:.93rem;line-height:1.55}
 
-/* ---------- formules ---------- */
-.formulas{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem;margin:1.2rem 0}
-.formula{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.2rem 1.3rem;box-shadow:var(--shadow)}
-.formula .eq{font-family:var(--mono);font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
-.formula .eq small{color:var(--copper);font-size:1.5rem}
-.formula .units{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:.5rem;letter-spacing:.02em}
-.formula p{font-size:.9rem;color:var(--muted);margin-top:.6rem}
-.derive{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.55rem;margin-top:.9rem}
-.derive span{font-family:var(--mono);font-size:1rem;font-weight:600;background:var(--surface-2);border-radius:4px;padding:.45rem .6rem;text-align:center}
+/* encadré règle */
+.rule-box{background:var(--copper-soft);border-left:2px solid var(--copper);border-radius:0 5px 5px 0;padding:.85rem 1rem;font-size:.95rem;line-height:1.55}
+.rule-box .lbl{font-family:var(--mono);font-size:.63rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);display:block;margin-bottom:.3rem}
+.why{margin-top:.85rem;padding:.75rem .9rem;border-left:2px solid var(--copper);background:var(--copper-soft);border-radius:0 4px 4px 0;font-size:.92rem;line-height:1.5}
+.why b{font-family:var(--sans)}
 
-/* ---------- figure ---------- */
-figure{margin:1.8rem 0 0;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.2rem;box-shadow:var(--shadow)}
+/* décodage caractère par caractère */
+.decode{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.decode .dc{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:.7rem .8rem;flex:1 1 8rem;min-width:7.5rem}
+.decode .sym{font-family:var(--mono);font-size:1.25rem;font-weight:600;color:var(--copper);display:block}
+.decode .exp{font-size:.83rem;color:var(--muted);line-height:1.4;display:block;margin-top:.3rem}
+
+/* micro-questions */
+.step{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.1rem 1.2rem;margin-bottom:.8rem}
+.step.done{border-color:var(--ok)}
+.step-h{display:flex;gap:.7rem;align-items:baseline;margin-bottom:.6rem}
+.step-h .e{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--surface);background:var(--copper);border-radius:3px;padding:.1rem .4rem;flex:none}
+.step-h .t{font-family:var(--sans);font-weight:700;font-size:1rem;line-height:1.3}
+.step-h .st{margin-left:auto;font-family:var(--mono);font-size:.65rem;color:var(--muted);flex:none}
+.micros{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem}
+.micro{display:flex;gap:.6rem;align-items:flex-start;flex-wrap:wrap;padding:.5rem .6rem;border:1px solid var(--rule);border-radius:5px}
+.micro.good{border-color:var(--ok);background:var(--ok-soft)}
+.micro.bad{border-color:var(--no);background:var(--no-soft)}
+.micro .mq{font-size:.93rem;flex:1 1 15rem;min-width:0;line-height:1.45}
+.micro .mo{display:flex;gap:.35rem;flex-wrap:wrap}
+.micro button{font-family:var(--mono);font-size:.85rem;font-weight:500;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:.3rem .55rem;cursor:pointer;text-align:left;max-width:100%;overflow-wrap:break-word}
+.micro button:hover:not(:disabled){border-color:var(--ink)}
+.micro button:disabled{cursor:default}
+.micro button.pick-ok{border-color:var(--ok);background:var(--ok);color:var(--surface)}
+.micro button.pick-no{border-color:var(--no);background:var(--no);color:var(--surface)}
+.micro button.show-ok{border-color:var(--ok);color:var(--ok);font-weight:600}
+.micro .mw{flex:1 1 100%;font-size:.86rem;color:var(--muted);line-height:1.45;border-left:2px solid var(--rule);padding-left:.6rem}
+
+/* figures */
+figure{margin:1.6rem 0 0;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.2rem;box-shadow:var(--shadow)}
 .figscroll{overflow-x:auto}
-figure svg{display:block;width:100%;min-width:34rem;height:auto;color:var(--ink)}
+figure svg{display:block;width:100%;height:auto;color:var(--ink)}
+figure.wide svg{min-width:34rem}
 figcaption{margin-top:.9rem;font-size:.85rem;color:var(--muted);line-height:1.5;max-width:40rem}
+.fignum{font-family:var(--mono);font-size:.63rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);display:block;margin-bottom:.7rem}
 
-/* ---------- listes ---------- */
+/* listes */
 .keys{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem}
-.keys li{display:flex;gap:.8rem;align-items:flex-start;font-size:1rem}
-.keys li::before{content:"";flex:none;width:7px;height:7px;margin-top:.62rem;border-radius:1px;background:var(--copper);transform:rotate(45deg)}
+.keys li{position:relative;padding-left:1.5rem;font-size:1rem}
+.keys li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:1px;background:var(--copper);transform:rotate(45deg)}
 .m{font-family:var(--mono);font-size:.92em;background:var(--surface-2);padding:.06em .35em;border-radius:3px;white-space:nowrap}
 .pos{color:var(--copper);font-weight:600}
 .neg{color:var(--zinc);font-weight:600}
 
-/* ---------- tableaux ---------- */
+/* tableaux */
 .tbl-wrap{overflow-x:auto;margin-top:1rem}
-table{border-collapse:collapse;width:100%;min-width:32rem;font-size:.93rem;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:30rem;font-size:.93rem;background:var(--surface)}
 caption{text-align:left;font-size:.85rem;color:var(--muted);padding-bottom:.5rem}
 th,td{border:1px solid var(--rule);padding:.6rem .8rem;text-align:left;vertical-align:top}
 thead th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2)}
 tbody th{font-family:var(--sans);font-weight:700;font-size:.9rem;width:9rem}
 td .m{background:transparent;padding:0}
 
-/* ---------- barre de score ---------- */
+/* exemple résolu */
+.worked{background:var(--surface);border:1px solid var(--copper);border-radius:6px;padding:1.2rem 1.3rem;margin-top:1rem}
+.worked .lbl{font-family:var(--mono);font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);margin-bottom:.6rem}
+.worked ol{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:.7rem}
+.worked li{font-size:.95rem;line-height:1.55}
+.worked .line{font-family:var(--mono);font-size:1rem;font-weight:600;display:block;margin:.3rem 0;color:var(--ink)}
+.worked .cm{color:var(--muted);font-size:.87rem}
+
+/* barre de score */
 .quizbar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1.4rem}
 .scoreline{font-family:var(--mono);font-size:.85rem;letter-spacing:.02em}
 .scoreline b{color:var(--copper);font-size:1.15rem;font-variant-numeric:tabular-nums}
@@ -136,7 +158,7 @@ td .m{background:transparent;padding:0}
 .btn.ghost{background:transparent;color:var(--muted);border-color:var(--rule)}
 .btn.ghost:hover{color:var(--ink);border-color:var(--ink);opacity:1}
 
-/* ---------- QCM ---------- */
+/* QCM */
 .q{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.1rem 1.2rem;margin-bottom:.9rem}
 .q.done{border-color:var(--ok)}
 .q.done.wrong{border-color:var(--no)}
@@ -157,21 +179,23 @@ td .m{background:transparent;padding:0}
 .opt.bad{border-color:var(--no);background:var(--no-soft)}
 .opt.bad .box{border-color:var(--no);background:var(--no);color:var(--surface)}
 .qfoot{margin-top:.85rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
-.why{margin-top:.85rem;padding:.75rem .9rem;border-left:2px solid var(--copper);background:var(--copper-soft);border-radius:0 4px 4px 0;font-size:.92rem;line-height:1.5}
-.why b{font-family:var(--sans)}
 
-/* ---------- exercices chiffrés ---------- */
-.serie{margin-top:2rem}
-.serie-h{display:flex;gap:.7rem;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:.5rem;margin-bottom:.9rem}
+/* exercices chiffrés */
+.serie{margin-top:2.2rem}
+.serie-h{display:flex;gap:.7rem;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:.5rem;margin-bottom:.9rem;flex-wrap:wrap}
 .serie-h .tag{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--copper)}
 .serie-h .nm{font-family:var(--sans);font-weight:700;font-size:1rem}
 .serie-h .cnt{margin-left:auto;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.tier{font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:99px;padding:.12rem .5rem;border:1px solid currentColor;flex:none}
+.tier.t1{color:var(--ok)}
+.tier.t2{color:var(--blue)}
+.tier.t3{color:var(--copper)}
 .ex{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1rem 1.1rem;margin-bottom:.7rem}
 .ex.done{border-color:var(--ok)}
 .ex.done.wrong{border-color:var(--no)}
-.ex .st-q{display:flex;gap:.7rem;align-items:baseline}
+.ex .st-q{display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
 .ex .st-q .qnum{font-size:.74rem}
-.ex .txt{font-family:var(--sans);font-size:.97rem;font-weight:600;line-height:1.4}
+.ex .txt{font-family:var(--sans);font-size:.97rem;font-weight:600;line-height:1.4;flex:1 1 14rem}
 .answer{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-top:.8rem}
 .answer input{font-family:var(--mono);font-size:1rem;font-weight:600;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:.45rem .6rem;width:8rem}
 .answer input:disabled{opacity:.75}
@@ -181,8 +205,9 @@ td .m{background:transparent;padding:0}
 .sol{margin-top:.8rem;padding:.8rem .95rem;background:var(--surface-2);border-radius:5px;font-size:.93rem;line-height:1.6}
 .sol .line{font-family:var(--mono);font-size:.95rem;display:block;margin:.25rem 0}
 
-/* ---------- légender le schéma ---------- */
+/* légender */
 .lg{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.lg > *{min-width:0}
 @media (min-width:56rem){.lg{grid-template-columns:1.15fr .85fr;align-items:start}}
 .lg-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.45rem}
 .lg-row{display:flex;gap:.6rem;align-items:center;background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:.45rem .6rem}
@@ -192,17 +217,19 @@ td .m{background:transparent;padding:0}
 .lg-row.bad{border-color:var(--no);background:var(--no-soft)}
 .lg-row .mark{font-family:var(--mono);font-weight:600;width:1rem;text-align:center;flex:none}
 
-/* ---------- DS blanc ---------- */
+/* DS */
 .dsnote{background:var(--copper-soft);border:1px solid var(--copper);border-radius:6px;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:.95rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:space-between;align-items:center}
 .dsnote .tot{font-family:var(--mono);font-weight:600;color:var(--copper);white-space:nowrap}
 .dsx{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.2rem 1.3rem;margin-bottom:1rem}
-.dsx-h{display:flex;gap:.8rem;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:.6rem;margin-bottom:.9rem}
+.dsx-h{display:flex;gap:.8rem;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:.6rem;margin-bottom:.9rem;flex-wrap:wrap}
 .dsx-h .t{font-family:var(--sans);font-weight:700;font-size:1.05rem}
 .dsx-h .pts{margin-left:auto;font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--copper);white-space:nowrap}
+.dsx .enonce{font-size:.95rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
 .dsq{margin:0 0 .9rem}
 .dsq:last-child{margin-bottom:0}
-.dsq .qq{font-size:.97rem;display:flex;gap:.6rem;align-items:baseline}
+.dsq .qq{font-size:.97rem;display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap}
 .dsq .qq .i{font-family:var(--mono);font-size:.8rem;font-weight:600;color:var(--muted);flex:none}
+.dsq .qq .tx{flex:1 1 14rem}
 .dsq .qq .pt{font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap;margin-left:auto}
 details.corrige{margin-top:.45rem;margin-left:1.4rem}
 details.corrige summary{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--copper);cursor:pointer;padding:.2rem 0;list-style:none}
@@ -213,25 +240,49 @@ details.corrige .body{margin-top:.5rem;padding:.75rem .9rem;background:var(--sur
 details.corrige .body .line{font-family:var(--mono);font-size:.95rem;display:block;margin:.25rem 0}
 details.corrige .body p + p{margin-top:.5rem}
 
-/* ---------- pièges + check-list ---------- */
+/* réciter */
+.recite{display:flex;flex-direction:column;gap:.5rem}
+.rc{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:.9rem 1rem}
+.rc .k{font-family:var(--sans);font-weight:700;font-size:.97rem;line-height:1.35}
+.rc button{margin-top:.5rem;font-family:var(--mono);font-size:.63rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--copper);background:transparent;border:1px solid var(--rule);border-radius:4px;padding:.28rem .6rem;cursor:pointer}
+.rc button:hover{border-color:var(--copper)}
+.rc .a{margin-top:.6rem;padding:.7rem .85rem;background:var(--surface-2);border-radius:5px;font-size:.93rem;line-height:1.6}
+
+/* pièges + check-list */
 .trap{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.1rem 1.2rem}
 .trap .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--no);margin-bottom:.4rem}
 .trap .said{font-size:.95rem;color:var(--muted);font-style:italic}
 .trap .fix{margin-top:.55rem;font-size:.97rem}
 .trap .fix::before{content:"→ ";color:var(--ok);font-family:var(--mono);font-weight:600}
+.memo{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.memo div{background:var(--surface);padding:1.1rem 1.2rem}
+.memo dt{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--copper);margin-bottom:.35rem}
+.memo dd{margin:0;font-size:.95rem;line-height:1.5}
 .check{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:.6rem}
-.check li{display:flex;gap:.7rem;align-items:flex-start;background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:.7rem .85rem;font-size:.95rem}
-.check li::before{content:"□";font-family:var(--mono);color:var(--copper);font-size:1.05rem;line-height:1.35;flex:none}
+.check li{position:relative;background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:.7rem .85rem .7rem 2.1rem;font-size:.95rem}
+.check li::before{content:"□";position:absolute;left:.85rem;top:.62rem;font-family:var(--mono);color:var(--copper);font-size:1.05rem;line-height:1.35}
+
+/* partager */
+.share{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.4rem 1.5rem;box-shadow:var(--shadow)}
+.share .qr{flex:none;width:11rem;max-width:45vw}
+.share .qr svg{display:block;width:100%;height:auto;color:var(--ink)}
+.share-txt{flex:1 1 16rem;min-width:0}
+.share-lbl{font-family:var(--mono);font-size:.63rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--copper)}
+.share-url{font-family:var(--mono);font-size:1rem;font-weight:600;margin-top:.3rem;word-break:break-all}
+.share-url a{text-decoration:none;border-bottom:1px solid var(--rule)}
+.share-url a:hover{border-color:var(--copper)}
+.share-d{font-size:.9rem;color:var(--muted);margin-top:.7rem;line-height:1.55}
 
 footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
 :focus-visible{outline:2px solid var(--copper);outline-offset:2px;border-radius:3px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media (max-width:540px){body{font-size:16px}figure svg{min-width:30rem}}
+@media (max-width:540px){body{font-size:16px}figure.wide svg{min-width:30rem}}
+@media (max-width:430px){.m{white-space:normal}.answer input{width:6.5rem}.check,.memo{grid-template-columns:1fr}}
 @media print{
-  .rail,.quizbar,.plan,.btn,.answer input{display:none!important}
+  .rail,.quizbar,.plan,.btn,.answer input,.micro .mo,.rc button{display:none!important}
   body{background:#fff;color:#000;font-size:11pt}
   section{border:none;padding:1rem 0}
-  .dsx,.trap,.q,.ex,figure{break-inside:avoid;box-shadow:none}
+  .dsx,.trap,.q,.ex,.step,figure,.vc,.share{break-inside:avoid;box-shadow:none}
   details.corrige{display:none}
 }
 </style>
@@ -240,14 +291,17 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
 
 <div class="rail">
   <nav>
+    <a href="#mots">0 · Les mots</a>
+    <a href="#lire">1 · Lire une équation</a>
+    <a href="#pile">2 · La pile</a>
+    <a href="#bilan">3 · L'équation-bilan</a>
+    <a href="#accu">4 · Accumulateur</a>
+    <a href="#calculs">5 · Calculs</a>
+    <a href="#mini">6 · Mini-DS</a>
+    <a href="#ds">7 · DS blanc</a>
+    <a href="#reciter">8 · Réciter</a>
+    <a href="#pieges">9 · Pièges</a>
     <a href="#memo">Mémo</a>
-    <a href="#redox">1 · Oxydoréduction</a>
-    <a href="#pile">2 · Pile</a>
-    <a href="#accu">3 · Accumulateur</a>
-    <a href="#calculs">4 · Calculs</a>
-    <a href="#qcm">5 · QCM</a>
-    <a href="#ds">6 · DS blanc</a>
-    <a href="#pieges">7 · Pièges</a>
   </nav>
 </div>
 
@@ -255,96 +309,179 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
   <div class="wrap">
     <div class="eyebrow"><span>Sciences physiques · Terminale Bac Pro</span><span>DS du vendredi 25 septembre</span></div>
     <h1>Stocker l'énergie avec un système <em>électrochimique</em></h1>
-    <p class="lede">Oxydoréduction et pile chimique. Au DS, cocher ne suffit plus : il faut rédiger, écrire les équations et poser les calculs. Cette page suit exactement ce chemin-là.</p>
+    <p class="lede">Oxydoréduction et pile chimique, repris depuis le début. Rien n'est supposé connu : on commence par les mots et par la lecture des symboles, et on ne monte d'une marche qu'une fois la précédente franchie.</p>
     <div class="plan">
-      <a href="#redox"><span class="k">Étape 1</span><span class="v">Le cours</span><span class="d">Les définitions à restituer mot pour mot</span></a>
-      <a href="#pile"><span class="k">Étape 2</span><span class="v">Les équations</span><span class="d">Demi-équations, équilibrage, bilan</span></a>
-      <a href="#calculs"><span class="k">Étape 3</span><span class="v">Les calculs</span><span class="d">17 exercices chiffrés avec correction rédigée</span></a>
-      <a href="#ds"><span class="k">Étape 4</span><span class="v">Le DS blanc</span><span class="d">Un sujet complet sur 20, corrigé</span></a>
+      <a href="#mots"><span class="k">Étape 1</span><span class="v">Les mots</span><span class="d">Atome, ion, électrode, capacité : le vocabulaire d'abord</span></a>
+      <a href="#lire"><span class="k">Étape 2</span><span class="v">Lire, puis écrire</span><span class="d">Décoder Cu²⁺ avant d'écrire la moindre équation</span></a>
+      <a href="#pile"><span class="k">Étape 3</span><span class="v">Comment marche une pile</span><span class="d">Le schéma monté en trois temps</span></a>
+      <a href="#bilan"><span class="k">Étape 4</span><span class="v">L'équation-bilan</span><span class="d">Sept marches jusqu'à l'équilibrage</span></a>
+      <a href="#calculs"><span class="k">Étape 5</span><span class="v">Les calculs</span><span class="d">61 exercices, du plus simple au niveau DS</span></a>
+      <a href="#ds"><span class="k">Étape 6</span><span class="v">Les devoirs blancs</span><span class="d">Un mini-DS sur 10, puis un sujet sur 20</span></a>
     </div>
   </div>
 </header>
 
 <main class="wrap">
 
-  <section id="memo">
+  <section id="mots">
     <div class="shead">
       <span class="snum">00</span>
-      <div><h2>Mémo éclair</h2><p class="sub">Si tu ne relis qu'une chose, c'est ça.</p></div>
+      <div><h2>Les mots du chapitre</h2><p class="sub">Quatorze mots. Tant qu'ils ne sont pas clairs, le reste du cours ressemble à du code non commenté.</p></div>
     </div>
-    <dl class="memo">
-      <div><dt>La réaction</dt><dd>Une oxydoréduction, c'est un <b>échange d'électrons</b> entre deux espèces chimiques.</dd></div>
-      <div><dt>Spontané / imposé</dt><dd>Échange <b>spontané</b> → c'est une <b>pile</b>. Échange <b>imposé</b> par un courant continu → c'est une <b>électrolyse</b> (la charge d'un accu).</dd></div>
-      <div><dt>Une pile</dt><dd>Deux électrodes de <b>métaux différents</b> + une <b>solution ionique conductrice</b>. Elle fournit du courant <b>continu</b>.</dd></div>
-      <div><dt>Qui est +, qui est −</dt><dd><span class="pos">Cuivre = borne + (cathode)</span>, <span class="neg">zinc = borne − (anode)</span>. Le zinc se ronge, le cuivre s'épaissit.</dd></div>
-      <div><dt>Accumulateur</dt><dd>C'est la vraie « pile rechargeable ». <b>Charge</b> = électrolyseur. <b>Décharge</b> = pile.</dd></div>
-      <div><dt>Les deux formules</dt><dd><span class="m">Q = I × t</span> en <b>Ah</b> &nbsp;·&nbsp; <span class="m">E = Q × U</span> en <b>Wh</b>.</dd></div>
-    </dl>
+
+    <h3>La matière : atome, électron, ion</h3>
+    <div class="vocab">
+      <div class="vc"><span class="n">01</span><p class="t">L'atome et son symbole</p><p>Toute matière est faite de grains minuscules, les atomes. Chaque sorte d'atome a un symbole d'une ou deux lettres, majuscule en premier : <span class="m">Zn</span> le zinc, <span class="m">Cu</span> le cuivre, <span class="m">Ag</span> l'argent. Quand tu vois <span class="m">Cu</span> tout seul dans une équation, c'est du cuivre <b>métallique</b>, celui que tu peux tenir dans la main : la lame. Le chapitre n'utilise que ces trois symboles.</p></div>
+      <div class="vc"><span class="n">02</span><p class="t">L'électron</p><p>Dans un atome il y a un noyau au centre et, autour, des électrons. L'électron porte une charge <b>négative</b> : d'où son écriture <span class="m">e⁻</span>, avec un petit moins. Dans les métaux, les électrons sont peu retenus et peuvent partir ailleurs. Tout ce chapitre décrit un seul phénomène : <b>des électrons qui changent de place</b>. Le courant dans un fil, c'est exactement ça.</p></div>
+      <div class="vc"><span class="n">03</span><p class="t">L'ion, et sa charge</p><p>Si un atome perd des électrons, il lui reste plus de charges positives que de négatives : il devient un <b>ion positif</b>, noté avec un plus en exposant. <span class="m">Ag⁺</span> : l'atome d'argent a perdu <b>un</b> électron. <span class="m">Cu²⁺</span> : il en a perdu <b>deux</b>. Ce chiffre en haut à droite ne compte pas des atomes, il compte des <b>charges qui manquent</b> — et il te donne directement le nombre d'électrons de la demi-équation.</p></div>
+      <div class="vc"><span class="n">04</span><p class="t">Cu et Cu²⁺ ne sont pas la même chose</p><p>C'est la confusion numéro un. <span class="m">Cu</span>, c'est du métal solide, la lame, ce qui brille. <span class="m">Cu²⁺</span>, c'est un ion, invisible, dissous dans l'eau — c'est lui qui rend bleue la solution de sulfate de cuivre. Même élément, deux états. Quand la lame de cuivre s'épaissit, des <span class="m">Cu²⁺</span> sont redevenus du <span class="m">Cu</span> solide ; quand la lame de zinc se ronge, du <span class="m">Zn</span> solide est parti en <span class="m">Zn²⁺</span>.</p></div>
+    </div>
+
+    <h3>Le montage : électrode, électrolyte</h3>
+    <div class="vocab">
+      <div class="vc"><span class="n">05</span><p class="t">L'électrode</p><p>C'est la pièce de métal qui plonge dans le liquide et qui sert de porte d'entrée ou de sortie aux électrons. Dans une pile il y en a deux : la lame de zinc et la lame de cuivre. La réaction se produit <b>à la surface de contact</b> entre le métal et le liquide, pas au milieu du liquide. Et elles doivent être de deux métaux différents : deux lames identiques, aucune n'a plus envie que l'autre de donner ses électrons, donc aucune tension.</p></div>
+      <div class="vc"><span class="n">06</span><p class="t">L'électrolyte, ou solution ionique conductrice</p><p>C'est le liquide dans lequel baignent les électrodes. « Ionique » veut dire qu'il contient des ions, des particules chargées. « Conductrice » en découle : ces ions sont libres de se déplacer, donc ils transportent des charges, donc le liquide laisse passer le courant — de l'eau pure, non. Dans le TP citron, l'électrolyte c'est le jus, acide et plein d'ions. Dans la pile Daniell, ce sont les deux solutions de sulfate.</p></div>
+      <div class="vc"><span class="n">07</span><p class="t">Ce que cache CuSO₄</p><p>Le sulfate de cuivre est une poudre bleue qu'on dissout dans l'eau. Sa formule <span class="m">CuSO₄</span> se casse en deux morceaux dans l'eau : les ions <span class="m">Cu²⁺</span> et les ions sulfate. Pour ce chapitre, <b>seuls les Cu²⁺ t'intéressent</b> : ce sont eux qui captent des électrons sur la lame. Le sulfate est un spectateur, il n'apparaît dans aucune de tes équations. Même chose pour <span class="m">ZnSO₄</span> : retiens « solution qui contient des Zn²⁺ ».</p></div>
+      <div class="vc"><span class="n">08</span><p class="t">Série et parallèle</p><p>En <b>série</b>, les éléments sont bout à bout, à la queue leu leu : le + de l'un sur le − du suivant. En <b>parallèle</b>, ils sont côte à côte, tous les + ensemble et tous les − ensemble. À connaître par cœur : en série les <b>tensions s'additionnent</b> et la capacité ne bouge pas ; en parallèle les <b>capacités s'additionnent</b> et la tension ne bouge pas.</p></div>
+    </div>
+
+    <h3>Les grandeurs : ce qu'on mesure et avec quoi</h3>
+    <div class="vocab">
+      <div class="vc"><span class="n">09</span><p class="t">Tension et intensité, deux choses différentes</p><p>La <b>tension</b> U, en volts (V), c'est la force avec laquelle la pile pousse les électrons ; elle existe même quand rien n'est branché — c'est ce qu'affiche le voltmètre sur une pile posée sur la table. L'<b>intensité</b> I, en ampères (A), c'est la quantité d'électrons qui passe réellement ; elle vaut zéro si le circuit est ouvert. Ta pile au citron le montre bien : elle a une tension (0,32 V, le voltmètre le prouve) mais débite si peu qu'elle n'allume même pas une DEL.</p></div>
+      <div class="vc"><span class="n">10</span><p class="t">Le nom, le symbole, l'unité</p><p>Trois choses à ne pas mélanger : le <b>nom</b> (la capacité), le <b>symbole</b> (Q) et l'<b>unité</b> (l'ampère-heure, Ah). Le chapitre en compte cinq : capacité Q en Ah, intensité I en A, durée t en h, tension U en V, énergie E en Wh. Une réponse sans unité ne vaut rien, et une unité fausse coûte autant qu'un calcul faux : <span class="m">2,16</span> n'est pas une réponse, <span class="m">2,16 Wh</span> en est une.</p></div>
+      <div class="vc"><span class="n">11</span><p class="t">La capacité, concrètement</p><p><span class="m">Q = 600 mAh</span> ne veut pas dire que l'accu contient 600 « quelque chose » d'abstrait. Ça veut dire : il peut fournir 600 mA pendant 1 heure, ou 300 mA pendant 2 heures, ou 60 mA pendant 10 heures. C'est un stock qu'on peut vider vite ou lentement : plus tu tires fort, moins ça dure, et le produit intensité × durée reste le même. C'est exactement ce que dit <span class="m">Q = I × t</span>.</p></div>
+      <div class="vc"><span class="n">12</span><p class="t">L'heure décimale n'est pas l'heure de la montre</p><p><span class="m">1,5 h</span> ne se lit pas « une heure cinquante ». C'est une heure <b>et demie</b>, donc 1 h 30 min, parce que 0,5 × 60 = 30. Dans une formule on met <b>toujours</b> l'heure décimale : jamais « 2 h 30 » dans une multiplication, mais 2,5. Et dans l'autre sens, un résultat de <span class="m">1,3 h</span> n'est pas 1 h 30 : c'est 1 h et 0,3 × 60 = 18 min. Minutes → heures : on divise par 60. Heures → minutes : on multiplie par 60.</p></div>
+      <div class="vc"><span class="n">13</span><p class="t">Mesurer : en parallèle, en série, et le calibre</p><p>Le <b>voltmètre</b> se branche <b>en parallèle</b>, par-dessus, une pointe sur chaque borne, sans rien débrancher : il compare deux points. L'<b>ampèremètre</b> se branche <b>en série</b> : il faut ouvrir le circuit et l'intercaler, puisqu'il compte ce qui le traverse. Le <b>calibre</b>, c'est la valeur maximale que l'appareil accepte d'afficher : on choisit celui juste <b>au-dessus</b> de ce qu'on attend. Trop petit, l'écran affiche un dépassement ; trop grand, on perd les chiffres après la virgule.</p></div>
+      <div class="vc"><span class="n">14</span><p class="t">Charge, décharge, électrolyseur</p><p>Un <b>électrolyseur</b>, c'est un montage où on <b>force</b> une réaction chimique en imposant du courant continu. C'est exactement ce qui se passe quand tu recharges : le chargeur force la réaction à repartir en arrière, donc un accu en charge <b>est</b> un électrolyseur, et l'énergie électrique devient chimique. Quand il se décharge, la réaction repart toute seule dans son sens naturel et il fournit du courant : c'est une <b>pile</b>, et l'énergie chimique redevient électrique.</p></div>
+    </div>
+
+    <h3>Vérifier que les mots sont passés</h3>
+    <div class="escalier" data-key="mots"></div>
   </section>
 
-  <section id="redox">
+  <section id="lire">
     <div class="shead">
       <span class="snum">01</span>
-      <div><h2>Réaction d'oxydoréduction</h2><p class="sub">Les définitions que le DS demandera de restituer.</p></div>
-    </div>
-    <div class="prose stack">
-      <p>Lors d'une <b>réaction d'oxydoréduction</b>, il se produit un <b>échange d'électrons</b>. Deux espèces chimiques se les passent : l'une les donne, l'autre les prend.</p>
-    </div>
-    <ul class="keys prose" style="margin-top:1.2rem">
-      <li><b>Oxydation</b> = la substance <b>perd</b> des électrons. Ils sont écrits <b>à droite</b> de la flèche : <span class="m">Zn → Zn²⁺ + 2e⁻</span></li>
-      <li><b>Réduction</b> = la substance <b>gagne</b> des électrons. Ils sont écrits <b>à gauche</b> : <span class="m">Cu²⁺ + 2e⁻ → Cu</span></li>
-      <li>Les deux vont toujours ensemble : les électrons perdus d'un côté sont gagnés de l'autre.</li>
-      <li>On écrit les espèces par <b>couples oxydant/réducteur</b>, l'oxydant d'abord : <span class="m">Zn²⁺/Zn</span>, <span class="m">Cu²⁺/Cu</span>, <span class="m">Ag⁺/Ag</span>.</li>
-    </ul>
-    <div class="tbl-wrap">
-      <table>
-        <caption>Les deux mots à écrire dans les pointillés du cours.</caption>
-        <thead><tr><th>L'échange est…</th><th>Ce que ça donne</th><th>Sens de l'énergie</th></tr></thead>
-        <tbody>
-          <tr><th>spontané</th><td>une <b>pile</b> : la réaction part toute seule dès qu'on ferme le circuit</td><td>chimique → électrique</td></tr>
-          <tr><th>imposé</th><td>une <b>électrolyse</b>, par une source de courant continu (c'est la charge d'un accumulateur)</td><td>électrique → chimique</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="why prose" style="max-width:38rem">
-      <b>Remarque sur ta feuille.</b> La phrase imprimée dit « imposé par une source de courant continu dans le cas d'un alternateur ». Le mot attendu dans le trou est bien <b>imposé</b> ; l'appareil qui impose l'échange, lui, s'appelle un <b>électrolyseur</b>.
+      <div><h2>Lire, puis écrire une équation</h2><p class="sub">Neuf marches. On ne parle pas encore de pile : on apprend juste à lire.</p></div>
     </div>
 
-    <h3>Quel métal attaque l'autre ?</h3>
     <div class="prose stack">
-      <p>Dans une pile, c'est toujours le métal le <b>plus réducteur</b> qui s'oxyde et donne ses électrons : c'est lui la <b>borne −</b>. L'autre reçoit les électrons : c'est la <b>borne +</b>.</p>
+      <p>Une équation de chimie n'est pas un calcul, c'est une <b>phrase</b>. Tant qu'on ne sait pas la lire à voix haute, on ne peut que la recopier. Commence par celle-ci, décodée morceau par morceau.</p>
     </div>
-    <div class="tbl-wrap">
-      <table>
-        <caption>Classement à connaître pour ce chapitre : plus on va vers la gauche, plus le métal donne facilement ses électrons.</caption>
-        <thead><tr><th>Couple</th><th>Rôle face au suivant</th><th>Exemple de pile</th></tr></thead>
-        <tbody>
-          <tr><th>Zn²⁺/Zn</th><td>le zinc s'oxyde, il donne ses électrons</td><td>zinc + cuivre → le <b>zinc</b> est la borne −</td></tr>
-          <tr><th>Cu²⁺/Cu</th><td>le cuivre reçoit face au zinc, mais donne face à l'argent</td><td>cuivre + argent → le <b>cuivre</b> est la borne −</td></tr>
-          <tr><th>Ag⁺/Ag</th><td>l'argent reçoit toujours</td><td>zinc + argent → l'<b>argent</b> est la borne +</td></tr>
-        </tbody>
-      </table>
+
+    <figure>
+      <span class="fignum">Figure 1 — décoder une demi-équation</span>
+      <p style="font-family:var(--mono);font-size:clamp(1.1rem,4vw,1.6rem);font-weight:600;text-align:center;margin:.5rem 0 1rem">Zn → Zn²⁺ + 2e⁻</p>
+      <div class="decode">
+        <div class="dc"><span class="sym">Zn</span><span class="exp">un atome de zinc, sous forme de métal solide : la lame</span></div>
+        <div class="dc"><span class="sym">→</span><span class="exp">« se transforme en ». Ce n'est pas un signe égal</span></div>
+        <div class="dc"><span class="sym">Zn²⁺</span><span class="exp">un ion zinc, dissous dans l'eau, à qui il manque 2 électrons</span></div>
+        <div class="dc"><span class="sym">+</span><span class="exp">« et en même temps »</span></div>
+        <div class="dc"><span class="sym">2e⁻</span><span class="exp">deux électrons, qui partent du métal</span></div>
+      </div>
+      <figcaption>Lue à voix haute : « un atome de zinc se transforme en ion zinc, et en même temps il lâche deux électrons ». Fais-le systématiquement : si la phrase ne veut rien dire, l'équation est fausse.</figcaption>
+    </figure>
+
+    <div class="rule-box prose" style="margin-top:1.4rem">
+      <span class="lbl">La règle d'or du chapitre</span>
+      Le chiffre des charges = le nombre d'électrons. <span class="m">Cu²⁺</span> a besoin de <b>2</b> électrons pour redevenir <span class="m">Cu</span>. <span class="m">Ag⁺</span> n'en a besoin que d'<b>un</b>. C'est la seule chose à regarder pour écrire une demi-équation, et c'est là que se joue la moitié des points du DS.
     </div>
+
+    <div class="rule-box prose" style="margin-top:.8rem">
+      <span class="lbl">Le chiffre devant, le chiffre en haut</span>
+      <span class="m">2Ag⁺</span> veut dire « deux ions argent », chacun avec une seule charge +. <span class="m">Ag²⁺</span> voudrait dire « un ion argent qui a perdu deux électrons » — et celui-là n'existe pas dans notre chapitre. Le chiffre <b>devant</b> compte les objets, le chiffre <b>en haut à droite</b> compte les charges. Quand tu équilibreras une équation, tu ne toucheras <b>jamais</b> à un exposant.
+    </div>
+
+    <div class="rule-box prose" style="margin-top:.8rem">
+      <span class="lbl">Le donneur et le receveur</span>
+      Le <b>réducteur</b> est celui qui donne ses électrons : dans tous nos couples, c'est le <b>métal</b>, écrit à droite du trait. L'<b>oxydant</b> est celui qui les prend : c'est l'<b>ion</b>, écrit à gauche. Dans <span class="m">Zn²⁺/Zn</span>, <span class="m">Zn²⁺</span> est l'oxydant et <span class="m">Zn</span> le réducteur. Et « plus réducteur » veut simplement dire « donne ses électrons plus facilement que l'autre ».
+    </div>
+
+    <h3>L'escalier : neuf marches, une décision nouvelle par marche</h3>
+    <div class="escalier" data-key="lire"></div>
   </section>
 
   <section id="pile">
     <div class="shead">
       <span class="snum">02</span>
-      <div><h2>La pile, et les équations</h2><p class="sub">Pile Daniell, pile au citron, pile zinc/argent.</p></div>
+      <div><h2>Comment marche une pile</h2><p class="sub">Le schéma de la pile Daniell, monté en trois temps au lieu d'un seul.</p></div>
     </div>
 
     <ul class="keys prose">
       <li>Une pile est composée de <b>deux électrodes constituées de deux métaux différents</b>, plongées dans une <b>solution ionique conductrice</b>.</li>
       <li>C'est un <b>générateur électrochimique</b> : elle produit une tension électrique à partir de réactions chimiques.</li>
       <li>Une pile fournit un courant électrique <b>continu</b>.</li>
-      <li>La tension se mesure avec un <b>voltmètre</b>, branché <b>en parallèle</b> sur les deux bornes, sur le calibre juste au-dessus de la valeur attendue.</li>
     </ul>
 
-    <figure>
+    <figure class="wide">
+      <span class="fignum">Temps 1 — le montage, rien n'est branché</span>
       <div class="figscroll">
-        <svg viewBox="0 0 760 440" role="img" aria-label="Schéma de la pile Daniell : la lame de zinc s'oxyde et libère des électrons qui circulent dans le fil extérieur vers la lame de cuivre, où les ions cuivre se réduisent et se déposent ; le pont salin laisse circuler les ions.">
+        <svg viewBox="0 0 760 395" role="img" aria-label="Montage de la pile Daniell avant branchement : une lame de cuivre dans une solution de sulfate de cuivre, une lame de zinc dans une solution de sulfate de zinc, les deux béchers reliés par un pont salin.">
+          <rect x="90" y="170" width="200" height="180" rx="8" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".35" stroke-width="2"></rect>
+          <rect x="470" y="170" width="200" height="180" rx="8" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".35" stroke-width="2"></rect>
+          <rect x="94" y="215" width="192" height="131" rx="5" fill="var(--blue-soft)"></rect>
+          <rect x="474" y="215" width="192" height="131" rx="5" fill="var(--blue-soft)" opacity=".5"></rect>
+          <path d="M242 265 V150 H518 V265" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"></path>
+          <text x="380" y="140" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="currentColor">pont salin</text>
+          <rect x="179" y="120" width="22" height="200" rx="2" fill="var(--copper)"></rect>
+          <rect x="559" y="120" width="22" height="200" rx="2" fill="var(--zinc)"></rect>
+          <text x="190" y="337" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--blue)">CuSO₄ · Cu²⁺</text>
+          <text x="570" y="337" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--blue)">ZnSO₄ · Zn²⁺</text>
+          <text x="190" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="var(--copper)">lame de cuivre</text>
+          <text x="570" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="var(--zinc)">lame de zinc</text>
+        </svg>
+      </div>
+      <figcaption>Deux lames de métaux <b>différents</b>, chacune dans sa solution, reliées par un pont salin. À ce stade, il ne se passe rien : tant que les deux lames ne sont pas reliées par un fil, les électrons n'ont aucun chemin pour passer de l'une à l'autre.</figcaption>
+    </figure>
+
+    <figure class="wide">
+      <span class="fignum">Temps 2 — on branche le fil</span>
+      <div class="figscroll">
+        <svg viewBox="0 0 760 395" role="img" aria-label="La même pile, fil branché : un voltmètre affiche 1,1 volt, les électrons circulent dans le fil de la lame de zinc vers la lame de cuivre, qui devient la borne positive.">
           <defs>
-            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
+            </marker>
+          </defs>
+          <rect x="90" y="170" width="200" height="180" rx="8" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".35" stroke-width="2"></rect>
+          <rect x="470" y="170" width="200" height="180" rx="8" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".35" stroke-width="2"></rect>
+          <rect x="94" y="215" width="192" height="131" rx="5" fill="var(--blue-soft)"></rect>
+          <rect x="474" y="215" width="192" height="131" rx="5" fill="var(--blue-soft)" opacity=".5"></rect>
+          <path d="M242 265 V150 H518 V265" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"></path>
+          <text x="380" y="140" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="currentColor">pont salin</text>
+          <rect x="179" y="120" width="22" height="200" rx="2" fill="var(--copper)"></rect>
+          <rect x="559" y="120" width="22" height="200" rx="2" fill="var(--zinc)"></rect>
+          <path d="M190 120 V70 H354" fill="none" stroke="currentColor" stroke-width="2.5"></path>
+          <path d="M406 70 H570 V120" fill="none" stroke="currentColor" stroke-width="2.5"></path>
+          <circle cx="380" cy="70" r="26" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"></circle>
+          <text x="380" y="77" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="600" fill="currentColor">V</text>
+          <text x="380" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="600" fill="var(--copper)">U = 1,1 V</text>
+          <line x1="505" y1="46" x2="455" y2="46" stroke="currentColor" stroke-width="2" marker-end="url(#arA)"></line>
+          <text x="515" y="51" font-family="IBM Plex Mono, monospace" font-size="12.5" font-weight="600" fill="currentColor">e⁻</text>
+          <circle cx="152" cy="95" r="14" fill="var(--copper)"></circle>
+          <text x="152" y="101" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="600" fill="var(--surface)">+</text>
+          <circle cx="608" cy="95" r="14" fill="var(--zinc)"></circle>
+          <text x="608" y="101" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="600" fill="var(--surface)">−</text>
+          <text x="190" y="337" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--blue)">CuSO₄ · Cu²⁺</text>
+          <text x="570" y="337" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--blue)">ZnSO₄ · Zn²⁺</text>
+          <text x="190" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="var(--copper)">lame de cuivre</text>
+          <text x="570" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="var(--zinc)">lame de zinc</text>
+        </svg>
+      </div>
+      <figcaption>Dès que le fil est là, les électrons partent du <b>zinc</b> et rejoignent le <b>cuivre</b>. Le zinc, qui les perd, devient la <b>borne −</b> ; le cuivre, qui les reçoit, devient la <b>borne +</b>. Le voltmètre affiche 1,1 V. Une seule flèche sur ce schéma : celle des électrons.</figcaption>
+    </figure>
+
+    <div class="rule-box prose" style="margin-top:1.4rem">
+      <span class="lbl">Électrons ou courant : le point qui piège tout le monde</span>
+      Les <b>électrons</b> vont du zinc vers le cuivre, donc de la borne <b>−</b> vers la borne <b>+</b>. Par convention, depuis le XIX<sup>e</sup> siècle, on dessine le <b>courant</b> dans l'autre sens, du <b>+</b> vers le <b>−</b>. Ce n'est pas une deuxième circulation : il n'y a qu'un seul déplacement, celui des électrons. La convention a été choisie avant qu'on découvre l'électron, et on l'a gardée. <b>Au DS : si on demande le sens des électrons, c'est du − vers le +.</b>
+    </div>
+
+    <figure class="wide">
+      <span class="fignum">Temps 3 — ce qui se passe chimiquement</span>
+      <div class="figscroll">
+        <svg viewBox="0 0 760 440" role="img" aria-label="La même pile avec les réactions : sur la lame de cuivre les ions cuivre captent deux électrons et se déposent, sur la lame de zinc les atomes de zinc partent en ions et la lame se ronge.">
+          <defs>
+            <marker id="arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
             </marker>
           </defs>
@@ -363,10 +500,8 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
           <circle cx="380" cy="70" r="26" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"></circle>
           <text x="380" y="77" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="600" fill="currentColor">V</text>
           <text x="380" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="600" fill="var(--copper)">U = 1,1 V</text>
-          <line x1="505" y1="46" x2="455" y2="46" stroke="currentColor" stroke-width="2" marker-end="url(#ar)"></line>
+          <line x1="505" y1="46" x2="455" y2="46" stroke="currentColor" stroke-width="2" marker-end="url(#arB)"></line>
           <text x="515" y="51" font-family="IBM Plex Mono, monospace" font-size="12.5" font-weight="600" fill="currentColor">e⁻</text>
-          <line x1="276" y1="96" x2="338" y2="96" stroke="currentColor" stroke-width="2" stroke-opacity=".5" marker-end="url(#ar)"></line>
-          <text x="206" y="101" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="currentColor" opacity=".6">courant I</text>
           <circle cx="152" cy="95" r="14" fill="var(--copper)"></circle>
           <text x="152" y="101" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="600" fill="var(--surface)">+</text>
           <circle cx="608" cy="95" r="14" fill="var(--zinc)"></circle>
@@ -381,48 +516,62 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
           <text x="570" y="421" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="12" fill="currentColor" opacity=".7">oxydation · la lame se ronge</text>
         </svg>
       </div>
-      <figcaption>La pile Daniell (zinc/cuivre, 1836). Les électrons partent du zinc, traversent le fil extérieur et arrivent sur le cuivre : ce déplacement d'électrons <b>est</b> le courant électrique. Le courant conventionnel, lui, circule dans l'autre sens. Équation-bilan : <span class="m">Cu²⁺ + Zn → Cu + Zn²⁺</span>.</figcaption>
+      <figcaption>Le même dessin, avec ce qui se passe à la surface des lames. Sur le cuivre, les ions <span class="m">Cu²⁺</span> de la solution attrapent les électrons qui arrivent et se déposent en cuivre métallique : la lame <b>s'épaissit</b>. Sur le zinc, des atomes partent en ions <span class="m">Zn²⁺</span> dans la solution : la lame <b>se ronge</b>. Moyen mnémo : <b>le zinc se sacrifie, le cuivre s'engraisse.</b></figcaption>
     </figure>
 
-    <h3>Écrire une équation-bilan en trois temps</h3>
-    <div class="formulas">
-      <div class="formula">
-        <div class="eq"><small>1.</small> Les demi-équations</div>
-        <p>Une par électrode. Celle de la borne − est une <b>oxydation</b> (électrons à droite), celle de la borne + est une <b>réduction</b> (électrons à gauche).</p>
-      </div>
-      <div class="formula">
-        <div class="eq"><small>2.</small> Égaliser les e⁻</div>
-        <p>On multiplie une demi-équation, ou les deux, pour que le <b>nombre d'électrons soit le même des deux côtés</b>. C'est l'étape que tout le monde oublie.</p>
-      </div>
-      <div class="formula">
-        <div class="eq"><small>3.</small> Additionner</div>
-        <p>On additionne les deux lignes ; les électrons se simplifient et <b>disparaissent du bilan</b>. S'il reste des e⁻, c'est que l'étape 2 est ratée.</p>
-      </div>
+    <div class="why prose" style="max-width:38rem">
+      <b>Le pont salin, à quoi il sert.</b> Sans lui, les charges s'accumulent dans chaque bécher et la réaction s'arrête aussitôt. Il <b>ferme le circuit du côté des solutions</b> en laissant circuler les ions et en <b>équilibrant les charges</b>. Attention : les <b>ions</b> passent par le pont salin, les <b>électrons</b> passent par le fil, jamais par la solution. En TP, c'était un papier filtre imbibé de chlorure de sodium.
     </div>
 
+    <h3>Lequel des deux métaux donne ses électrons ?</h3>
+    <figure>
+      <span class="fignum">Figure 2 — l'axe des trois métaux</span>
+      <svg viewBox="0 0 700 165" role="img" aria-label="Axe classant les trois métaux : le zinc donne ses électrons le plus facilement, puis le cuivre, et l'argent ne les donne jamais.">
+        <text x="100" y="32" font-family="IBM Plex Serif, serif" font-size="12" fill="currentColor" opacity=".7">donne ses électrons le plus facilement</text>
+        <text x="600" y="32" text-anchor="end" font-family="IBM Plex Serif, serif" font-size="12" fill="currentColor" opacity=".7">ne les donne jamais</text>
+        <line x1="100" y1="85" x2="600" y2="85" stroke="currentColor" stroke-width="2" stroke-opacity=".45"></line>
+        <g stroke="currentColor" stroke-width="2" stroke-opacity=".45">
+          <line x1="150" y1="76" x2="150" y2="94"></line>
+          <line x1="350" y1="76" x2="350" y2="94"></line>
+          <line x1="550" y1="76" x2="550" y2="94"></line>
+        </g>
+        <text x="150" y="66" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="20" font-weight="600" fill="var(--zinc)">Zn</text>
+        <text x="350" y="66" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="20" font-weight="600" fill="var(--copper)">Cu</text>
+        <text x="550" y="66" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="20" font-weight="600" fill="var(--blue)">Ag</text>
+        <text x="150" y="112" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="11.5" fill="currentColor" opacity=".75">toujours la borne −</text>
+        <text x="350" y="112" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="11.5" fill="currentColor" opacity=".75">− face à Ag, + face à Zn</text>
+        <text x="550" y="112" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="11.5" fill="currentColor" opacity=".75">toujours la borne +</text>
+        <text x="350" y="148" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600" fill="var(--copper)">le plus à gauche des deux = la borne −</text>
+      </svg>
+      <figcaption>Une seule chose à retenir de cette figure, et trois questions du DS en dépendent : <b>des deux métaux de la pile, celui qui est le plus à gauche sur l'axe est la borne −</b>. Le cuivre change de rôle selon son voisin, c'est normal : tout dépend de l'autre métal.</figcaption>
+    </figure>
+
+    <h3>Ce que tu as mesuré en TP</h3>
     <div class="tbl-wrap">
       <table>
-        <caption>Les trois piles du chapitre, entièrement rédigées.</caption>
-        <thead><tr><th>Pile</th><th>Borne − : oxydation</th><th>Borne + : réduction</th><th>Équation-bilan</th></tr></thead>
+        <thead><tr><th>Montage</th><th>Tension mesurée</th><th>À retenir</th></tr></thead>
         <tbody>
-          <tr><th>Daniell<br>zinc / cuivre</th><td><span class="m">Zn → Zn²⁺ + 2e⁻</span></td><td><span class="m">Cu²⁺ + 2e⁻ → Cu</span></td><td><span class="m">Zn + Cu²⁺ → Zn²⁺ + Cu</span><br><span style="color:var(--muted);font-size:.85em">2 e⁻ de chaque côté : rien à multiplier.</span></td></tr>
-          <tr><th>zinc / argent</th><td><span class="m">Zn → Zn²⁺ + 2e⁻</span></td><td><span class="m">Ag⁺ + e⁻ → Ag</span><br>à multiplier par 2 :<br><span class="m">2Ag⁺ + 2e⁻ → 2Ag</span></td><td><span class="m">Zn + 2Ag⁺ → Zn²⁺ + 2Ag</span><br><span style="color:var(--muted);font-size:.85em">L'argent ne prend qu'<b>un</b> électron : c'est le piège.</span></td></tr>
-          <tr><th>cuivre / argent</th><td><span class="m">Cu → Cu²⁺ + 2e⁻</span></td><td><span class="m">2Ag⁺ + 2e⁻ → 2Ag</span></td><td><span class="m">Cu + 2Ag⁺ → Cu²⁺ + 2Ag</span><br><span style="color:var(--muted);font-size:.85em">Ici le cuivre est la borne −.</span></td></tr>
+          <tr><th>Pile Daniell</th><td><span class="m">U = 1,1 V</span></td><td>Deux béchers, sulfate de cuivre et sulfate de zinc, reliés par un pont salin.</td></tr>
+          <tr><th>Pile au citron</th><td><span class="m">U = 0,32 V</span></td><td>Cuivre + zinc plantés à environ 2 cm, sans se toucher. Trop faible pour allumer une DEL.</td></tr>
+          <tr><th>Deux citrons en série</th><td><span class="m">U = 0,64 V</span></td><td>Les tensions s'additionnent : 0,32 + 0,32.</td></tr>
+          <tr><th>Pile au citron d'Amine</th><td><span class="m">U = 0,750 V</span></td><td>Multimètre en voltmètre, calibre 2 V. Il y a bien une tension entre deux lames de métaux différents : c'est une pile.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h3>Vérifier que c'est acquis</h3>
-    <div class="quizmount" data-key="eq"></div>
+    <div class="vocab" style="margin-top:1.4rem">
+      <div class="vc"><span class="n">Augmenter la tension</span><p class="t">Mettre les piles en série</p><p>Relier par un fil le cuivre d'une pile au zinc de la suivante. La tension totale est la <b>somme</b> des tensions de chaque pile : deux citrons à 0,32 V donnent 0,64 V.</p></div>
+      <div class="vc"><span class="n">Augmenter l'intensité</span><p class="t">Agrandir et rapprocher les lames</p><p>Des plaques plus grandes offrent plus de surface de contact, et les rapprocher réduit la résistance du circuit — avec des fils courts et bons conducteurs. Brancher des piles <b>en parallèle</b> marche aussi.</p></div>
+    </div>
 
     <h3>Légender le schéma</h3>
-    <p class="prose" style="color:var(--muted);font-size:.95rem">Exactement l'exercice de l'énoncé : on te donne le schéma nu, tu places les sept étiquettes.</p>
+    <p class="prose" style="color:var(--muted);font-size:.95rem">L'exercice qui tombe presque à chaque fois. Sept repères, sept étiquettes.</p>
     <figure>
       <div class="lg">
         <div class="figscroll">
           <svg viewBox="0 0 760 340" role="img" aria-label="Schéma de pile à légender : deux béchers reliés par un pont salin, deux lames métalliques, un appareil de mesure et une flèche sur le fil, repérés par sept numéros.">
             <defs>
-              <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <marker id="arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                 <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
               </marker>
             </defs>
@@ -436,7 +585,7 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
             <path d="M190 90 V40 H354" fill="none" stroke="currentColor" stroke-width="2.5"></path>
             <path d="M406 40 H570 V90" fill="none" stroke="currentColor" stroke-width="2.5"></path>
             <circle cx="380" cy="40" r="26" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"></circle>
-            <line x1="500" y1="18" x2="450" y2="18" stroke="currentColor" stroke-width="2" marker-end="url(#ar3)"></line>
+            <line x1="500" y1="18" x2="450" y2="18" stroke="currentColor" stroke-width="2" marker-end="url(#arC)"></line>
             <circle cx="152" cy="65" r="14" fill="var(--copper)"></circle>
             <text x="152" y="71" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="600" fill="var(--surface)">+</text>
             <circle cx="608" cy="65" r="14" fill="var(--zinc)"></circle>
@@ -460,42 +609,95 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
           </div>
         </div>
       </div>
-      <figcaption>Au DS, une légende juste rapporte presque toujours des points faciles : ne laisse jamais une flèche ou un bécher sans nom.</figcaption>
+      <figcaption>Au DS, une légende juste rapporte des points faciles : ne laisse jamais une flèche ou un bécher sans nom.</figcaption>
     </figure>
 
-    <h3>Ce que tu as mesuré en TP</h3>
+    <h3>Huit questions sur les TP</h3>
+    <div class="quizmount" data-key="tp"></div>
+  </section>
+
+  <section id="bilan">
+    <div class="shead">
+      <span class="snum">03</span>
+      <div><h2>Écrire l'équation-bilan</h2><p class="sub">La partie la plus dure du chapitre, découpée en sept marches.</p></div>
+    </div>
+
+    <div class="prose stack">
+      <p>Une équation-bilan, c'est la somme des deux demi-équations de la pile. Le geste tient en trois temps, mais le deuxième est celui qui fait perdre des points à tout le monde.</p>
+    </div>
+
+    <div class="worked">
+      <div class="lbl">Exemple entièrement fait — la pile Daniell, le cas facile</div>
+      <ol>
+        <li>Je repère la borne −. Sur l'axe, le <b>zinc</b> est à gauche du cuivre : c'est lui la borne −, c'est lui qui donne ses électrons.
+          <span class="line">Zn → Zn²⁺ + 2e⁻</span>
+          <span class="cm">Les électrons partent, donc ils sont à droite : c'est une oxydation.</span></li>
+        <li>Le cuivre est donc la borne +, il reçoit les électrons. L'ion <span class="m">Cu²⁺</span> porte 2 charges, il capte donc 2 électrons.
+          <span class="line">Cu²⁺ + 2e⁻ → Cu</span>
+          <span class="cm">Les électrons arrivent, donc ils sont à gauche : c'est une réduction.</span></li>
+        <li>Je compte les électrons de chaque ligne : <b>2 d'un côté, 2 de l'autre</b>. Ils sont déjà égaux, je n'ai rien à multiplier.</li>
+        <li>J'additionne les deux lignes, telles quelles.
+          <span class="line">Zn + Cu²⁺ + 2e⁻ → Zn²⁺ + Cu + 2e⁻</span></li>
+        <li>Je simplifie : <span class="m">2e⁻</span> apparaît des deux côtés, donc il disparaît.
+          <span class="line">Zn + Cu²⁺ → Zn²⁺ + Cu</span>
+          <span class="cm">Plus aucun électron dans le bilan : c'est le signe que c'est fini et que c'est juste.</span></li>
+      </ol>
+    </div>
+
+    <h3>L'escalier : sept marches jusqu'à l'équilibrage</h3>
+    <div class="escalier" data-key="bilan"></div>
+
+    <div class="worked" style="margin-top:1.6rem">
+      <div class="lbl">Exemple entièrement fait — la pile zinc / argent, le cas qui tombe au DS</div>
+      <ol>
+        <li>Sur l'axe, le <b>zinc</b> est le plus à gauche : borne −. L'<b>argent</b> est donc la borne +.</li>
+        <li>J'écris les deux demi-équations. Attention à l'argent : <span class="m">Ag⁺</span> ne porte qu'<b>une</b> charge, il ne capte donc qu'<b>un</b> électron.
+          <span class="line">Zn → Zn²⁺ + 2e⁻</span>
+          <span class="line">Ag⁺ + e⁻ → Ag</span></li>
+        <li>Je compte : le zinc donne <b>2</b> électrons, l'argent n'en prend qu'<b>1</b>. Ce n'est pas égal, je ne peux pas additionner.</li>
+        <li>Je multiplie par <b>2</b> la ligne de l'argent — <b>toute</b> la ligne, pas seulement les électrons.
+          <span class="line">2Ag⁺ + 2e⁻ → 2Ag</span>
+          <span class="cm">Je touche aux chiffres devant, jamais aux exposants : ce serait Ag⁺ partout, pas Ag²⁺.</span></li>
+        <li>Maintenant les électrons sont égaux, j'additionne et je simplifie.
+          <span class="line">Zn + 2Ag⁺ → Zn²⁺ + 2Ag</span></li>
+        <li>Je vérifie. Électrons : plus aucun. Charges : à gauche <span class="m">2 × (+1) = +2</span>, à droite <span class="m">+2</span>, égales. Atomes : 1 Zn de chaque côté, 2 Ag de chaque côté. C'est bon.</li>
+      </ol>
+    </div>
+
+    <div class="stack" style="margin-top:1.4rem">
+      <div class="trap">
+        <div class="lbl">Le piège à connaître avant d'écrire</div>
+        <p class="said">« Ag⁺ + 2e⁻ → Ag »</p>
+        <p class="fix">L'ion argent ne porte qu'<b>une</b> charge positive : il ne capte qu'<b>un</b> électron. <span class="m">Ag⁺ + e⁻ → Ag</span>. C'est précisément pour ça qu'il faut multiplier cette demi-équation par 2 avant de l'additionner à celle du zinc.</p>
+      </div>
+      <div class="trap">
+        <div class="lbl">Le piège de la dernière ligne</div>
+        <p class="said">« Zn + Cu²⁺ + 2e⁻ → Zn²⁺ + Cu »</p>
+        <p class="fix">Dans une <b>équation-bilan</b>, les électrons <b>disparaissent</b> : ils sont cédés d'un côté et captés de l'autre, donc ils se simplifient. S'il en reste dans ton bilan, c'est que tu n'as pas égalisé les demi-équations. C'est ta meilleure vérification.</p>
+      </div>
+    </div>
+
+    <h3>Les trois piles du chapitre, en résumé</h3>
+    <p class="prose" style="color:var(--muted);font-size:.95rem">À utiliser comme corrigé pour te vérifier — pas comme cours à recopier.</p>
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Montage</th><th>Tension mesurée</th><th>À retenir</th></tr></thead>
+        <thead><tr><th>Pile</th><th>Borne − : oxydation</th><th>Borne + : réduction</th><th>Équation-bilan</th></tr></thead>
         <tbody>
-          <tr><th>Pile Daniell</th><td><span class="m">U = 1,1 V</span></td><td>Deux béchers, sulfate de cuivre et sulfate de zinc, reliés par un pont salin (papier filtre imbibé de NaCl).</td></tr>
-          <tr><th>Pile au citron</th><td><span class="m">U = 0,32 V</span></td><td>Cuivre + zinc plantés à ~2 cm, sans se toucher. Trop faible pour allumer une DEL.</td></tr>
-          <tr><th>Deux citrons en série</th><td><span class="m">U = 0,64 V</span></td><td>Les tensions s'additionnent : 0,32 + 0,32.</td></tr>
-          <tr><th>Pile au citron d'Amine</th><td><span class="m">U = 0,750 V</span></td><td>Multimètre en voltmètre, calibre 2 V. Il y a une tension entre deux lames métalliques différentes : c'est bien une pile.</td></tr>
+          <tr><th>Daniell<br>zinc / cuivre</th><td><span class="m">Zn → Zn²⁺ + 2e⁻</span></td><td><span class="m">Cu²⁺ + 2e⁻ → Cu</span></td><td><span class="m">Zn + Cu²⁺ → Zn²⁺ + Cu</span><br><span style="color:var(--muted);font-size:.85em">2 e⁻ de chaque côté : rien à multiplier.</span></td></tr>
+          <tr><th>zinc / argent</th><td><span class="m">Zn → Zn²⁺ + 2e⁻</span></td><td><span class="m">Ag⁺ + e⁻ → Ag</span><br>à multiplier par 2 :<br><span class="m">2Ag⁺ + 2e⁻ → 2Ag</span></td><td><span class="m">Zn + 2Ag⁺ → Zn²⁺ + 2Ag</span></td></tr>
+          <tr><th>cuivre / argent</th><td><span class="m">Cu → Cu²⁺ + 2e⁻</span></td><td><span class="m">2Ag⁺ + 2e⁻ → 2Ag</span></td><td><span class="m">Cu + 2Ag⁺ → Cu²⁺ + 2Ag</span><br><span style="color:var(--muted);font-size:.85em">Ici c'est le cuivre qui est la borne −.</span></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="formulas">
-      <div class="formula">
-        <div class="eq">Augmenter <small>U</small></div>
-        <p>Brancher plusieurs piles <b>en série</b> : relier par un fil le cuivre d'une pile au zinc de la suivante. La tension totale est la <b>somme</b> des tensions de chaque pile.</p>
-      </div>
-      <div class="formula">
-        <div class="eq">Augmenter <small>I</small></div>
-        <p>Augmenter la <b>surface des électrodes</b>, les rapprocher, et <b>réduire la résistance</b> du circuit : fils courts et bons conducteurs. Brancher des piles <b>en parallèle</b> marche aussi.</p>
-      </div>
-    </div>
-
-    <div class="why prose" style="max-width:38rem">
-      <b>Le pont salin, à quoi il sert.</b> Sans lui, les charges s'accumulent dans chaque bécher et la réaction s'arrête aussitôt. Il <b>ferme le circuit côté solutions</b> en laissant circuler les ions et en <b>équilibrant les charges</b>. Attention : les ions passent par le pont salin, les <b>électrons passent par le fil</b>, jamais par la solution.
-    </div>
+    <h3>Le contrôle final</h3>
+    <div class="quizmount" data-key="eq"></div>
   </section>
 
   <section id="accu">
     <div class="shead">
-      <span class="snum">03</span>
-      <div><h2>L'accumulateur</h2><p class="sub">Définitions, rôles, et les deux formules dans tous les sens.</p></div>
+      <span class="snum">04</span>
+      <div><h2>L'accumulateur</h2><p class="sub">Le cours, les deux formules, et comment les retourner.</p></div>
     </div>
 
     <ul class="keys prose">
@@ -505,11 +707,12 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
       <li>On le recharge avec un courant électrique <b>continu</b>, jamais alternatif.</li>
     </ul>
 
-    <figure>
+    <figure class="wide">
+      <span class="fignum">Figure 3 — charge et décharge</span>
       <div class="figscroll">
         <svg viewBox="0 0 700 280" role="img" aria-label="Comparaison charge et décharge : le même accumulateur, l'énergie électrique sortant vers un récepteur en décharge où il joue le rôle de pile, et entrant depuis le chargeur en charge où il joue le rôle d'électrolyseur.">
           <defs>
-            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
             </marker>
           </defs>
@@ -517,7 +720,7 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
           <rect x="150" y="34" width="140" height="58" rx="5" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".35" stroke-width="2"></rect>
           <text x="220" y="60" text-anchor="middle" font-family="Archivo, sans-serif" font-size="14" font-weight="700" fill="currentColor">accumulateur</text>
           <text x="220" y="78" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="11" fill="currentColor" opacity=".65">réserve chimique qui baisse</text>
-          <line x1="304" y1="63" x2="424" y2="63" stroke="currentColor" stroke-width="2.5" marker-end="url(#ar2)"></line>
+          <line x1="304" y1="63" x2="424" y2="63" stroke="currentColor" stroke-width="2.5" marker-end="url(#arD)"></line>
           <text x="364" y="49" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="currentColor">énergie électrique</text>
           <text x="364" y="83" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="11" fill="currentColor" opacity=".65">vers la lampe</text>
           <text x="442" y="57" font-family="IBM Plex Serif, serif" font-size="12" fill="currentColor" opacity=".7">il se comporte comme</text>
@@ -527,7 +730,7 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
           <rect x="150" y="164" width="140" height="58" rx="5" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".35" stroke-width="2"></rect>
           <text x="220" y="190" text-anchor="middle" font-family="Archivo, sans-serif" font-size="14" font-weight="700" fill="currentColor">accumulateur</text>
           <text x="220" y="208" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="11" fill="currentColor" opacity=".65">réserve chimique qui remonte</text>
-          <line x1="424" y1="193" x2="304" y2="193" stroke="currentColor" stroke-width="2.5" marker-end="url(#ar2)"></line>
+          <line x1="424" y1="193" x2="304" y2="193" stroke="currentColor" stroke-width="2.5" marker-end="url(#arD)"></line>
           <text x="364" y="179" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="currentColor">énergie électrique</text>
           <text x="364" y="213" text-anchor="middle" font-family="IBM Plex Serif, serif" font-size="11" fill="currentColor" opacity=".65">du chargeur, en continu</text>
           <text x="442" y="187" font-family="IBM Plex Serif, serif" font-size="12" fill="currentColor" opacity=".7">il se comporte comme</text>
@@ -535,56 +738,131 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
           <text x="14" y="262" font-family="IBM Plex Serif, serif" font-size="12" fill="currentColor" opacity=".7">Même appareil, même énergie : seul le sens de la flèche change — et avec lui, le rôle de l'accumulateur.</text>
         </svg>
       </div>
-      <figcaption>Le tableau charge/décharge de ta feuille, dessiné. En <b>charge</b> : énergie électrique → énergie chimique. En <b>décharge</b> : énergie chimique → énergie électrique.</figcaption>
+      <figcaption>En <b>charge</b> : énergie électrique → énergie chimique, il se comporte comme un électrolyseur. En <b>décharge</b> : énergie chimique → énergie électrique, il se comporte comme une pile.</figcaption>
     </figure>
 
-    <h3>Les deux formules, et leurs formes dérivées</h3>
-    <div class="formulas">
-      <div class="formula">
-        <div class="eq">Q = I × t</div>
-        <div class="units">Ah &nbsp;=&nbsp; A &nbsp;×&nbsp; h</div>
-        <p><b>Q</b>, la capacité : la quantité d'électricité stockée, en <b>ampère-heure</b>. Jamais en A, jamais en Wh.</p>
-        <div class="derive"><span>Q = I × t</span><span>I = Q ÷ t</span><span>t = Q ÷ I</span></div>
-      </div>
-      <div class="formula">
-        <div class="eq">E = Q × U</div>
-        <div class="units">Wh &nbsp;=&nbsp; Ah &nbsp;×&nbsp; V</div>
-        <p><b>E</b>, l'énergie stockée, en <b>wattheure</b>. C'est la capacité multipliée par la tension.</p>
-        <div class="derive"><span>E = Q × U</span><span>Q = E ÷ U</span><span>U = E ÷ Q</span></div>
-      </div>
+    <h3>Les deux formules — et comment les retourner</h3>
+    <div class="prose stack">
+      <p>Il n'y a que <b>deux</b> formules dans ce chapitre. Pas six. Ce qui ressemble à quatre formules de plus n'est qu'une seule règle de calcul appliquée aux deux.</p>
+    </div>
+    <div class="rule-box prose" style="margin-top:1rem">
+      <span class="lbl">La règle, une fois pour toutes</span>
+      Dans un produit comme <span class="m">Q = I × t</span> : si tu cherches le <b>résultat</b> (Q), tu <b>multiplies</b>. Si tu cherches <b>un des deux facteurs</b> (I ou t), tu <b>divises le résultat par l'autre facteur</b>. Rien d'autre à apprendre.
+    </div>
+    <figure>
+      <span class="fignum">Figure 4 — les deux triangles</span>
+      <svg viewBox="0 0 640 230" role="img" aria-label="Deux triangles mnémotechniques : Q au sommet avec I et t en bas, E au sommet avec Q et U en bas ; on masque la grandeur cherchée et on lit ce qui reste.">
+        <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round">
+          <path d="M160 30 L60 180 L260 180 Z"></path>
+          <path d="M480 30 L380 180 L580 180 Z"></path>
+        </g>
+        <g stroke="currentColor" stroke-width="2" stroke-opacity=".5">
+          <line x1="105" y1="112" x2="215" y2="112"></line>
+          <line x1="160" y1="112" x2="160" y2="180"></line>
+          <line x1="425" y1="112" x2="535" y2="112"></line>
+          <line x1="480" y1="112" x2="480" y2="180"></line>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-weight="600" text-anchor="middle" fill="currentColor">
+          <text x="160" y="95" font-size="26" fill="var(--copper)">Q</text>
+          <text x="128" y="158" font-size="22">I</text>
+          <text x="192" y="158" font-size="22">t</text>
+          <text x="480" y="95" font-size="26" fill="var(--copper)">E</text>
+          <text x="448" y="158" font-size="22">Q</text>
+          <text x="512" y="158" font-size="22">U</text>
+          <text x="160" y="212" font-size="14">Q = I × t &nbsp;·&nbsp; Ah</text>
+          <text x="480" y="212" font-size="14">E = Q × U &nbsp;·&nbsp; Wh</text>
+        </g>
+      </svg>
+      <figcaption>Masque du doigt la grandeur que tu cherches et lis ce qui reste : deux grandeurs côte à côte en bas, tu <b>multiplies</b> ; une en haut et une en bas, tu <b>divises</b> celle du haut par celle du bas. Cache Q à gauche, il reste <span class="m">I × t</span>. Cache t, il reste Q au-dessus de I, donc <span class="m">Q ÷ I</span>.</figcaption>
+    </figure>
+
+    <h3>S'entraîner à retourner la formule, sans chiffres</h3>
+    <div class="escalier" data-key="formules"></div>
+
+    <div class="why prose" style="max-width:38rem;margin-top:1.6rem">
+      <b>Série ou parallèle, ne mélange pas.</b> En <b>série</b>, les <b>tensions s'additionnent</b> et la capacité en Ah <b>ne change pas</b> (3 × 1,2 V → 3,6 V, mais toujours 0,6 Ah). En <b>parallèle</b>, c'est l'inverse : les <b>capacités s'additionnent</b> et la tension ne change pas. Dans les deux cas l'énergie totale augmente, puisque <span class="m">E = Q × U</span> et que l'un des deux facteurs a grandi.
     </div>
 
-    <div class="why prose" style="max-width:38rem">
-      <b>Série ou parallèle, ne mélange pas.</b> En <b>série</b>, les <b>tensions s'additionnent</b> et la capacité en Ah <b>ne change pas</b> (3 × 1,2 V → 3,6 V, mais toujours 0,6 Ah). En <b>parallèle</b>, c'est l'inverse : les <b>capacités s'additionnent</b> et la tension ne change pas. Dans les deux cas l'énergie totale, elle, augmente.
-    </div>
+    <h3>Dix questions sur le cours</h3>
+    <div class="quizmount" data-key="feuille"></div>
   </section>
 
   <section id="calculs">
     <div class="shead">
-      <span class="snum">04</span>
-      <div><h2>Les calculs</h2><p class="sub">17 exercices chiffrés. Tape ta réponse, la correction est rédigée comme sur une copie.</p></div>
+      <span class="snum">05</span>
+      <div><h2>Les calculs</h2><p class="sub">Cinq séries, trois niveaux de difficulté. On ne croise jamais deux difficultés avant de les avoir vues séparément.</p></div>
     </div>
     <div class="quizbar">
-      <div class="scoreline">Réussis : <b id="ex-score">0</b> / 17 &nbsp;·&nbsp; <span id="ex-prog" style="opacity:.65">0 exercice traité</span></div>
+      <div class="scoreline">Réussis : <b id="ex-score">0</b> / <span id="ex-total">0</span> &nbsp;·&nbsp; <span id="ex-prog" style="opacity:.65">0 exercice traité</span></div>
       <button class="btn ghost" id="ex-reset" type="button">Tout effacer</button>
     </div>
-    <div class="why prose" style="max-width:38rem;margin-bottom:1.4rem">
-      <b>Le réflexe qui fait gagner des points.</b> Avant tout calcul, convertis : les <b>mAh en Ah</b>, les <b>minutes en heures</b>, les <b>mA en A</b>. Un résultat juste dans la mauvaise unité vaut zéro.
+    <div class="vocab" style="margin-bottom:1.4rem">
+      <div class="vc"><span class="n" style="color:var(--ok)">Niveau 1</span><p class="t">Découverte</p><p>Une seule étape, aucune conversion. On applique la formule telle quelle, pour que le geste rentre.</p></div>
+      <div class="vc"><span class="n" style="color:var(--blue)">Niveau 2</span><p class="t">Entraînement</p><p>Deux étapes, ou une conversion à faire avant le calcul. Une difficulté nouvelle à la fois.</p></div>
+      <div class="vc"><span class="n" style="color:var(--copper)">Niveau 3</span><p class="t">Niveau DS</p><p>Un énoncé habillé, plusieurs questions enchaînées, des données qui ne servent pas toutes.</p></div>
+    </div>
+    <div class="rule-box prose" style="margin-bottom:1.4rem">
+      <span class="lbl">Le réflexe qui fait gagner des points</span>
+      Avant tout calcul, convertis : les <b>mAh en Ah</b>, les <b>minutes en heures</b>, les <b>mA en A</b>. Un résultat juste dans la mauvaise unité vaut zéro. Et écris toujours la formule avant de remplacer par les nombres : au DS, la formule seule rapporte souvent la moitié des points de la question.
     </div>
     <div id="exos"></div>
   </section>
 
-  <section id="qcm">
+  <section id="mini">
     <div class="shead">
-      <span class="snum">05</span>
-      <div><h2>Le QCM</h2><p class="sub">Les 10 questions de « Je teste mes acquis », plus 8 tirées de tes deux TP.</p></div>
+      <span class="snum">06</span>
+      <div><h2>Mini-DS</h2><p class="sub">Vingt minutes, dix points. Pour apprendre le format avant de faire le vrai.</p></div>
     </div>
-    <div class="quizmount" data-key="qcm"></div>
+    <div class="dsnote">
+      <div>Deux exercices seulement : un de cours, un de calcul. Sur une feuille, formules apparentes et unités écrites. C'est le galop d'essai.</div>
+      <div class="tot">/ 10 points</div>
+    </div>
+
+    <div class="dsx">
+      <div class="dsx-h"><span class="t">Exercice 1 — Le cours</span><span class="pts">5 points</span></div>
+      <div class="dsq">
+        <p class="qq"><span class="i">1.</span><span class="tx">Qu'appelle-t-on une réaction d'oxydoréduction ?</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>C'est une réaction au cours de laquelle il se produit un <b>échange d'électrons</b> entre deux espèces chimiques : l'une en perd (oxydation), l'autre en gagne (réduction).</p></div></details>
+      </div>
+      <div class="dsq">
+        <p class="qq"><span class="i">2.</span><span class="tx">De quoi est composée une pile ?</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>De <b>deux électrodes constituées de deux métaux différents</b>, plongées dans une <b>solution ionique conductrice</b>. C'est un générateur électrochimique : elle produit une tension électrique à partir de réactions chimiques.</p></div></details>
+      </div>
+      <div class="dsq">
+        <p class="qq"><span class="i">3.</span><span class="tx">Quel type de courant une pile fournit-elle ?</span><span class="pt">0,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Un courant <b>continu</b>.</p></div></details>
+      </div>
+      <div class="dsq">
+        <p class="qq"><span class="i">4.</span><span class="tx">Quelle est la différence entre une pile et un accumulateur ?</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Une pile <b>n'est pas rechargeable</b> ; un accumulateur supporte des <b>cycles de charge et de décharge</b>. L'expression « pile rechargeable » est donc incorrecte.</p></div></details>
+      </div>
+      <div class="dsq">
+        <p class="qq"><span class="i">5.</span><span class="tx">Pendant la charge, comment se comporte un accumulateur, et que devient l'énergie électrique ?</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Il se comporte comme un <b>électrolyseur</b> : on lui impose la réaction avec un courant continu. L'énergie <b>électrique</b> est transformée en énergie <b>chimique</b> et stockée.</p></div></details>
+      </div>
+    </div>
+
+    <div class="dsx">
+      <div class="dsx-h"><span class="t">Exercice 2 — La lampe de vélo</span><span class="pts">5 points</span></div>
+      <p class="enonce">Une lampe de vélo est alimentée par un accumulateur de tension <span class="m">U = 3,6 V</span> et de capacité <span class="m">Q = 1,5 Ah</span>.</p>
+      <div class="dsq">
+        <p class="qq"><span class="i">1.</span><span class="tx">Calculer l'énergie stockée par cet accumulateur.</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><span class="line">E = Q × U</span><span class="line">E = 1,5 × 3,6</span><span class="line">E = 5,4 Wh</span></div></details>
+      </div>
+      <div class="dsq">
+        <p class="qq"><span class="i">2.</span><span class="tx">La lampe consomme 300 mA. Quelle est son autonomie ?</span><span class="pt">2 pts</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>On convertit d'abord l'intensité :</p><span class="line">300 mA = 0,3 A</span><p>Puis on isole t dans Q = I × t :</p><span class="line">t = Q ÷ I</span><span class="line">t = 1,5 ÷ 0,3</span><span class="line">t = 5 h</span></div></details>
+      </div>
+      <div class="dsq">
+        <p class="qq"><span class="i">3.</span><span class="tx">On recharge l'accumulateur complètement vide avec un chargeur qui délivre 500 mA. Combien de temps faut-il ?</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><span class="line">500 mA = 0,5 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 1,5 ÷ 0,5</span><span class="line">t = 3 h</span></div></details>
+      </div>
+    </div>
   </section>
 
   <section id="ds">
     <div class="shead">
-      <span class="snum">06</span>
+      <span class="snum">07</span>
       <div><h2>DS blanc</h2><p class="sub">Un sujet complet, dans le format et le vocabulaire de ton prof.</p></div>
     </div>
     <div class="dsnote">
@@ -595,178 +873,121 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
     <div class="dsx">
       <div class="dsx-h"><span class="t">Exercice 1 — Le cours</span><span class="pts">5 points</span></div>
       <div class="dsq">
-        <p class="qq"><span class="i">1.</span><span>Qu'appelle-t-on une réaction d'oxydoréduction ?</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Une réaction d'oxydoréduction est une réaction au cours de laquelle il se produit un <b>échange d'électrons</b> entre deux espèces chimiques : l'une perd des électrons, c'est l'<b>oxydation</b> ; l'autre en gagne, c'est la <b>réduction</b>.</p>
-        </div></details>
+        <p class="qq"><span class="i">1.</span><span class="tx">Qu'appelle-t-on une réaction d'oxydoréduction ?</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Une réaction au cours de laquelle il se produit un <b>échange d'électrons</b> entre deux espèces chimiques : l'une perd des électrons, c'est l'<b>oxydation</b> ; l'autre en gagne, c'est la <b>réduction</b>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">2.</span><span>De quoi est composée une pile ? Que produit-elle, et à partir de quoi ?</span><span class="pt">1,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Une pile est composée de <b>deux électrodes constituées de deux métaux différents</b>, plongées dans une <b>solution ionique conductrice</b>.</p>
-          <p>C'est un <b>générateur électrochimique</b> : elle produit une <b>tension électrique</b> à partir de <b>réactions chimiques</b>.</p>
-        </div></details>
+        <p class="qq"><span class="i">2.</span><span class="tx">De quoi est composée une pile ? Que produit-elle, et à partir de quoi ?</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Une pile est composée de <b>deux électrodes constituées de deux métaux différents</b>, plongées dans une <b>solution ionique conductrice</b>.</p><p>C'est un <b>générateur électrochimique</b> : elle produit une <b>tension électrique</b> à partir de <b>réactions chimiques</b>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">3.</span><span>Quelle est la différence entre une pile et un accumulateur ?</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Une <b>pile n'est pas rechargeable</b> : une fois les réactifs consommés, elle est hors d'usage. Un <b>accumulateur</b> supporte des <b>cycles de charge et de décharge</b> : on peut lui imposer la réaction en sens inverse avec un courant continu.</p>
-          <p>L'expression courante « pile rechargeable » est donc scientifiquement incorrecte : il faut dire <b>accumulateur</b>.</p>
-        </div></details>
+        <p class="qq"><span class="i">3.</span><span class="tx">Quelle est la différence entre une pile et un accumulateur ?</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Une <b>pile n'est pas rechargeable</b> : une fois les réactifs consommés, elle est hors d'usage. Un <b>accumulateur</b> supporte des <b>cycles de charge et de décharge</b> : on peut lui imposer la réaction en sens inverse avec un courant continu.</p><p>L'expression courante « pile rechargeable » est donc scientifiquement incorrecte : il faut dire <b>accumulateur</b>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">4.</span><span>Quel type de courant électrique une pile fournit-elle ?</span><span class="pt">0,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Un courant <b>continu</b>.</p>
-        </div></details>
+        <p class="qq"><span class="i">4.</span><span class="tx">Quel type de courant électrique une pile fournit-elle ?</span><span class="pt">0,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Un courant <b>continu</b>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">5.</span><span>Avec quel appareil mesure-t-on la tension aux bornes d'une pile ? Comment le branche-t-on ?</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Avec un <b>voltmètre</b> (ou un multimètre placé en position voltmètre, bornes V et COM), branché <b>en parallèle</b> aux bornes de la pile, sur le <b>calibre juste supérieur</b> à la valeur attendue.</p>
-        </div></details>
+        <p class="qq"><span class="i">5.</span><span class="tx">Avec quel appareil mesure-t-on la tension aux bornes d'une pile ? Comment le branche-t-on ?</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Avec un <b>voltmètre</b> (ou un multimètre placé en position voltmètre, bornes V et COM), branché <b>en parallèle</b> aux bornes de la pile, sur le <b>calibre juste supérieur</b> à la valeur attendue.</p></div></details>
       </div>
     </div>
 
     <div class="dsx">
       <div class="dsx-h"><span class="t">Exercice 2 — La pile Daniell</span><span class="pts">5 points</span></div>
-      <p style="font-size:.95rem;color:var(--muted);margin-bottom:.9rem">On plonge une lame de zinc dans une solution de sulfate de zinc, et une lame de cuivre dans une solution de sulfate de cuivre. Les deux béchers sont reliés par un pont salin. Couples mis en jeu : <span class="m">Cu²⁺/Cu</span> et <span class="m">Zn²⁺/Zn</span>. Le voltmètre indique 1,1 V.</p>
+      <p class="enonce">On plonge une lame de zinc dans une solution de sulfate de zinc, et une lame de cuivre dans une solution de sulfate de cuivre. Les deux béchers sont reliés par un pont salin. Couples mis en jeu : <span class="m">Cu²⁺/Cu</span> et <span class="m">Zn²⁺/Zn</span>. Le voltmètre indique 1,1 V.</p>
       <div class="dsq">
-        <p class="qq"><span class="i">1.</span><span>Quel est le rôle du pont salin ?</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Le pont salin <b>permet aux ions de circuler</b> entre les deux béchers et <b>équilibre les charges</b> des deux solutions. Il ferme ainsi le circuit du côté des solutions. Sans lui, les charges s'accumuleraient et la pile cesserait aussitôt de débiter.</p>
-        </div></details>
+        <p class="qq"><span class="i">1.</span><span class="tx">Quel est le rôle du pont salin ?</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Il <b>permet aux ions de circuler</b> entre les deux béchers et <b>équilibre les charges</b> des deux solutions. Il ferme ainsi le circuit du côté des solutions. Sans lui, les charges s'accumuleraient et la pile cesserait aussitôt de débiter.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">2.</span><span>Indiquer quelle lame est la borne + et quelle lame est la borne −.</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>La <b>lame de cuivre</b> est la <b>borne +</b> (cathode) : c'est là qu'arrivent les électrons.</p>
-          <p>La <b>lame de zinc</b> est la <b>borne −</b> (anode) : c'est elle qui libère les électrons.</p>
-        </div></details>
+        <p class="qq"><span class="i">2.</span><span class="tx">Indiquer quelle lame est la borne + et quelle lame est la borne −.</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>La <b>lame de cuivre</b> est la <b>borne +</b> : c'est là qu'arrivent les électrons.</p><p>La <b>lame de zinc</b> est la <b>borne −</b> : c'est elle qui les libère.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">3.</span><span>Écrire les deux demi-équations, en précisant pour chacune s'il s'agit d'une oxydation ou d'une réduction.</span><span class="pt">1,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>À la borne −, sur le zinc — <b>oxydation</b> :</p>
-          <span class="line">Zn → Zn²⁺ + 2e⁻</span>
-          <p>À la borne +, sur le cuivre — <b>réduction</b> :</p>
-          <span class="line">Cu²⁺ + 2e⁻ → Cu</span>
-        </div></details>
+        <p class="qq"><span class="i">3.</span><span class="tx">Écrire les deux demi-équations, en précisant pour chacune s'il s'agit d'une oxydation ou d'une réduction.</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>À la borne −, sur le zinc — <b>oxydation</b> :</p><span class="line">Zn → Zn²⁺ + 2e⁻</span><p>À la borne +, sur le cuivre — <b>réduction</b> :</p><span class="line">Cu²⁺ + 2e⁻ → Cu</span></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">4.</span><span>En déduire l'équation-bilan de la pile.</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Les deux demi-équations font intervenir <b>2 électrons chacune</b> : il n'y a rien à multiplier, on peut les additionner directement.</p>
-          <span class="line">Zn + Cu²⁺ → Zn²⁺ + Cu</span>
-          <p>Les électrons se simplifient et n'apparaissent pas dans le bilan.</p>
-        </div></details>
+        <p class="qq"><span class="i">4.</span><span class="tx">En déduire l'équation-bilan de la pile.</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Les deux demi-équations font intervenir <b>2 électrons chacune</b> : rien à multiplier, on additionne directement.</p><span class="line">Zn + Cu²⁺ → Zn²⁺ + Cu</span><p>Les électrons se simplifient et n'apparaissent pas dans le bilan.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">5.</span><span>Qu'observe-t-on sur les deux lames au bout d'un certain temps ?</span><span class="pt">0,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>La <b>lame de zinc se ronge</b> : ses atomes partent en solution sous forme d'ions Zn²⁺. La <b>lame de cuivre s'épaissit</b> : du cuivre métallique s'y dépose.</p>
-        </div></details>
+        <p class="qq"><span class="i">5.</span><span class="tx">Qu'observe-t-on sur les deux lames au bout d'un certain temps ?</span><span class="pt">0,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>La <b>lame de zinc se ronge</b> : ses atomes partent en solution sous forme d'ions Zn²⁺. La <b>lame de cuivre s'épaissit</b> : du cuivre métallique s'y dépose.</p></div></details>
       </div>
     </div>
 
     <div class="dsx">
       <div class="dsx-h"><span class="t">Exercice 3 — La pile zinc / argent</span><span class="pts">4 points</span></div>
-      <p style="font-size:.95rem;color:var(--muted);margin-bottom:.9rem">Une lame d'argent plonge dans une solution ionique contenant des ions argent <span class="m">Ag⁺</span>, une lame de zinc dans une solution contenant des ions zinc <span class="m">Zn²⁺</span>. Couples : <span class="m">Ag⁺/Ag</span> et <span class="m">Zn²⁺/Zn</span>.</p>
+      <p class="enonce">Une lame d'argent plonge dans une solution ionique contenant des ions <span class="m">Ag⁺</span>, une lame de zinc dans une solution contenant des ions <span class="m">Zn²⁺</span>. Couples : <span class="m">Ag⁺/Ag</span> et <span class="m">Zn²⁺/Zn</span>.</p>
       <div class="dsq">
-        <p class="qq"><span class="i">1.</span><span>Quelle lame constitue la borne + de cette pile ? Justifier.</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>C'est la <b>lame d'argent</b>. Des deux métaux, le <b>zinc</b> est celui qui cède le plus facilement ses électrons : il s'oxyde, c'est donc la borne <b>−</b>. Les électrons circulent dans le fil jusqu'à la lame d'argent, qui les reçoit : c'est la borne <b>+</b>.</p>
-        </div></details>
+        <p class="qq"><span class="i">1.</span><span class="tx">Quelle lame constitue la borne + de cette pile ? Justifier.</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>C'est la <b>lame d'argent</b>. Des deux métaux, le <b>zinc</b> est celui qui cède le plus facilement ses électrons : il s'oxyde, c'est donc la borne <b>−</b>. Les électrons circulent dans le fil jusqu'à la lame d'argent, qui les reçoit : c'est la borne <b>+</b>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">2.</span><span>Écrire les deux demi-équations.</span><span class="pt">1,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Borne − , sur le zinc — oxydation :</p>
-          <span class="line">Zn → Zn²⁺ + 2e⁻</span>
-          <p>Borne + , sur l'argent — réduction :</p>
-          <span class="line">Ag⁺ + e⁻ → Ag</span>
-          <p>Attention : l'ion argent porte <b>une seule</b> charge +, il ne capte donc qu'<b>un</b> électron.</p>
-        </div></details>
+        <p class="qq"><span class="i">2.</span><span class="tx">Écrire les deux demi-équations.</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Borne −, sur le zinc — oxydation :</p><span class="line">Zn → Zn²⁺ + 2e⁻</span><p>Borne +, sur l'argent — réduction :</p><span class="line">Ag⁺ + e⁻ → Ag</span><p>Attention : l'ion argent porte <b>une seule</b> charge +, il ne capte donc qu'<b>un</b> électron.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">3.</span><span>En déduire l'équation-bilan.</span><span class="pt">1,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Le zinc libère 2 électrons, l'argent n'en capte qu'un : il faut d'abord <b>multiplier par 2</b> la demi-équation de l'argent pour que les deux échanges portent sur le même nombre d'électrons.</p>
-          <span class="line">Zn → Zn²⁺ + 2e⁻</span>
-          <span class="line">2Ag⁺ + 2e⁻ → 2Ag</span>
-          <p>On additionne, les 2 e⁻ se simplifient :</p>
-          <span class="line">Zn + 2Ag⁺ → Zn²⁺ + 2Ag</span>
-        </div></details>
+        <p class="qq"><span class="i">3.</span><span class="tx">En déduire l'équation-bilan.</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Le zinc libère 2 électrons, l'argent n'en capte qu'un : il faut d'abord <b>multiplier par 2</b> la demi-équation de l'argent.</p><span class="line">Zn → Zn²⁺ + 2e⁻</span><span class="line">2Ag⁺ + 2e⁻ → 2Ag</span><p>On additionne, les 2 e⁻ se simplifient :</p><span class="line">Zn + 2Ag⁺ → Zn²⁺ + 2Ag</span></div></details>
       </div>
     </div>
 
     <div class="dsx">
       <div class="dsx-h"><span class="t">Exercice 4 — La batterie d'une trottinette</span><span class="pts">4 points</span></div>
-      <p style="font-size:.95rem;color:var(--muted);margin-bottom:.9rem">Une trottinette électrique est équipée d'une batterie de tension <span class="m">U = 36 V</span> et de capacité <span class="m">Q = 7,8 Ah</span>.</p>
+      <p class="enonce">Une trottinette électrique est équipée d'une batterie de tension <span class="m">U = 36 V</span> et de capacité <span class="m">Q = 7,8 Ah</span>.</p>
       <div class="dsq">
-        <p class="qq"><span class="i">1.</span><span>Calculer l'énergie stockée par cette batterie.</span><span class="pt">1 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <span class="line">E = Q × U</span>
-          <span class="line">E = 7,8 × 36</span>
-          <span class="line">E = 280,8 Wh</span>
-        </div></details>
+        <p class="qq"><span class="i">1.</span><span class="tx">Calculer l'énergie stockée par cette batterie.</span><span class="pt">1 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><span class="line">E = Q × U</span><span class="line">E = 7,8 × 36</span><span class="line">E = 280,8 Wh</span></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">2.</span><span>En roulant, la trottinette consomme en moyenne 6 A. Quelle est son autonomie ?</span><span class="pt">1,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>On part de Q = I × t, donc t = Q ÷ I.</p>
-          <span class="line">t = 7,8 ÷ 6</span>
-          <span class="line">t = 1,3 h</span>
-          <p>Soit 1 h et 0,3 × 60 = 18 min, c'est-à-dire <b>1 h 18 min</b> d'autonomie.</p>
-        </div></details>
+        <p class="qq"><span class="i">2.</span><span class="tx">En roulant, la trottinette consomme en moyenne 6 A. Quelle est son autonomie ?</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>On part de Q = I × t, donc t = Q ÷ I.</p><span class="line">t = 7,8 ÷ 6</span><span class="line">t = 1,3 h</span><p>Soit 1 h et 0,3 × 60 = 18 min, c'est-à-dire <b>1 h 18 min</b>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">3.</span><span>Le chargeur fourni délivre un courant continu de 2 A. Combien de temps faut-il pour recharger la batterie entièrement vide ?</span><span class="pt">1,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <span class="line">t = Q ÷ I</span>
-          <span class="line">t = 7,8 ÷ 2</span>
-          <span class="line">t = 3,9 h</span>
-          <p>Soit 3 h et 0,9 × 60 = 54 min, c'est-à-dire <b>3 h 54 min</b> de charge.</p>
-        </div></details>
+        <p class="qq"><span class="i">3.</span><span class="tx">Le chargeur fourni délivre un courant continu de 2 A. Combien de temps faut-il pour recharger la batterie entièrement vide ?</span><span class="pt">1,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><span class="line">t = Q ÷ I</span><span class="line">t = 7,8 ÷ 2</span><span class="line">t = 3,9 h</span><p>Soit 3 h et 0,9 × 60 = 54 min, c'est-à-dire <b>3 h 54 min</b>.</p></div></details>
       </div>
     </div>
 
     <div class="dsx">
       <div class="dsx-h"><span class="t">Exercice 5 — La lampe à manivelle</span><span class="pts">2 points</span></div>
-      <p style="font-size:.95rem;color:var(--muted);margin-bottom:.9rem">Coralie a démonté sa lampe à manivelle : elle contient <b>trois accumulateurs Ni-MH</b> de 1,2 V et 600 mAh, montés <b>en série</b>.</p>
+      <p class="enonce">Coralie a démonté sa lampe à manivelle : elle contient <b>trois accumulateurs Ni-MH</b> de 1,2 V et 600 mAh, montés <b>en série</b>.</p>
       <div class="dsq">
-        <p class="qq"><span class="i">1.</span><span>Donner la tension disponible.</span><span class="pt">0,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>En série, les tensions s'additionnent : <span class="m">3 × 1,2 = 3,6 V</span>.</p>
-        </div></details>
+        <p class="qq"><span class="i">1.</span><span class="tx">Donner la tension disponible.</span><span class="pt">0,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>En série, les tensions s'additionnent : <span class="m">3 × 1,2 = 3,6 V</span>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">2.</span><span>Donner la capacité de l'ensemble.</span><span class="pt">0,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>En série, la capacité <b>ne change pas</b> : elle reste celle d'un seul accumulateur, soit 600 mAh = <b>0,6 Ah</b>.</p>
-        </div></details>
+        <p class="qq"><span class="i">2.</span><span class="tx">Donner la capacité de l'ensemble.</span><span class="pt">0,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>En série, la capacité <b>ne change pas</b> : elle reste celle d'un seul accumulateur, soit 600 mAh = <b>0,6 Ah</b>.</p></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">3.</span><span>Calculer l'énergie stockée E.</span><span class="pt">0,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <span class="line">E = Q × U</span>
-          <span class="line">E = 0,6 × 3,6</span>
-          <span class="line">E = 2,16 Wh</span>
-        </div></details>
+        <p class="qq"><span class="i">3.</span><span class="tx">Calculer l'énergie stockée E.</span><span class="pt">0,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><span class="line">E = Q × U</span><span class="line">E = 0,6 × 3,6</span><span class="line">E = 2,16 Wh</span></div></details>
       </div>
       <div class="dsq">
-        <p class="qq"><span class="i">4.</span><span>Quand Coralie tourne la manivelle, comment se comportent les accumulateurs ?</span><span class="pt">0,5 pt</span></p>
-        <details class="corrige"><summary>Voir le corrigé</summary><div class="body">
-          <p>Ils sont <b>en charge</b> : ils se comportent comme un <b>électrolyseur</b>. L'énergie électrique produite en tournant la manivelle est transformée en <b>énergie chimique</b> et stockée.</p>
-        </div></details>
+        <p class="qq"><span class="i">4.</span><span class="tx">Quand Coralie tourne la manivelle, comment se comportent les accumulateurs ?</span><span class="pt">0,5 pt</span></p>
+        <details class="corrige"><summary>Voir le corrigé</summary><div class="body"><p>Ils sont <b>en charge</b> : ils se comportent comme un <b>électrolyseur</b>. L'énergie électrique produite en tournant la manivelle est transformée en <b>énergie chimique</b> et stockée.</p></div></details>
       </div>
     </div>
   </section>
 
+  <section id="reciter">
+    <div class="shead">
+      <span class="snum">08</span>
+      <div><h2>Les réponses de cours à savoir rédiger</h2><p class="sub">L'exercice 1 du DS, c'est cinq restitutions pures. Voilà les dix questions possibles et leur réponse modèle.</p></div>
+    </div>
+    <p class="prose" style="color:var(--muted);font-size:.95rem;margin-bottom:1.2rem">Lis la question, formule ta réponse <b>à voix haute et en entier</b>, puis affiche le modèle et compare. Une réponse de cours en trois mots ne vaut pas les points : le prof attend une phrase complète.</p>
+    <div class="recite" id="reciter-list"></div>
+  </section>
+
   <section id="pieges">
     <div class="shead">
-      <span class="snum">07</span>
-      <div><h2>Les pièges</h2><p class="sub">Trois relevés sur tes copies, trois classiques du chapitre.</p></div>
+      <span class="snum">09</span>
+      <div><h2>Les pièges</h2><p class="sub">Relevés sur tes copies, ou classiques du chapitre.</p></div>
     </div>
     <div class="stack">
       <div class="trap">
@@ -775,40 +996,65 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
         <p class="fix">C'est l'inverse. Le <b>zinc se ronge</b> (ses atomes partent en ions Zn²⁺ dans la solution) et le <b>cuivre s'épaissit</b> (les ions Cu²⁺ se déposent en cuivre métallique dessus). Moyen mnémo : <b>le zinc se sacrifie, le cuivre s'engraisse.</b></p>
       </div>
       <div class="trap">
-        <div class="lbl">Sur ta copie · Exercice 3</div>
-        <p class="said">Dans la case « capacité », tu as écrit E = 0,6 × 3,6</p>
-        <p class="fix">Ce calcul-là, c'est l'énergie, pas la capacité. La <b>capacité</b> vaut <b>0,6 Ah</b> : en série elle ne change pas. C'est ensuite, dans la case « calculer l'énergie », qu'on écrit <span class="m">E = 0,6 × 3,6 = 2,16 Wh</span>.</p>
-      </div>
-      <div class="trap">
-        <div class="lbl">Sur ta copie · Exercice 3</div>
-        <p class="said">« 3. Calculer l'énergie stockée E. &nbsp;→&nbsp; E = » &nbsp;(case laissée vide)</p>
-        <p class="fix"><span class="m">E = Q × U = 0,6 × 3,6 = 2,16 Wh</span>. Et pense à <b>écrire l'unité</b> : une valeur sans unité en sciences, c'est des points perdus.</p>
+        <div class="lbl">Sur ta copie · Exercice 3, la lampe à manivelle</div>
+        <p class="said">Dans la case « capacité », tu as écrit E = 0,6 × 3,6 ; et la case « énergie » est restée vide.</p>
+        <p class="fix">Deux cases, deux réponses différentes. La <b>capacité</b> vaut <b>0,6 Ah</b> — en série elle ne change pas. L'<b>énergie</b>, c'est <span class="m">E = Q × U = 0,6 × 3,6 = 2,16 Wh</span>. Et pense à écrire l'unité : une valeur sans unité, en sciences, ne vaut rien.</p>
       </div>
       <div class="trap">
         <div class="lbl">Classique du chapitre · l'ion argent</div>
         <p class="said">« Ag⁺ + 2e⁻ → Ag »</p>
-        <p class="fix">L'ion argent ne porte qu'<b>une</b> charge positive : il ne capte qu'<b>un</b> électron. <span class="m">Ag⁺ + e⁻ → Ag</span>. C'est pour ça qu'il faut multiplier cette demi-équation par 2 avant de l'additionner à celle du zinc.</p>
+        <p class="fix">L'ion argent ne porte qu'<b>une</b> charge positive : il ne capte qu'<b>un</b> électron. <span class="m">Ag⁺ + e⁻ → Ag</span>, qu'on multiplie ensuite par 2 pour pouvoir l'additionner à celle du zinc.</p>
       </div>
       <div class="trap">
         <div class="lbl">Classique du chapitre · les électrons dans le bilan</div>
         <p class="said">« Zn + Cu²⁺ + 2e⁻ → Zn²⁺ + Cu »</p>
-        <p class="fix">Dans une <b>équation-bilan</b>, les électrons <b>disparaissent</b> : ils sont cédés d'un côté et captés de l'autre, donc ils se simplifient. S'il en reste dans ton bilan, c'est que tu n'as pas égalisé les demi-équations.</p>
+        <p class="fix">Dans une <b>équation-bilan</b>, les électrons <b>disparaissent</b> : ils sont cédés d'un côté et captés de l'autre, donc ils se simplifient. S'il en reste, c'est que les demi-équations n'ont pas été égalisées.</p>
+      </div>
+      <div class="trap">
+        <div class="lbl">Classique du chapitre · l'heure décimale</div>
+        <p class="said">« t = 1,3 h, donc 1 h 30 min »</p>
+        <p class="fix">Non : <span class="m">0,3 × 60 = 18</span>, donc <b>1 h 18 min</b>. Et dans l'autre sens, 2 h 30 ne s'écrit jamais « 2,30 » dans une formule, mais <b>2,5</b>.</p>
+      </div>
+      <div class="trap">
+        <div class="lbl">Sur ta feuille de cours · une coquille</div>
+        <p class="said">« imposé par une source de courant continu dans le cas d'un alternateur »</p>
+        <p class="fix">Le mot attendu dans le trou est bien <b>imposé</b>, écris-le. Mais l'appareil qui impose l'échange s'appelle un <b>électrolyseur</b>, pas un alternateur — et c'est bien « électrolyseur » qui revient dans les exercices.</p>
+      </div>
+      <div class="trap">
+        <div class="lbl">Bonus vocabulaire · anode et cathode</div>
+        <p class="said">Ta feuille de TP écrit « Borne positive (Cathode) » et « Borne négative (Anode) ».</p>
+        <p class="fix">Dans une <b>pile</b> : la <b>cathode</b> est la borne <b>+</b> (le cuivre), l'<b>anode</b> est la borne <b>−</b> (le zinc). C'est contre-intuitif, alors ne t'en sers pas pour raisonner : raisonne avec « + » et « − », et garde ces deux mots uniquement pour les reconnaître si l'énoncé les emploie.</p>
       </div>
     </div>
   </section>
 
-  <section id="final" style="border-bottom:none">
+  <section id="memo">
     <div class="shead">
-      <span class="snum">08</span>
-      <div><h2>La check-list de la dernière minute</h2><p class="sub">À relire dans le couloir, vendredi.</p></div>
+      <span class="snum">10</span>
+      <div><h2>Mémo éclair</h2><p class="sub">Maintenant que tout a été expliqué, voilà le résumé. À relire jeudi soir, puis dans le couloir.</p></div>
     </div>
+    <dl class="memo">
+      <div><dt>La réaction</dt><dd>Une oxydoréduction, c'est un <b>échange d'électrons</b> entre deux espèces chimiques.</dd></div>
+      <div><dt>Oxydation / réduction</dt><dd>Regarde de quel côté sont les e⁻ : <b>à droite → oxydation</b>, <b>à gauche → réduction</b>.</dd></div>
+      <div><dt>Spontané / imposé</dt><dd>Échange <b>spontané</b> → une <b>pile</b>. Échange <b>imposé</b> par un courant continu → une <b>électrolyse</b> (la charge d'un accu).</dd></div>
+      <div><dt>Une pile</dt><dd>Deux électrodes de <b>métaux différents</b> + une <b>solution ionique conductrice</b>. Elle fournit du courant <b>continu</b>.</dd></div>
+      <div><dt>Qui est +, qui est −</dt><dd>Sur l'axe <span class="m">Zn — Cu — Ag</span>, le plus à gauche des deux est la <b>borne −</b>. Elle se ronge ; l'autre s'épaissit.</dd></div>
+      <div><dt>La règle d'or</dt><dd>Le chiffre des charges = le nombre d'électrons. <span class="m">Cu²⁺</span> → 2 e⁻, <span class="m">Ag⁺</span> → 1 e⁻.</dd></div>
+      <div><dt>L'équation-bilan</dt><dd>Égaliser les électrons, additionner, simplifier. <b>Aucun électron</b> ne doit rester.</dd></div>
+      <div><dt>Accumulateur</dt><dd>C'est la vraie « pile rechargeable ». <b>Charge</b> = électrolyseur. <b>Décharge</b> = pile.</dd></div>
+      <div><dt>Les deux formules</dt><dd><span class="m">Q = I × t</span> en <b>Ah</b> &nbsp;·&nbsp; <span class="m">E = Q × U</span> en <b>Wh</b>. On divise pour trouver un facteur.</dd></div>
+    </dl>
+
+    <h3>La check-list de la dernière minute</h3>
     <ul class="check">
       <li>Oxydoréduction = échange d'électrons.</li>
-      <li>Oxydation : e⁻ à droite. Réduction : e⁻ à gauche.</li>
+      <li>e⁻ à droite : oxydation. À gauche : réduction.</li>
       <li>Pile = 2 métaux <b>différents</b> + solution ionique.</li>
       <li>Une pile donne du courant <b>continu</b>.</li>
-      <li>Cuivre = <b>+</b> · Zinc = <b>−</b> · Argent = <b>+</b>.</li>
+      <li>Zn le plus à gauche : toujours la borne −.</li>
       <li>Le zinc se ronge, le cuivre s'épaissit.</li>
+      <li>Les électrons vont du − vers le +.</li>
+      <li><span class="m">Cu²⁺</span> → 2 e⁻ &nbsp;·&nbsp; <span class="m">Ag⁺</span> → 1 e⁻.</li>
       <li><span class="m">Zn + Cu²⁺ → Zn²⁺ + Cu</span></li>
       <li><span class="m">Zn + 2Ag⁺ → Zn²⁺ + 2Ag</span></li>
       <li>Pas d'électrons dans une équation-bilan.</li>
@@ -819,9 +1065,25 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
       <li>Énergie E en <b>Wh</b> · <span class="m">E = Q × U</span></li>
       <li>En série : U s'ajoute, Q ne bouge pas.</li>
       <li>Convertir avant de calculer : mAh → Ah, min → h.</li>
+      <li>1,3 h = 1 h 18 min, pas 1 h 30.</li>
       <li>Toujours écrire la formule, puis l'unité.</li>
       <li>Tension → <b>voltmètre</b>, en parallèle.</li>
     </ul>
+  </section>
+
+  <section id="partager" style="border-bottom:none">
+    <div class="shead">
+      <span class="snum">11</span>
+      <div><h2>Partager la page</h2><p class="sub">Pour tes camarades : ils scannent, ils ont la fiche.</p></div>
+    </div>
+    <div class="share">
+      <div class="qr"><svg viewBox="0 0 41 41" role="img" aria-label="QR code vers https://skavyoy8.github.io/sciences-piles-accus/" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect width="41" height="41" fill="var(--surface)"></rect><path d="M4 4h7v1h-7zM14 4h1v1h-1zM17 4h2v1h-2zM21 4h1v1h-1zM25 4h2v1h-2zM30 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h5v1h-5zM20 5h1v1h-1zM22 5h1v1h-1zM25 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM15 6h1v1h-1zM18 6h1v1h-1zM25 6h2v1h-2zM28 6h1v1h-1zM30 6h1v1h-1zM32 6h3v1h-3zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM12 7h2v1h-2zM15 7h2v1h-2zM18 7h1v1h-1zM20 7h1v1h-1zM22 7h4v1h-4zM27 7h2v1h-2zM30 7h1v1h-1zM32 7h3v1h-3zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM14 8h1v1h-1zM17 8h4v1h-4zM24 8h1v1h-1zM26 8h2v1h-2zM30 8h1v1h-1zM32 8h3v1h-3zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM19 9h1v1h-1zM23 9h1v1h-1zM25 9h2v1h-2zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h7v1h-7zM12 11h2v1h-2zM15 11h2v1h-2zM18 11h3v1h-3zM23 11h2v1h-2zM26 11h3v1h-3zM4 12h1v1h-1zM10 12h1v1h-1zM12 12h2v1h-2zM15 12h1v1h-1zM17 12h2v1h-2zM21 12h1v1h-1zM23 12h1v1h-1zM26 12h1v1h-1zM29 12h2v1h-2zM33 12h3v1h-3zM8 13h2v1h-2zM11 13h2v1h-2zM14 13h1v1h-1zM17 13h3v1h-3zM21 13h3v1h-3zM27 13h1v1h-1zM32 13h3v1h-3zM5 14h2v1h-2zM8 14h4v1h-4zM14 14h8v1h-8zM25 14h2v1h-2zM28 14h3v1h-3zM32 14h1v1h-1zM34 14h2v1h-2zM5 15h2v1h-2zM11 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM19 15h1v1h-1zM21 15h2v1h-2zM24 15h1v1h-1zM26 15h2v1h-2zM31 15h6v1h-6zM4 16h3v1h-3zM10 16h2v1h-2zM14 16h4v1h-4zM19 16h1v1h-1zM21 16h1v1h-1zM23 16h1v1h-1zM27 16h2v1h-2zM30 16h2v1h-2zM35 16h2v1h-2zM4 17h1v1h-1zM11 17h1v1h-1zM13 17h1v1h-1zM15 17h1v1h-1zM22 17h1v1h-1zM25 17h3v1h-3zM30 17h2v1h-2zM33 17h4v1h-4zM6 18h1v1h-1zM9 18h2v1h-2zM18 18h5v1h-5zM24 18h2v1h-2zM29 18h2v1h-2zM33 18h3v1h-3zM5 19h2v1h-2zM8 19h2v1h-2zM11 19h2v1h-2zM14 19h2v1h-2zM17 19h1v1h-1zM20 19h1v1h-1zM22 19h1v1h-1zM24 19h1v1h-1zM28 19h2v1h-2zM33 19h2v1h-2zM36 19h1v1h-1zM4 20h2v1h-2zM7 20h2v1h-2zM10 20h1v1h-1zM12 20h3v1h-3zM19 20h4v1h-4zM24 20h1v1h-1zM29 20h1v1h-1zM31 20h3v1h-3zM36 20h1v1h-1zM4 21h2v1h-2zM7 21h3v1h-3zM12 21h1v1h-1zM19 21h2v1h-2zM22 21h3v1h-3zM26 21h2v1h-2zM29 21h2v1h-2zM33 21h2v1h-2zM36 21h1v1h-1zM4 22h1v1h-1zM7 22h1v1h-1zM10 22h1v1h-1zM12 22h2v1h-2zM16 22h4v1h-4zM21 22h3v1h-3zM26 22h2v1h-2zM30 22h2v1h-2zM33 22h2v1h-2zM36 22h1v1h-1zM4 23h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM11 23h1v1h-1zM13 23h5v1h-5zM19 23h2v1h-2zM26 23h1v1h-1zM28 23h2v1h-2zM32 23h3v1h-3zM36 23h1v1h-1zM4 24h1v1h-1zM7 24h7v1h-7zM16 24h3v1h-3zM22 24h2v1h-2zM28 24h2v1h-2zM31 24h3v1h-3zM35 24h2v1h-2zM4 25h1v1h-1zM6 25h3v1h-3zM14 25h2v1h-2zM18 25h1v1h-1zM21 25h1v1h-1zM25 25h3v1h-3zM29 25h1v1h-1zM31 25h2v1h-2zM34 25h1v1h-1zM4 26h1v1h-1zM7 26h1v1h-1zM9 26h2v1h-2zM12 26h4v1h-4zM17 26h1v1h-1zM21 26h1v1h-1zM23 26h1v1h-1zM25 26h1v1h-1zM31 26h1v1h-1zM33 26h1v1h-1zM35 26h1v1h-1zM4 27h1v1h-1zM7 27h1v1h-1zM9 27h1v1h-1zM12 27h2v1h-2zM15 27h1v1h-1zM18 27h3v1h-3zM22 27h3v1h-3zM29 27h2v1h-2zM34 27h1v1h-1zM4 28h3v1h-3zM10 28h2v1h-2zM13 28h3v1h-3zM20 28h1v1h-1zM24 28h1v1h-1zM26 28h1v1h-1zM28 28h6v1h-6zM35 28h2v1h-2zM12 29h1v1h-1zM14 29h1v1h-1zM18 29h2v1h-2zM21 29h5v1h-5zM28 29h1v1h-1zM32 29h1v1h-1zM34 29h1v1h-1zM36 29h1v1h-1zM4 30h7v1h-7zM14 30h1v1h-1zM16 30h1v1h-1zM19 30h3v1h-3zM24 30h1v1h-1zM26 30h3v1h-3zM30 30h1v1h-1zM32 30h1v1h-1zM34 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM15 31h2v1h-2zM19 31h1v1h-1zM21 31h3v1h-3zM27 31h2v1h-2zM32 31h5v1h-5zM4 32h1v1h-1zM6 32h3v1h-3zM10 32h1v1h-1zM13 32h1v1h-1zM16 32h1v1h-1zM20 32h1v1h-1zM25 32h1v1h-1zM28 32h6v1h-6zM35 32h1v1h-1zM4 33h1v1h-1zM6 33h3v1h-3zM10 33h1v1h-1zM13 33h1v1h-1zM15 33h2v1h-2zM18 33h1v1h-1zM21 33h2v1h-2zM25 33h1v1h-1zM27 33h1v1h-1zM29 33h1v1h-1zM31 33h3v1h-3zM35 33h2v1h-2zM4 34h1v1h-1zM6 34h3v1h-3zM10 34h1v1h-1zM14 34h1v1h-1zM17 34h1v1h-1zM19 34h1v1h-1zM21 34h4v1h-4zM27 34h1v1h-1zM29 34h1v1h-1zM31 34h2v1h-2zM34 34h3v1h-3zM4 35h1v1h-1zM10 35h1v1h-1zM15 35h3v1h-3zM31 35h4v1h-4zM4 36h7v1h-7zM12 36h1v1h-1zM15 36h1v1h-1zM17 36h1v1h-1zM19 36h1v1h-1zM21 36h1v1h-1zM26 36h1v1h-1zM28 36h4v1h-4zM33 36h1v1h-1zM35 36h1v1h-1z" fill="currentColor"></path></svg></div>
+      <div class="share-txt">
+        <p class="share-lbl">Adresse publique</p>
+        <p class="share-url"><a href="https://skavyoy8.github.io/sciences-piles-accus/">skavyoy8.github.io/sciences-piles-accus</a></p>
+        <p class="share-d">Libre d'accès, sans compte et sans application à installer. Une fois la page ouverte elle fonctionne hors connexion, et elle s'imprime : les deux devoirs blancs sortent sur le papier, corrigés repliés. La progression de chacun reste sur son propre téléphone.</p>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -833,25 +1095,51 @@ footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.85rem}
 (function(){
 "use strict";
 
-/* ---------------- sauvegarde locale ---------------- */
-var KEY = "spa-v2";
-var STATE = {q:{}, x:{}, g:null};
-try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); if (p && typeof p === "object") STATE = {q:p.q||{}, x:p.x||{}, g:p.g||null}; } } catch(e){}
+/* ============ sauvegarde locale ============ */
+var KEY = "spa-v3";
+var STATE = {q:{}, x:{}, g:null, s:{}};
+try { var raw = localStorage.getItem(KEY); if (raw){ var p = JSON.parse(raw); if (p && typeof p === "object") STATE = {q:p.q||{}, x:p.x||{}, g:p.g||null, s:p.s||{}}; } } catch(e){}
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(STATE)); } catch(e){} }
-
 function fr(n){ return String(n).replace(".", ","); }
 
-/* ---------------- données : QCM ---------------- */
-var QCM = [
+/* ============ QCM ============ */
+var QCM_TP = [
+  {src:"TP", q:"Dans la pile Daniell, la lame de cuivre est :",
+   opts:[["la borne + (celle où arrivent les électrons)",true],["la borne − (celle qui les libère)",false],["l'électrode où les ions Cu²⁺ captent les électrons",true]],
+   why:"Le cuivre est la <b>borne +</b>. C'est là qu'arrivent les électrons, captés par les ions cuivre : Cu²⁺ + 2e⁻ → Cu."},
+  {src:"TP", q:"Pendant que la pile Daniell débite, que deviennent les lames ?",
+   opts:[["la lame de zinc se ronge",true],["la lame de cuivre s'épaissit",true],["la lame de cuivre se ronge",false]],
+   why:"Le zinc part en solution sous forme d'ions Zn²⁺ : sa lame <b>se ronge</b>. Le cuivre métallique se dépose sur l'autre électrode : elle <b>s'épaissit</b>."},
+  {src:"TP", q:"Dans quel sens circulent les électrons dans le fil ?",
+   opts:[["du zinc vers le cuivre, donc du − vers le +",true],["du cuivre vers le zinc, donc du + vers le −",false],["dans les deux sens en alternance",false]],
+   why:"Les électrons partent toujours de la borne <b>−</b> vers la borne <b>+</b>. C'est le <b>courant conventionnel</b>, lui, qu'on dessine du + vers le −."},
+  {src:"TP", q:"À quoi sert le pont salin ?",
+   opts:[["à laisser circuler les ions entre les deux béchers",true],["à équilibrer les charges",true],["à faire passer les électrons d'une lame à l'autre",false]],
+   why:"Les <b>ions</b> passent par le pont salin, les <b>électrons</b> passent par le fil extérieur. Sans pont salin, les charges s'accumulent et la pile s'arrête."},
+  {src:"TP", q:"Pourquoi faut-il deux métaux différents pour faire une pile ?",
+   opts:[["parce que deux métaux identiques ne donnent aucune tension",true],["parce que sinon la solution ne conduit pas",false],["parce qu'il faut une couleur différente de chaque côté",false]],
+   why:"Il faut que l'un des deux cède ses électrons <b>plus facilement</b> que l'autre. Deux lames identiques n'ont aucune raison de s'échanger quoi que ce soit : la tension serait nulle."},
+  {src:"TP", q:"Deux piles au citron de 0,32 V branchées en série donnent une tension de :",
+   opts:[["0,32 V",false],["0,64 V",true],["0,16 V",false]],
+   why:"En série les tensions <b>s'additionnent</b> : 0,32 + 0,32 = <b>0,64 V</b>. C'est la réponse à « comment augmenter la tension ? »."},
+  {src:"TP", q:"Comment augmenter l'intensité du courant d'une pile au citron ?",
+   opts:[["utiliser des plaques de zinc et de cuivre plus grandes",true],["utiliser des fils courts et bons conducteurs",true],["éloigner le plus possible les deux lames",false]],
+   why:"Plus la surface de contact est grande et plus la résistance du circuit est faible, plus l'intensité monte. Éloigner les lames fait l'inverse."},
+  {src:"TP", q:"Le multimètre d'Amine affiche 0,750 V sur le calibre 2 V. Ce calibre est :",
+   opts:[["bien choisi",true],["trop petit, l'écran va saturer",false],["trop grand, on perd des chiffres",false]],
+   why:"On choisit le calibre juste <b>au-dessus</b> de la valeur attendue. Pour 0,750 V, le calibre 2 V est le bon : le 200 mV saturerait, le 20 V ferait perdre des décimales."}
+];
+
+var QCM_FEUILLE = [
   {src:"feuille", q:"Pour réaliser une pile, il faut :",
    opts:[["deux métaux identiques",false],["deux métaux différents",true],["une solution ionique",true]],
-   why:"Deux métaux <b>différents</b> : s'ils étaient identiques, il n'y aurait aucune différence de potentiel, donc aucune tension. Et il faut une solution ionique conductrice pour que les ions circulent."},
+   why:"Deux métaux <b>différents</b>, sinon aucune tension, et une <b>solution ionique</b> conductrice pour que les ions circulent."},
   {src:"feuille", q:"Un accumulateur se recharge à l'aide d'un courant électrique :",
    opts:[["continu",true],["alternatif",false],["sinusoïdal",false]],
-   why:"Toujours du <b>continu</b>. La réaction chimique doit être forcée dans un seul sens ; un courant alternatif changerait de sens 50 fois par seconde."},
+   why:"Toujours du <b>continu</b>. La réaction doit être forcée dans un seul sens ; un courant alternatif changerait de sens 50 fois par seconde."},
   {src:"feuille", q:"La capacité Q d'un accumulateur se mesure en :",
    opts:[["A",false],["Ah",true],["Wh",false]],
-   why:"En <b>ampère-heure (Ah)</b>, parce que Q = I × t : des ampères multipliés par des heures. Le A seul est une intensité, le Wh est une énergie."},
+   why:"En <b>ampère-heure (Ah)</b>, parce que Q = I × t : des ampères multipliés par des heures. Le A seul est une intensité, le Wh une énergie."},
   {src:"feuille", q:"La capacité Q, l'intensité I et le temps t sont reliés par la formule :",
    opts:[["Q = I × t",true],["Q = I + t",false],["I = Q × t",false]],
    why:"<b>Q = I × t</b>. On le retrouve avec les unités : Ah = A × h."},
@@ -869,75 +1157,281 @@ var QCM = [
    why:"Q = I × t donc t = Q ÷ I = 50 ÷ 25 = <b>2 h</b>."},
   {src:"feuille", q:"La tension aux bornes d'une pile se mesure avec :",
    opts:[["un tensiomètre",false],["un voltmètre",true],["un ampèremètre",false]],
-   why:"Un <b>voltmètre</b>, branché en parallèle sur les bornes. L'ampèremètre mesure l'intensité, en série. Le tensiomètre mesure la tension artérielle : c'est le piège de la question."},
+   why:"Un <b>voltmètre</b>, branché en parallèle sur les bornes. L'ampèremètre mesure l'intensité, en série. Le tensiomètre mesure la tension artérielle : c'est le piège."},
   {src:"feuille", q:"Avec U = 5 V et Q = 1,5 Ah, l'énergie stockée E est égale à :",
    opts:[["3,5 Wh",false],["6,5 Wh",false],["7,5 Wh",true]],
-   why:"E = Q × U = 1,5 × 5 = <b>7,5 Wh</b>."},
-  {src:"TP", q:"Dans la pile Daniell, la lame de cuivre est :",
-   opts:[["la borne + (cathode)",true],["la borne − (anode)",false],["l'électrode où les ions Cu²⁺ captent les électrons",true]],
-   why:"Le cuivre est la <b>borne +</b>. C'est là qu'arrivent les électrons, captés par les ions cuivre : Cu²⁺ + 2e⁻ → Cu."},
-  {src:"TP", q:"Pendant que la pile Daniell débite, que deviennent les lames ?",
-   opts:[["la lame de zinc se ronge",true],["la lame de cuivre s'épaissit",true],["la lame de cuivre se ronge",false]],
-   why:"Le zinc part en solution sous forme d'ions Zn²⁺ : sa lame <b>se ronge</b>. Le cuivre métallique se dépose sur l'autre électrode : elle <b>s'épaissit</b>."},
-  {src:"TP", q:"Quelle est l'équation-bilan de la pile Daniell ?",
-   opts:[["Zn + Cu²⁺ → Zn²⁺ + Cu",true],["Cu + Zn²⁺ → Cu²⁺ + Zn",false],["Zn²⁺ + Cu²⁺ → Zn + Cu",false]],
-   why:"On additionne les deux demi-équations : Zn → Zn²⁺ + 2e⁻ et Cu²⁺ + 2e⁻ → Cu. Les électrons se simplifient, il reste <b>Zn + Cu²⁺ → Zn²⁺ + Cu</b>."},
-  {src:"TP", q:"À quoi sert le pont salin ?",
-   opts:[["à laisser circuler les ions entre les deux béchers",true],["à équilibrer les charges",true],["à faire passer les électrons d'une lame à l'autre",false]],
-   why:"Les <b>ions</b> passent par le pont salin, les <b>électrons</b> passent par le fil extérieur. Sans pont salin, les charges s'accumulent et la pile s'arrête."},
-  {src:"TP", q:"Deux piles au citron de 0,32 V branchées en série donnent une tension de :",
-   opts:[["0,32 V",false],["0,64 V",true],["0,16 V",false]],
-   why:"En série les tensions <b>s'additionnent</b> : 0,32 + 0,32 = <b>0,64 V</b>. C'est la réponse à « comment augmenter la tension ? »."},
-  {src:"TP", q:"Comment augmenter l'intensité du courant d'une pile au citron ?",
-   opts:[["utiliser des plaques de zinc et de cuivre plus grandes",true],["réduire la résistance du circuit : fils courts et bons conducteurs",true],["éloigner le plus possible les deux lames",false]],
-   why:"Plus la surface de contact est grande et plus la résistance est faible, plus l'intensité monte. Éloigner les lames <b>augmente</b> la résistance, donc fait baisser I."},
-  {src:"TP", q:"Trois accumulateurs Ni-MH de 600 mAh montés en série : quelle est la capacité de l'ensemble ?",
-   opts:[["1,8 Ah",false],["0,6 Ah",true],["2,16 Ah",false]],
-   why:"En série, seules les <b>tensions</b> s'additionnent (3 × 1,2 = 3,6 V). La capacité reste celle d'un seul accu : <b>0,6 Ah</b>."},
-  {src:"TP", q:"Ces trois accumulateurs donnent 3,6 V et 0,6 Ah. Quelle énergie stockent-ils ?",
-   opts:[["0,216 Wh",false],["2,16 Wh",true],["21,6 Wh",false]],
-   why:"E = Q × U = 0,6 × 3,6 = <b>2,16 Wh</b>. Vérifie l'unité : Ah × V = Wh."}
+   why:"E = Q × U = 1,5 × 5 = <b>7,5 Wh</b>."}
 ];
 
-/* ---------------- données : équations ---------------- */
 var EQ = [
-  {src:"équations", q:"À la borne + d'une pile, couple Cu²⁺/Cu. Quelle demi-équation écris-tu ?",
+  {src:"eq", q:"À la borne + d'une pile, couple Cu²⁺/Cu. Quelle demi-équation écris-tu ?",
    opts:[["Cu²⁺ + 2e⁻ → Cu",true],["Cu → Cu²⁺ + 2e⁻",false],["Cu²⁺ → Cu + 2e⁻",false]],
-   why:"À la borne +, les électrons <b>arrivent</b> : ils sont donc du côté gauche de la flèche. C'est une <b>réduction</b>."},
-  {src:"équations", q:"À la borne − d'une pile, couple Zn²⁺/Zn. Quelle demi-équation écris-tu ?",
+   why:"À la borne +, les électrons <b>arrivent</b> : ils sont donc à gauche de la flèche. C'est une <b>réduction</b>."},
+  {src:"eq", q:"À la borne − d'une pile, couple Zn²⁺/Zn. Quelle demi-équation écris-tu ?",
    opts:[["Zn → Zn²⁺ + 2e⁻",true],["Zn²⁺ + 2e⁻ → Zn",false],["Zn + 2e⁻ → Zn²⁺",false]],
    why:"À la borne −, le métal <b>cède</b> ses électrons : ils passent à droite de la flèche. C'est une <b>oxydation</b>."},
-  {src:"équations", q:"Quelle est la demi-équation de réduction du couple Ag⁺/Ag ?",
+  {src:"eq", q:"Quelle est la demi-équation de réduction du couple Ag⁺/Ag ?",
    opts:[["Ag⁺ + e⁻ → Ag",true],["Ag⁺ + 2e⁻ → Ag",false],["2Ag⁺ + e⁻ → 2Ag",false]],
-   why:"L'ion argent ne porte qu'<b>une</b> charge positive : il ne capte qu'<b>un seul</b> électron. C'est le piège le plus fréquent du chapitre."},
-  {src:"équations", q:"Pile zinc/argent. Avant d'additionner les deux demi-équations, il faut :",
+   why:"L'ion argent ne porte qu'<b>une</b> charge positive : il ne capte qu'<b>un seul</b> électron."},
+  {src:"eq", q:"Pile zinc/argent. Avant d'additionner les deux demi-équations, il faut :",
    opts:[["multiplier la demi-équation de l'argent par 2",true],["multiplier la demi-équation du zinc par 2",false],["ne rien faire, on additionne directement",false]],
-   why:"Le zinc libère 2 e⁻, l'argent n'en capte qu'1. Pour que les deux échanges portent sur le même nombre d'électrons, on multiplie celle de l'argent par 2 : <b>2Ag⁺ + 2e⁻ → 2Ag</b>."},
-  {src:"équations", q:"Quelle est l'équation-bilan de la pile zinc/argent ?",
+   why:"Le zinc libère 2 e⁻, l'argent n'en capte qu'1. On multiplie celle de l'argent par 2 pour atteindre 2 des deux côtés : <b>2Ag⁺ + 2e⁻ → 2Ag</b>."},
+  {src:"eq", q:"Quelle est l'équation-bilan de la pile zinc/argent ?",
    opts:[["Zn + 2Ag⁺ → Zn²⁺ + 2Ag",true],["Zn + Ag⁺ → Zn²⁺ + Ag",false],["Zn + 2Ag⁺ + 2e⁻ → Zn²⁺ + 2Ag",false]],
-   why:"Après avoir doublé la demi-équation de l'argent, on additionne et les électrons se simplifient : <b>Zn + 2Ag⁺ → Zn²⁺ + 2Ag</b>. Une équation-bilan ne contient <b>jamais</b> d'électrons."},
-  {src:"équations", q:"Dans une pile cuivre/argent, quelle lame est la borne − ?",
+   why:"Après avoir doublé la demi-équation de l'argent, on additionne et les électrons se simplifient. Une équation-bilan ne contient <b>jamais</b> d'électrons."},
+  {src:"eq", q:"Dans une pile cuivre/argent, quelle lame est la borne − ?",
    opts:[["la lame de cuivre",true],["la lame d'argent",false],["les deux, selon le sens du courant",false]],
-   why:"Face à l'argent, c'est le <b>cuivre</b> qui cède ses électrons : Cu → Cu²⁺ + 2e⁻. Il devient donc la borne −. Attention, face au zinc, le même cuivre est la borne + : tout dépend de l'autre métal."}
+   why:"Sur l'axe Zn — Cu — Ag, le cuivre est à gauche de l'argent : c'est lui qui cède ses électrons, donc la borne −. Face au zinc, le même cuivre serait la borne +."}
 ];
 
-/* ---------------- moteur de QCM ---------------- */
+/* ============ escaliers de micro-questions ============
+   format d'une question : [énoncé, [propositions], index de la bonne, explication] */
+var ESC = {
+
+mots: [
+ {e:"A", t:"La matière et le montage", rule:"Quatre questions sur les fiches 01 à 08.",
+  qs:[
+   ["« Cu » et « Cu²⁺ », est-ce la même chose ?", ["Oui, c'est du cuivre","Non"], 1, "Cu est le métal solide, la lame. Cu²⁺ est un ion dissous dans l'eau, invisible. Même élément, deux états."],
+   ["Combien de charges + porte l'ion Cu²⁺ ?", ["1","2","3"], 1, "Le chiffre en haut à droite compte les charges qui manquent : il en manque deux."],
+   ["Une électrode, c'est…", ["le liquide du bécher","la pièce de métal qui plonge dedans","le fil qui relie les deux lames"], 1, "C'est la lame métallique. La réaction se produit à sa surface, au contact du liquide."],
+   ["Une solution ionique conductrice, c'est…", ["de l'eau pure","un liquide qui contient des ions","un métal fondu"], 1, "Ce sont les ions, libres de se déplacer, qui rendent le liquide conducteur. L'eau pure ne conduit pas."]
+  ]},
+ {e:"B", t:"Les grandeurs et les mesures", rule:"Six questions sur les fiches 09 à 14.",
+  qs:[
+   ["La capacité Q se mesure en…", ["A","Ah","Wh"], 1, "Ah, parce que Q = I × t : des ampères multipliés par des heures."],
+   ["L'énergie E se mesure en…", ["Ah","V","Wh"], 2, "Wh, le wattheure, parce que E = Q × U : des Ah multipliés par des volts."],
+   ["1,5 h, c'est…", ["1 h 15 min","1 h 30 min","1 h 50 min"], 1, "0,5 × 60 = 30. L'heure décimale n'est pas l'heure de la montre."],
+   ["Le voltmètre se branche…", ["en série","en parallèle"], 1, "En parallèle, par-dessus les deux bornes, sans rien débrancher. C'est l'ampèremètre qui se met en série."],
+   ["Pour mesurer une tension d'environ 1,1 V, quel calibre choisir ?", ["200 mV","2 V","20 V"], 1, "Le calibre juste au-dessus de la valeur attendue. 200 mV saturerait, 20 V ferait perdre des décimales."],
+   ["Un accumulateur en charge se comporte comme…", ["une pile","un électrolyseur"], 1, "En charge on lui impose la réaction : c'est un électrolyseur. C'est en décharge qu'il se comporte comme une pile."]
+  ]}
+],
+
+lire: [
+ {e:"É1", t:"Lire un symbole de métal", rule:"Zn = zinc, Cu = cuivre, Ag = argent. Seul, sans charge, le symbole désigne le métal solide : la lame.",
+  qs:[
+   ["Que désigne « Ag » ?", ["l'argent métallique","un ion argent","l'eau"], 0, "Sans charge en exposant, c'est le métal solide."],
+   ["Quel est le symbole du zinc ?", ["Zn","Zi","Z"], 0, "Deux lettres, majuscule en premier."],
+   ["« Cu » dans une équation, c'est un solide ou dissous dans l'eau ?", ["un solide, la lame","dissous dans l'eau"], 0, "Le cuivre métallique. La forme dissoute, c'est Cu²⁺."]
+  ]},
+ {e:"É2", t:"Lire la charge d'un ion", rule:"Le chiffre en haut à droite compte les charges positives, pas les atomes. Pas de chiffre = une seule charge.",
+  qs:[
+   ["Combien de charges + porte Cu²⁺ ?", ["1","2","4"], 1, "Le « 2 » en exposant."],
+   ["Combien de charges + porte Ag⁺ ?", ["0","1","2"], 1, "Quand il n'y a pas de chiffre écrit, c'est 1."],
+   ["Combien de charges + porte Zn²⁺ ?", ["1","2","3"], 1, "Comme le cuivre : deux."]
+  ]},
+ {e:"É3", t:"Distinguer l'atome et l'ion", rule:"Le métal est solide et visible. L'ion est dissous et invisible. Dans un couple, l'ion s'écrit à gauche du trait.",
+  qs:[
+   ["Lequel se trouve dans la solution bleue de sulfate de cuivre ?", ["Cu","Cu²⁺"], 1, "Ce sont les ions Cu²⁺ qui sont dissous, et qui donnent la couleur bleue."],
+   ["Lequel constitue la lame ?", ["Cu","Cu²⁺"], 0, "La lame, c'est du cuivre métallique."],
+   ["Dans le couple Zn²⁺/Zn, lequel est l'ion ?", ["Zn²⁺","Zn"], 0, "Celui de gauche, avant le trait : c'est toujours l'oxydant, donc l'ion."]
+  ]},
+ {e:"É4", t:"Lire e⁻ et compter les électrons", rule:"e⁻ est un électron. Le signe moins rappelle qu'il porte une charge négative.",
+  qs:[
+   ["Que représente « e⁻ » ?", ["un électron","un ion","une charge positive"], 0, "Un électron, la particule qui se déplace dans le fil."],
+   ["Pourquoi un signe moins ?", ["parce qu'il est petit","parce qu'il porte une charge négative"], 1, "C'est sa charge qui est négative."],
+   ["Combien d'électrons dans « 2e⁻ » ?", ["1","2","4"], 1, "Le chiffre devant compte les objets : deux électrons."]
+  ]},
+ {e:"É5", t:"Le chiffre devant, le chiffre en haut", rule:"Devant, on compte les objets. En haut à droite, on compte les charges. Tu ne toucheras jamais à un exposant.",
+  qs:[
+   ["« 2Ag⁺ » : combien d'ions, et combien de charges chacun ?", ["2 ions, 1 charge chacun","1 ion, 2 charges","2 ions, 2 charges chacun"], 0, "Le 2 devant compte les ions, le + en haut compte la charge de chacun."],
+   ["« 2Ag⁺ » et « Ag²⁺ », est-ce la même chose ?", ["Oui","Non"], 1, "Le premier, c'est deux ions argent. Le second n'existe pas dans notre chapitre."],
+   ["Quand on équilibre, touche-t-on aux exposants ?", ["Oui, si besoin","Jamais"], 1, "Jamais. On ne modifie que les chiffres placés devant."]
+  ]},
+ {e:"É6", t:"La règle d'or : charges = électrons", rule:"Le nombre de charges de l'ion donne exactement le nombre d'électrons de la demi-équation.",
+  qs:[
+   ["Combien d'électrons manque-t-il à Cu²⁺ pour redevenir Cu ?", ["1","2","3"], 1, "Deux charges manquantes, donc deux électrons à récupérer."],
+   ["Et à Ag⁺ pour redevenir Ag ?", ["1","2"], 0, "Une seule charge, donc un seul électron. C'est le piège du chapitre."],
+   ["Et à Zn²⁺ pour redevenir Zn ?", ["1","2","4"], 1, "Deux, comme pour le cuivre."]
+  ]},
+ {e:"É7", t:"Écrire la demi-équation de réduction", rule:"L'ion est à gauche, il capte ses électrons (à gauche aussi), et devient le métal, à droite.",
+  qs:[
+   ["Couple Cu²⁺/Cu, réduction :", ["Cu²⁺ + 2e⁻ → Cu","Cu → Cu²⁺ + 2e⁻","Cu²⁺ → Cu + 2e⁻"], 0, "Les électrons arrivent, donc à gauche."],
+   ["Couple Zn²⁺/Zn, réduction :", ["Zn²⁺ + 2e⁻ → Zn","Zn → Zn²⁺ + 2e⁻"], 0, "Même modèle avec le zinc."],
+   ["Couple Ag⁺/Ag, réduction :", ["Ag⁺ + e⁻ → Ag","Ag⁺ + 2e⁻ → Ag"], 0, "Un seul électron : Ag⁺ n'a qu'une charge."]
+  ]},
+ {e:"É8", t:"Écrire la demi-équation d'oxydation", rule:"C'est la même ligne lue à l'envers : le métal est à gauche, il lâche ses électrons, qui partent à droite.",
+  qs:[
+   ["Couple Zn²⁺/Zn, oxydation :", ["Zn → Zn²⁺ + 2e⁻","Zn²⁺ + 2e⁻ → Zn"], 0, "Le métal se transforme en ion et lâche ses électrons."],
+   ["Couple Cu²⁺/Cu, oxydation :", ["Cu → Cu²⁺ + 2e⁻","Cu²⁺ + 2e⁻ → Cu"], 0, "Oui, le cuivre peut s'oxyder lui aussi : ça arrive face à l'argent."],
+   ["Couple Ag⁺/Ag, oxydation :", ["Ag → Ag⁺ + e⁻","Ag → Ag²⁺ + 2e⁻"], 0, "Un seul électron, toujours."]
+  ]},
+ {e:"É9", t:"Reconnaître oxydation ou réduction", rule:"Une seule question à se poser : de quel côté de la flèche sont les e⁻ ? À droite → oxydation. À gauche → réduction.",
+  qs:[
+   ["Cu²⁺ + 2e⁻ → Cu", ["oxydation","réduction"], 1, "Les électrons sont à gauche : ils sont captés."],
+   ["Zn → Zn²⁺ + 2e⁻", ["oxydation","réduction"], 0, "Les électrons sont à droite : ils sont cédés."],
+   ["Ag → Ag⁺ + e⁻", ["oxydation","réduction"], 0, "À droite, donc oxydation."],
+   ["2Ag⁺ + 2e⁻ → 2Ag", ["oxydation","réduction"], 1, "À gauche, donc réduction — même avec des coefficients devant."]
+  ]}
+],
+
+bilan: [
+ {e:"É10", t:"Relier la borne et la nature de la réaction", rule:"Borne − : le métal donne ses électrons, oxydation, e⁻ à droite. Borne + : les électrons arrivent et sont captés, réduction, e⁻ à gauche.",
+  qs:[
+   ["À la borne −, les électrons sont de quel côté de la flèche ?", ["à gauche","à droite"], 1, "Ils sont cédés, donc ils apparaissent dans les produits, à droite."],
+   ["À la borne +, oxydation ou réduction ?", ["oxydation","réduction"], 1, "Les électrons y arrivent et sont captés."],
+   ["Sur quelle borne la lame se ronge-t-elle ?", ["la borne +","la borne −"], 1, "Ses atomes partent en ions dans la solution : elle maigrit."]
+  ]},
+ {e:"É11", t:"Trouver qui est la borne −", rule:"Sur l'axe Zn — Cu — Ag, celui des deux qui est le plus à gauche est la borne −.",
+  qs:[
+   ["Pile zinc / cuivre : borne − ?", ["le zinc","le cuivre"], 0, "Le zinc est le plus à gauche."],
+   ["Pile cuivre / argent : borne − ?", ["le cuivre","l'argent"], 0, "Face à l'argent, c'est le cuivre qui donne ses électrons."],
+   ["Pile zinc / argent : borne − ?", ["le zinc","l'argent"], 0, "Le zinc, toujours : il est le plus à gauche des trois."],
+   ["Le cuivre est-il toujours la borne + ?", ["Oui","Non, ça dépend de l'autre métal"], 1, "Il est + face au zinc, mais − face à l'argent."]
+  ]},
+ {e:"É12", t:"Écrire les deux demi-équations d'une pile", rule:"On enchaîne : qui est la borne − ? puis oxydation à gauche, réduction à droite.",
+  qs:[
+   ["Pile zinc / cuivre, borne − :", ["Zn → Zn²⁺ + 2e⁻","Cu²⁺ + 2e⁻ → Cu"], 0, "Le zinc s'oxyde à la borne −."],
+   ["Pile cuivre / argent, borne − :", ["Cu → Cu²⁺ + 2e⁻","Ag⁺ + e⁻ → Ag"], 0, "Ici c'est le cuivre qui s'oxyde, puisqu'il est face à l'argent."]
+  ]},
+ {e:"É13", t:"Additionner quand les électrons sont déjà égaux", rule:"On additionne les deux lignes, et les électrons présents des deux côtés se simplifient.",
+  qs:[
+   ["Pile Daniell : combien d'électrons dans chaque demi-équation ?", ["2 et 1","2 et 2","1 et 1"], 1, "Cu²⁺ et Zn²⁺ portent deux charges chacun."],
+   ["Faut-il multiplier quelque chose ?", ["Oui","Non"], 1, "2 et 2, c'est déjà égal."],
+   ["Quel est le bilan ?", ["Zn + Cu²⁺ → Zn²⁺ + Cu","Zn + Cu²⁺ + 2e⁻ → Zn²⁺ + Cu","Zn²⁺ + Cu → Zn + Cu²⁺"], 0, "Les 2e⁻ apparaissaient des deux côtés : ils disparaissent."]
+  ]},
+ {e:"É14", t:"Repérer que les électrons ne sont pas égaux", rule:"Avant d'additionner, on compte toujours les électrons de chaque ligne.",
+  qs:[
+   ["Pile zinc / argent : combien d'électrons donne le zinc ?", ["1","2"], 1, "Zn → Zn²⁺ + 2e⁻."],
+   ["Combien l'ion argent en capte-t-il ?", ["1","2"], 0, "Ag⁺ + e⁻ → Ag : un seul."],
+   ["Peut-on additionner directement ?", ["Oui","Non"], 1, "2 contre 1 : il faut d'abord égaliser."]
+  ]},
+ {e:"É15", t:"Multiplier une demi-équation en entier", rule:"On multiplie TOUTES les espèces de la ligne, pas seulement les électrons. Et jamais les exposants.",
+  qs:[
+   ["Multiplie « Ag⁺ + e⁻ → Ag » par 2 :", ["2Ag⁺ + 2e⁻ → 2Ag","Ag⁺ + 2e⁻ → Ag","2Ag²⁺ + 2e⁻ → 2Ag"], 0, "Chaque espèce prend un 2 devant."],
+   ["« Ag⁺ + 2e⁻ → Ag » est-il juste ?", ["Oui","Non"], 1, "Non : on n'a multiplié que les électrons. C'est l'erreur la plus fréquente du chapitre."],
+   ["« 2Ag²⁺ + 2e⁻ → 2Ag » est-il juste ?", ["Oui","Non"], 1, "Non : on a modifié l'exposant, ce qui est interdit."]
+  ]},
+ {e:"É16", t:"Additionner, simplifier, vérifier", rule:"Trois vérifications : plus aucun électron, les charges égales des deux côtés, le même nombre d'atomes de chaque sorte.",
+  qs:[
+   ["Bilan de la pile zinc / argent :", ["Zn + 2Ag⁺ → Zn²⁺ + 2Ag","Zn + Ag⁺ → Zn²⁺ + Ag","Zn + 2Ag⁺ + 2e⁻ → Zn²⁺ + 2Ag"], 0, "Après multiplication par 2 de la ligne de l'argent, les 2e⁻ se simplifient."],
+   ["Charges à gauche de « Zn + 2Ag⁺ » :", ["0","+1","+2"], 2, "Zn est neutre (0), deux Ag⁺ font +2. À droite, Zn²⁺ fait +2 aussi : c'est équilibré."],
+   ["Bilan de la pile cuivre / argent :", ["Cu + 2Ag⁺ → Cu²⁺ + 2Ag","Cu²⁺ + 2Ag → Cu + 2Ag⁺"], 0, "Même méthode : le cuivre s'oxyde, la ligne de l'argent est doublée."]
+  ]}
+],
+
+formules: [
+ {e:"F", t:"Retourner la formule, sans chiffres", rule:"Si tu cherches le résultat, tu multiplies. Si tu cherches un des deux facteurs, tu divises le résultat par l'autre.",
+  qs:[
+   ["On connaît I et t, on cherche Q :", ["Q = I × t","Q = I ÷ t","Q = t ÷ I"], 0, "Q est le résultat du produit : on multiplie."],
+   ["On connaît Q et I, on cherche t :", ["t = Q ÷ I","t = Q × I","t = I ÷ Q"], 0, "t est un facteur : on divise le résultat Q par l'autre facteur I."],
+   ["On connaît Q et U, on cherche E :", ["E = Q × U","E = Q ÷ U","E = U ÷ Q"], 0, "E est le résultat : on multiplie."],
+   ["On connaît E et U, on cherche Q :", ["Q = E ÷ U","Q = E × U","Q = U ÷ E"], 0, "Q est un facteur : on divise E par U."],
+   ["On connaît E et Q, on cherche U :", ["U = E ÷ Q","U = E × Q","U = Q ÷ E"], 0, "U est l'autre facteur : on divise E par Q."]
+  ]}
+]
+};
+
+/* ============ exercices chiffrés ============ */
+var SERIES = [
+{tag:"A", nm:"Les conversions", items:[
+ {id:"a1",n:1,txt:"Convertir 1 500 mAh en ampères-heures.",unit:"Ah",ans:1.5,tip:"1 Ah = 1 000 mAh : on divise par 1 000.",sol:'<span class="line">1 500 ÷ 1 000 = 1,5</span><p>Soit <b>1,5 Ah</b>.</p>'},
+ {id:"a2",n:1,txt:"Convertir 2 500 mAh en ampères-heures.",unit:"Ah",ans:2.5,tip:"Même geste : diviser par 1 000.",sol:'<span class="line">2 500 ÷ 1 000 = 2,5</span><p>Soit <b>2,5 Ah</b>.</p>'},
+ {id:"a3",n:1,txt:"Convertir 0,45 Ah en milliampères-heures.",unit:"mAh",ans:450,tip:"Dans l'autre sens, on multiplie par 1 000.",sol:'<span class="line">0,45 × 1 000 = 450</span><p>Soit <b>450 mAh</b>.</p>'},
+ {id:"a4",n:1,txt:"Convertir 250 mA en ampères.",unit:"A",ans:0.25,tip:"1 A = 1 000 mA.",sol:'<span class="line">250 ÷ 1 000 = 0,25</span><p>Soit <b>0,25 A</b>.</p>'},
+ {id:"a5",n:1,txt:"Convertir 90 min en heures (écriture décimale).",unit:"h",ans:1.5,tip:"1 h = 60 min : on divise les minutes par 60.",sol:'<span class="line">90 ÷ 60 = 1,5</span><p>Soit <b>1,5 h</b>. Attention, ce n\'est pas 1,30.</p>'},
+ {id:"a6",n:1,txt:"Convertir 2 h 30 min en heures (écriture décimale).",unit:"h",ans:2.5,tip:"Convertis seulement les minutes, puis ajoute les heures entières.",sol:'<span class="line">30 ÷ 60 = 0,5</span><span class="line">2 + 0,5 = 2,5</span><p>Soit <b>2,5 h</b>.</p>'},
+ {id:"a7",n:1,txt:"Convertir 0,25 h en minutes.",unit:"min",ans:15,tip:"Pour passer des heures aux minutes, on multiplie par 60.",sol:'<span class="line">0,25 × 60 = 15</span><p>Soit <b>15 min</b>.</p>'},
+ {id:"a8",n:2,txt:"Un calcul a donné t = 1,3 h. Combien cela fait-il de minutes en plus de l'heure entière ?",unit:"min",ans:18,tip:"Ce sont les chiffres après la virgule qu'on multiplie par 60.",sol:'<span class="line">0,3 × 60 = 18</span><p>Donc 1,3 h = <b>1 h 18 min</b>, et surtout pas 1 h 30.</p>'},
+ {id:"a9",n:1,txt:"Un calcul a donné t = 2,5 h. Combien de minutes en plus des 2 heures ?",unit:"min",ans:30,tip:"0,5 c'est une demie.",sol:'<span class="line">0,5 × 60 = 30</span><p>Donc 2,5 h = <b>2 h 30 min</b>.</p>'}
+]},
+{tag:"B", nm:"La capacité, Q = I × t", items:[
+ {id:"b1",n:1,txt:"Un accumulateur débite 2 A pendant 3 h. Calculer la quantité d'électricité Q fournie.",unit:"Ah",ans:6,tip:"Les unités sont déjà bonnes : applique la formule telle quelle.",sol:'<span class="line">Q = I × t</span><span class="line">Q = 2 × 3</span><span class="line">Q = 6 Ah</span>'},
+ {id:"b2",n:1,txt:"Une batterie débite 0,4 A pendant 5 h. Calculer Q.",unit:"Ah",ans:2,tip:"Rien à convertir, c'est une simple multiplication.",sol:'<span class="line">Q = I × t</span><span class="line">Q = 0,4 × 5</span><span class="line">Q = 2 Ah</span>'},
+ {id:"b3",n:1,txt:"Un accumulateur débite 0,5 A pendant 4 h. Calculer Q.",unit:"Ah",ans:2,tip:"Même modèle que les deux précédents.",sol:'<span class="line">Q = I × t</span><span class="line">Q = 0,5 × 4</span><span class="line">Q = 2 Ah</span>'},
+ {id:"b4",n:1,txt:"Une batterie de capacité 10 Ah débite 5 A. Pendant combien d'heures ?",unit:"h",ans:2,tip:"On cherche un facteur, donc on divise.",sol:'<span class="line">t = Q ÷ I</span><span class="line">t = 10 ÷ 5</span><span class="line">t = 2 h</span>'},
+ {id:"b5",n:1,txt:"Une batterie de capacité 12 Ah débite 3 A. Pendant combien d'heures ?",unit:"h",ans:4,tip:"t = Q ÷ I.",sol:'<span class="line">t = Q ÷ I</span><span class="line">t = 12 ÷ 3</span><span class="line">t = 4 h</span>'},
+ {id:"b6",n:1,txt:"Un accumulateur de 6 Ah se vide en 3 h. Quelle intensité a-t-il débitée ?",unit:"A",ans:2,tip:"On cherche l'autre facteur, on divise encore.",sol:'<span class="line">I = Q ÷ t</span><span class="line">I = 6 ÷ 3</span><span class="line">I = 2 A</span>'},
+ {id:"b7",n:2,txt:"Un accumulateur de 1,5 Ah se vide complètement en 30 min. Quelle intensité a-t-il débitée ?",unit:"A",ans:3,tip:"30 min ne s'écrit pas « 30 » dans la formule : convertis d'abord en heures.",sol:'<span class="line">30 min = 30 ÷ 60 = 0,5 h</span><span class="line">I = Q ÷ t</span><span class="line">I = 1,5 ÷ 0,5</span><span class="line">I = 3 A</span>'},
+ {id:"b8",n:2,txt:"Un accumulateur de 2 Ah débite 400 mA. Pendant combien de temps peut-il le fournir ?",unit:"h",ans:5,tip:"Convertis d'abord les mA en A, sinon le résultat sera 1 000 fois trop petit.",sol:'<span class="line">400 mA = 0,4 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 2 ÷ 0,4</span><span class="line">t = 5 h</span>'},
+ {id:"b9",n:2,txt:"Un chargeur délivre 1,2 A pendant 45 min. Quelle quantité d'électricité a-t-il fournie ?",unit:"Ah",ans:0.9,tip:"Dans la formule, le temps se met en heures, jamais en minutes.",sol:'<span class="line">45 min = 45 ÷ 60 = 0,75 h</span><span class="line">Q = I × t</span><span class="line">Q = 1,2 × 0,75</span><span class="line">Q = 0,9 Ah</span>'},
+ {id:"b10",n:2,txt:"Une batterie de 5 Ah alimente un appareil qui consomme 250 mA. Quelle est son autonomie ?",unit:"h",ans:20,tip:"Une seule conversion à faire, puis une division.",sol:'<span class="line">250 mA = 0,25 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 5 ÷ 0,25</span><span class="line">t = 20 h</span>'},
+ {id:"b11",n:2,txt:"Un accumulateur de 1 200 mAh débite 300 mA. Combien de temps tient-il ?",unit:"h",ans:4,tip:"Convertis les deux valeurs : les deux sont en « milli ».",sol:'<span class="line">1 200 mAh = 1,2 Ah</span><span class="line">300 mA = 0,3 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 1,2 ÷ 0,3</span><span class="line">t = 4 h</span>'},
+ {id:"b12",n:2,txt:"Un chargeur délivre 800 mA pendant 2 h 30. Quelle quantité d'électricité a-t-il fournie ?",unit:"Ah",ans:2,tip:"Deux conversions avant de multiplier : les mA en A, et 2 h 30 en heures.",sol:'<span class="line">800 mA = 0,8 A</span><span class="line">2 h 30 = 2,5 h</span><span class="line">Q = 0,8 × 2,5</span><span class="line">Q = 2 Ah</span>'}
+]},
+{tag:"C", nm:"L'énergie, E = Q × U", items:[
+ {id:"c1",n:1,txt:"Un accumulateur a une capacité de 4 Ah sous une tension de 6 V. Calculer l'énergie stockée.",unit:"Wh",ans:24,tip:"E = Q × U, avec Q en Ah et U en V.",sol:'<span class="line">E = Q × U</span><span class="line">E = 4 × 6</span><span class="line">E = 24 Wh</span>'},
+ {id:"c2",n:1,txt:"Une pile de 9 V a une capacité de 0,5 Ah. Calculer l'énergie stockée.",unit:"Wh",ans:4.5,tip:"Multiplie la capacité par la tension, sans rien convertir.",sol:'<span class="line">E = Q × U</span><span class="line">E = 0,5 × 9</span><span class="line">E = 4,5 Wh</span>'},
+ {id:"c3",n:1,txt:"Une batterie porte l'indication 12 V — 5 Ah. Calculer l'énergie stockée.",unit:"Wh",ans:60,tip:"Les deux valeurs de l'étiquette sont exactement Q et U.",sol:'<span class="line">E = Q × U</span><span class="line">E = 5 × 12</span><span class="line">E = 60 Wh</span>'},
+ {id:"c4",n:1,txt:"Une batterie de voiture porte l'indication 12 V — 40 Ah. Calculer l'énergie stockée.",unit:"Wh",ans:480,tip:"Même modèle, avec des nombres plus gros.",sol:'<span class="line">E = Q × U</span><span class="line">E = 40 × 12</span><span class="line">E = 480 Wh</span>'},
+ {id:"c5",n:1,txt:"Une batterie stocke 100 Wh sous une tension de 20 V. Quelle est sa capacité ?",unit:"Ah",ans:5,tip:"On cherche Q dans E = Q × U, donc on divise E par U.",sol:'<span class="line">Q = E ÷ U</span><span class="line">Q = 100 ÷ 20</span><span class="line">Q = 5 Ah</span>'},
+ {id:"c6",n:1,txt:"Une batterie stocke 720 Wh sous une tension de 12 V. Quelle est sa capacité ?",unit:"Ah",ans:60,tip:"Q = E ÷ U.",sol:'<span class="line">Q = E ÷ U</span><span class="line">Q = 720 ÷ 12</span><span class="line">Q = 60 Ah</span>'},
+ {id:"c7",n:1,txt:"Un pack stocke 24 Wh et sa capacité est de 2 Ah. Quelle est sa tension ?",unit:"V",ans:12,tip:"Cette fois c'est U qu'on isole.",sol:'<span class="line">U = E ÷ Q</span><span class="line">U = 24 ÷ 2</span><span class="line">U = 12 V</span>'},
+ {id:"c8",n:1,txt:"Un pack stocke 2,16 Wh et sa capacité est de 0,6 Ah. Quelle est sa tension ?",unit:"V",ans:3.6,tip:"U = E ÷ Q.",sol:'<span class="line">U = E ÷ Q</span><span class="line">U = 2,16 ÷ 0,6</span><span class="line">U = 3,6 V</span><p>C\'est exactement la lampe à manivelle de ton exercice.</p>'},
+ {id:"c9",n:2,txt:"Une batterie de vélo porte l'indication 6 V — 4 500 mAh. Calculer l'énergie stockée.",unit:"Wh",ans:27,tip:"Les mAh doivent devenir des Ah avant la multiplication.",sol:'<span class="line">4 500 mAh = 4,5 Ah</span><span class="line">E = Q × U</span><span class="line">E = 4,5 × 6</span><span class="line">E = 27 Wh</span>'},
+ {id:"c10",n:2,txt:"L'accumulateur d'un téléphone est marqué 3,7 V et 4 000 mAh. Calculer l'énergie stockée.",unit:"Wh",ans:14.8,tip:"Convertis d'abord les 4 000 mAh en Ah, sinon le résultat est 1 000 fois trop grand.",sol:'<span class="line">4 000 mAh = 4 Ah</span><span class="line">E = Q × U</span><span class="line">E = 4 × 3,7</span><span class="line">E = 14,8 Wh</span>'},
+ {id:"c11",n:2,txt:"Un autre accumulateur est marqué 3,7 V — 2 500 mAh. Calculer l'énergie stockée.",unit:"Wh",ans:9.25,tip:"Un résultat vers 9 est normal ; si tu trouves 9 250, tu as oublié la conversion.",sol:'<span class="line">2 500 mAh = 2,5 Ah</span><span class="line">E = Q × U</span><span class="line">E = 2,5 × 3,7</span><span class="line">E = 9,25 Wh</span>'},
+ {id:"c12",n:2,txt:"Une batterie stocke 54 Wh sous 12 V. Elle débite 1,5 A. Pendant combien de temps ?",unit:"h",ans:3,tip:"Trouve d'abord la capacité, elle te servira ensuite.",sol:'<span class="line">Q = E ÷ U</span><span class="line">Q = 54 ÷ 12 = 4,5 Ah</span><span class="line">t = Q ÷ I</span><span class="line">t = 4,5 ÷ 1,5</span><span class="line">t = 3 h</span>'}
+]},
+{tag:"D", nm:"En série, en parallèle", items:[
+ {id:"d1",n:1,txt:"Deux piles de 1,5 V sont montées en série. Quelle est la tension totale ?",unit:"V",ans:3,tip:"En série, les tensions s'additionnent.",sol:'<span class="line">U = 1,5 + 1,5</span><span class="line">U = 3 V</span>'},
+ {id:"d2",n:1,txt:"Quatre accumulateurs de 1,2 V sont montés en série. Quelle est la tension de l'ensemble ?",unit:"V",ans:4.8,tip:"Quatre fois la même tension.",sol:'<span class="line">U = 4 × 1,2</span><span class="line">U = 4,8 V</span>'},
+ {id:"d3",n:1,txt:"Trois accumulateurs de 600 mAh sont montés en série. Quelle est la capacité de l'ensemble, en mAh ?",unit:"mAh",ans:600,tip:"En série, ce n'est pas la capacité qui s'additionne.",sol:'<p>En série, la capacité <b>ne change pas</b> : elle reste celle d\'un seul élément.</p><span class="line">Q = 600 mAh</span><p>C\'est la tension, elle, qui devient 3 × 1,2 = 3,6 V.</p>'},
+ {id:"d4",n:1,txt:"Quatre accumulateurs de 2 000 mAh sont montés en série. Quelle est la capacité de l'ensemble, en Ah ?",unit:"Ah",ans:2,tip:"Même règle qu'à l'exercice précédent, avec une conversion en plus.",sol:'<span class="line">2 000 mAh = 2 Ah</span><p>En série la capacité ne change pas : l\'ensemble fait toujours <b>2 Ah</b>.</p>'},
+ {id:"d5",n:1,txt:"Deux piles de 1,5 V et 2 Ah sont montées en parallèle. Quelle est la capacité de l'ensemble ?",unit:"Ah",ans:4,tip:"En parallèle, c'est l'inverse de la série.",sol:'<span class="line">Q = 2 + 2</span><span class="line">Q = 4 Ah</span><p>La tension, elle, reste <b>1,5 V</b>.</p>'},
+ {id:"d6",n:2,txt:"Trois piles de 1,5 V et 800 mAh sont montées en parallèle. Quelle est la capacité de l'ensemble ?",unit:"Ah",ans:2.4,tip:"Convertis d'abord, puis additionne les capacités.",sol:'<span class="line">800 mAh = 0,8 Ah</span><span class="line">Q = 3 × 0,8</span><span class="line">Q = 2,4 Ah</span><p>La tension reste <b>1,5 V</b>.</p>'},
+ {id:"d7",n:2,txt:"Quatre accumulateurs de 1,2 V et 2 000 mAh en série : quelle énergie l'ensemble stocke-t-il ?",unit:"Wh",ans:9.6,tip:"Cherche la tension totale et la capacité totale avant d'appliquer E = Q × U.",sol:'<span class="line">U = 4 × 1,2 = 4,8 V</span><span class="line">Q = 2 000 mAh = 2 Ah</span><span class="line">E = Q × U</span><span class="line">E = 2 × 4,8</span><span class="line">E = 9,6 Wh</span>'},
+ {id:"d8",n:2,txt:"Quatre accumulateurs de 1,2 V et 800 mAh en série : quelle énergie l'ensemble stocke-t-il ?",unit:"Wh",ans:3.84,tip:"Même méthode : tension totale, capacité inchangée, puis E = Q × U.",sol:'<span class="line">U = 4 × 1,2 = 4,8 V</span><span class="line">Q = 800 mAh = 0,8 Ah</span><span class="line">E = 0,8 × 4,8</span><span class="line">E = 3,84 Wh</span>'}
+]},
+{tag:"E", nm:"Des situations complètes", items:[
+ {id:"e1",n:2,txt:"La pile au citron d'Amine délivre 0,750 V. Combien faut-il de citrons identiques montés en série pour dépasser 2 V ?",unit:"citrons",ans:3,tip:"Essaie 2, puis 3, et compare à 2 V.",sol:'<span class="line">2 citrons : 2 × 0,750 = 1,5 V</span><p>Trop faible.</p><span class="line">3 citrons : 3 × 0,750 = 2,25 V</span><p>Ça dépasse 2 V : il faut <b>3 citrons</b>.</p>'},
+ {id:"e2",n:2,txt:"Une lampe consomme 120 mA. On l'alimente avec un accumulateur de 600 mAh. Quelle est l'autonomie ?",unit:"h",ans:5,tip:"Les deux valeurs sont en « milli » : convertis-les toutes les deux.",sol:'<span class="line">600 mAh = 0,6 Ah</span><span class="line">120 mA = 0,12 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 0,6 ÷ 0,12</span><span class="line">t = 5 h</span>'},
+ {id:"e3",n:2,txt:"Le pack d'une lampe à manivelle fait 3,6 V et 0,6 Ah, et il est vide. On le recharge avec un courant continu de 200 mA. Combien de temps faut-il ?",unit:"h",ans:3,tip:"La tension ne sert pas ici : c'est une donnée inutile, il y en a souvent au DS.",sol:'<span class="line">200 mA = 0,2 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 0,6 ÷ 0,2</span><span class="line">t = 3 h</span><p>Les 3,6 V ne servaient à rien pour cette question.</p>'},
+ {id:"e4",n:2,txt:"Une batterie de 12 V stocke 600 Wh. Combien de temps tient-elle en débitant 4 A ?",unit:"h",ans:12.5,tip:"Deux formules, l'une après l'autre : d'abord la capacité, ensuite la durée.",sol:'<span class="line">Q = E ÷ U</span><span class="line">Q = 600 ÷ 12 = 50 Ah</span><span class="line">t = Q ÷ I</span><span class="line">t = 50 ÷ 4</span><span class="line">t = 12,5 h</span><p>Soit 12 h 30 min.</p>'},
+ {id:"e5",n:3,txt:"Le vélo électrique — la batterie porte l'indication 36 V — 10,4 Ah. Calculer l'énergie stockée.",unit:"Wh",ans:374.4,tip:"L'étiquette te donne directement Q et U.",sol:'<span class="line">E = Q × U</span><span class="line">E = 10,4 × 36</span><span class="line">E = 374,4 Wh</span>'},
+ {id:"e6",n:3,txt:"Le vélo électrique — en roulant, le moteur consomme en moyenne 8 A. Quelle est l'autonomie, en heures ?",unit:"h",ans:1.3,tip:"On cherche t dans Q = I × t.",sol:'<span class="line">t = Q ÷ I</span><span class="line">t = 10,4 ÷ 8</span><span class="line">t = 1,3 h</span>'},
+ {id:"e7",n:3,txt:"Le vélo électrique — convertir cette autonomie de 1,3 h en heures et minutes : combien de minutes ?",unit:"min",ans:18,tip:"Ce sont les chiffres après la virgule qu'on multiplie par 60.",sol:'<span class="line">0,3 × 60 = 18</span><p>Soit <b>1 h 18 min</b>.</p>'},
+ {id:"e8",n:3,txt:"Le vélo électrique — le chargeur délivre 2 A. Combien de temps pour recharger la batterie entièrement vide ?",unit:"h",ans:5.2,tip:"Même formule que pour l'autonomie, avec l'intensité du chargeur.",sol:'<span class="line">t = Q ÷ I</span><span class="line">t = 10,4 ÷ 2</span><span class="line">t = 5,2 h</span><p>Soit 0,2 × 60 = 12 min, donc <b>5 h 12 min</b>.</p>'},
+ {id:"e9",n:3,txt:"La perceuse sans fil — son pack contient 10 accumulateurs de 1,2 V et 1 500 mAh en série. Donner la tension du pack.",unit:"V",ans:12,tip:"En série, les tensions s'additionnent.",sol:'<span class="line">U = 10 × 1,2</span><span class="line">U = 12 V</span>'},
+ {id:"e10",n:3,txt:"La perceuse sans fil — donner la capacité du pack, en Ah.",unit:"Ah",ans:1.5,tip:"En série, la capacité ne change pas.",sol:'<span class="line">1 500 mAh = 1,5 Ah</span><p>En série la capacité reste celle d\'un seul élément : <b>1,5 Ah</b>.</p>'},
+ {id:"e11",n:3,txt:"La perceuse sans fil — calculer l'énergie stockée par le pack.",unit:"Wh",ans:18,tip:"Reprends la tension et la capacité des deux questions précédentes.",sol:'<span class="line">E = Q × U</span><span class="line">E = 1,5 × 12</span><span class="line">E = 18 Wh</span>'},
+ {id:"e12",n:3,txt:"La perceuse sans fil — en perçant, elle consomme 5 A. Combien de temps peut-elle percer sans interruption, en heures ?",unit:"h",ans:0.3,tip:"t = Q ÷ I. Le résultat sera inférieur à 1 h.",sol:'<span class="line">t = Q ÷ I</span><span class="line">t = 1,5 ÷ 5</span><span class="line">t = 0,3 h</span><p>Soit 0,3 × 60 = <b>18 min</b>.</p>'},
+ {id:"e13",n:3,txt:"Le téléphone — son accumulateur porte l'indication 3,85 V — 4 000 mAh. Calculer l'énergie stockée.",unit:"Wh",ans:15.4,tip:"Convertis les mAh en Ah avant de multiplier.",sol:'<span class="line">4 000 mAh = 4 Ah</span><span class="line">E = Q × U</span><span class="line">E = 4 × 3,85</span><span class="line">E = 15,4 Wh</span>'},
+ {id:"e14",n:3,txt:"Le téléphone — le chargeur délivre 2 A. Combien de temps pour passer de vide à plein ?",unit:"h",ans:2,tip:"t = Q ÷ I, avec Q en Ah.",sol:'<span class="line">t = Q ÷ I</span><span class="line">t = 4 ÷ 2</span><span class="line">t = 2 h</span>'},
+ {id:"e15",n:3,txt:"Le téléphone — en veille, il consomme 20 mA. Combien de temps tiendrait-il ?",unit:"h",ans:200,tip:"Convertis les 20 mA : le résultat sera très grand, c'est normal.",sol:'<span class="line">20 mA = 0,02 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 4 ÷ 0,02</span><span class="line">t = 200 h</span><p>Soit un peu plus de 8 jours.</p>'},
+ {id:"e16",n:3,txt:"Le bloc de secours — il contient 6 accumulateurs de 1,2 V et 2 000 mAh, en deux branches parallèles de trois accus en série. Quelle est la tension d'une branche ?",unit:"V",ans:3.6,tip:"Occupe-toi d'abord d'une seule branche : trois accus en série.",sol:'<span class="line">U = 3 × 1,2</span><span class="line">U = 3,6 V</span>'},
+ {id:"e17",n:3,txt:"Le bloc de secours — quelle est la capacité d'une branche, en Ah ?",unit:"Ah",ans:2,tip:"Dans une branche, les accus sont en série.",sol:'<span class="line">2 000 mAh = 2 Ah</span><p>En série la capacité ne change pas : <b>2 Ah</b> par branche.</p>'},
+ {id:"e18",n:3,txt:"Le bloc de secours — les deux branches sont en parallèle. Quelle est la capacité du bloc entier ?",unit:"Ah",ans:4,tip:"En parallèle, les capacités s'additionnent et la tension ne bouge pas.",sol:'<span class="line">Q = 2 + 2</span><span class="line">Q = 4 Ah</span><p>La tension du bloc reste celle d\'une branche : <b>3,6 V</b>.</p>'},
+ {id:"e19",n:3,txt:"Le bloc de secours — calculer l'énergie stockée par le bloc.",unit:"Wh",ans:14.4,tip:"E = Q × U, avec les valeurs du bloc entier.",sol:'<span class="line">E = Q × U</span><span class="line">E = 4 × 3,6</span><span class="line">E = 14,4 Wh</span><p>Vérification : chaque accu stocke 2 × 1,2 = 2,4 Wh, et 6 × 2,4 = 14,4 Wh. Cohérent.</p>'},
+ {id:"e20",n:3,txt:"Le bloc de secours — sa lampe consomme 500 mA. Quelle est l'autonomie du bloc ?",unit:"h",ans:8,tip:"Convertis l'intensité, puis t = Q ÷ I avec la capacité du bloc entier.",sol:'<span class="line">500 mA = 0,5 A</span><span class="line">t = Q ÷ I</span><span class="line">t = 4 ÷ 0,5</span><span class="line">t = 8 h</span>'}
+]}
+];
+
+/* ============ réponses de cours à réciter ============ */
+var RECITER = [
+ ["Qu'appelle-t-on une réaction d'oxydoréduction ?","C'est une réaction au cours de laquelle il se produit un <b>échange d'électrons</b> entre deux espèces chimiques : l'une en perd, c'est l'<b>oxydation</b> ; l'autre en gagne, c'est la <b>réduction</b>."],
+ ["De quoi est composée une pile ?","De <b>deux électrodes constituées de deux métaux différents</b>, plongées dans une <b>solution ionique conductrice</b>."],
+ ["Qu'est-ce qu'une pile, et que produit-elle ?","C'est un <b>générateur électrochimique</b> : elle produit une <b>tension électrique</b> à partir de <b>réactions chimiques</b>. Elle fournit un courant <b>continu</b>."],
+ ["Quel est le rôle du pont salin ?","Il <b>permet aux ions de circuler</b> entre les deux solutions et <b>équilibre les charges</b>. Il ferme le circuit du côté des solutions. Sans lui, les charges s'accumulent et la pile s'arrête."],
+ ["Quelle est la différence entre une pile et un accumulateur ?","Une <b>pile n'est pas rechargeable</b> : une fois les réactifs consommés, elle est hors d'usage. Un <b>accumulateur</b> supporte des <b>cycles de charge et de décharge</b>. L'expression « pile rechargeable » est donc incorrecte."],
+ ["De quoi est composé un accumulateur ?","De <b>deux électrodes conductrices</b> plongées dans une <b>solution ionique</b>. Il y subit des cycles de charge et de décharge."],
+ ["Comment se comporte un accumulateur pendant la charge ?","Comme un <b>électrolyseur</b> : on lui impose la réaction avec un <b>courant continu</b>. L'énergie <b>électrique</b> est transformée en énergie <b>chimique</b> et stockée."],
+ ["Comment se comporte un accumulateur pendant la décharge ?","Comme une <b>pile</b>, donc comme un générateur : la réaction repart d'elle-même et l'énergie <b>chimique</b> est transformée en énergie <b>électrique</b>."],
+ ["Avec quel appareil mesure-t-on la tension aux bornes d'une pile, et comment le branche-t-on ?","Avec un <b>voltmètre</b> (ou un multimètre en position voltmètre, bornes V et COM), branché <b>en parallèle</b> aux bornes de la pile, sur le <b>calibre juste supérieur</b> à la valeur attendue."],
+ ["Par quoi caractérise-t-on un accumulateur ?","Par sa <b>capacité Q</b>, la quantité d'électricité stockée, en <b>ampère-heure (Ah)</b>, avec <span class=\"m\">Q = I × t</span> ; et par son <b>énergie stockée E</b>, en <b>wattheure (Wh)</b>, avec <span class=\"m\">E = Q × U</span>."]
+];
+
+/* ============ légende du schéma ============ */
+var LG_ANS = ["Lame de cuivre (borne +)","Lame de zinc (borne −)","Pont salin","Solution de sulfate de cuivre (ions Cu²⁺)","Solution de sulfate de zinc (ions Zn²⁺)","Sens de déplacement des électrons","Voltmètre"];
+var LG_OPTS = ["Pont salin","Lame de zinc (borne −)","Voltmètre","Solution de sulfate de cuivre (ions Cu²⁺)","Lame de cuivre (borne +)","Sens de déplacement des électrons","Solution de sulfate de zinc (ions Zn²⁺)"];
+
+/* ============ moteur : QCM ============ */
 var LET = ["a","b","c","d"];
+var SRC_LABEL = {feuille:"Je teste mes acquis", TP:"TP", eq:"Équations"};
 
 function mountQuiz(host, questions, key){
   var saved = STATE.q[key];
   if (!saved || saved.length !== questions.length){ saved = questions.map(function(){ return {sel:[], done:false, ok:false}; }); STATE.q[key] = saved; }
-
   host.innerHTML = "";
+
   var bar = document.createElement("div");
   bar.className = "quizbar";
-  bar.innerHTML = '<div class="scoreline">Score : <b>0</b> / ' + questions.length + ' &nbsp;·&nbsp; <span style="opacity:.65">0 question vérifiée</span></div>';
+  bar.innerHTML = '<div class="scoreline">Score : <b>0</b> / ' + questions.length + ' &nbsp;·&nbsp; <span class="pg" style="opacity:.65">0 question vérifiée</span></div>';
   var resetBtn = document.createElement("button");
-  resetBtn.type = "button"; resetBtn.className = "btn ghost"; resetBtn.textContent = "Tout recommencer";
+  resetBtn.type = "button"; resetBtn.className = "btn ghost"; resetBtn.textContent = "Recommencer";
   bar.appendChild(resetBtn);
   host.appendChild(bar);
-  var scoreEl = bar.querySelector("b");
-  var progEl = bar.querySelector("span[style]");
+  var scoreEl = bar.querySelector("b"), progEl = bar.querySelector(".pg");
 
   var list = document.createElement("div");
   host.appendChild(list);
@@ -946,24 +1440,18 @@ function mountQuiz(host, questions, key){
     var multi = Q.opts.filter(function(o){ return o[1] === true; }).length > 1;
     var st = saved[i];
 
-    var card = document.createElement("div");
-    card.className = "q";
-    var top = document.createElement("div");
-    top.className = "qtop";
+    var card = document.createElement("div"); card.className = "q";
+    var top = document.createElement("div"); top.className = "qtop";
     top.innerHTML = '<span class="qnum">Q' + (i+1) + '</span><span class="qsrc"></span>';
-    top.lastChild.textContent = Q.src === "feuille" ? "Je teste mes acquis" : (Q.src === "TP" ? "TP" : "Équations");
+    top.lastChild.textContent = SRC_LABEL[Q.src] || Q.src;
     card.appendChild(top);
 
-    var txt = document.createElement("p");
-    txt.className = "qtext"; txt.textContent = Q.q;
-    card.appendChild(txt);
-
-    var hint = document.createElement("p");
-    hint.className = "hint"; hint.textContent = multi ? "Plusieurs réponses possibles" : "Une seule réponse";
+    var txt = document.createElement("p"); txt.className = "qtext"; txt.textContent = Q.q; card.appendChild(txt);
+    var hint = document.createElement("p"); hint.className = "hint";
+    hint.textContent = multi ? "Plusieurs réponses possibles" : "Une seule réponse";
     card.appendChild(hint);
 
-    var opts = document.createElement("div");
-    opts.className = "opts";
+    var opts = document.createElement("div"); opts.className = "opts";
     Q.opts.forEach(function(o, j){
       var b = document.createElement("button");
       b.type = "button"; b.className = "opt"; b.setAttribute("aria-pressed", "false");
@@ -973,15 +1461,13 @@ function mountQuiz(host, questions, key){
         if (st.done) return;
         if (multi){ var k = st.sel.indexOf(j); if (k > -1) st.sel.splice(k,1); else st.sel.push(j); }
         else { st.sel = (st.sel[0] === j) ? [] : [j]; }
-        paint();
-        save();
+        paint(); save();
       });
       opts.appendChild(b);
     });
     card.appendChild(opts);
 
-    var foot = document.createElement("div");
-    foot.className = "qfoot";
+    var foot = document.createElement("div"); foot.className = "qfoot";
     var check = document.createElement("button");
     check.type = "button"; check.className = "btn"; check.textContent = "Vérifier";
     var verdict = document.createElement("span");
@@ -989,24 +1475,20 @@ function mountQuiz(host, questions, key){
     foot.appendChild(check); foot.appendChild(verdict);
     card.appendChild(foot);
 
-    var why = document.createElement("div");
-    why.className = "why"; why.hidden = true;
-    card.appendChild(why);
+    var why = document.createElement("div"); why.className = "why"; why.hidden = true; card.appendChild(why);
 
     function paint(){
       Array.prototype.forEach.call(opts.children, function(c, n){
         c.setAttribute("aria-pressed", st.sel.indexOf(n) > -1 ? "true" : "false");
       });
     }
-
     function grade(){
       var right = [];
       Q.opts.forEach(function(o, n){ if (o[1] === true) right.push(n); });
       st.ok = right.length === st.sel.length && right.every(function(n){ return st.sel.indexOf(n) > -1; });
       st.done = true;
       Array.prototype.forEach.call(opts.children, function(c, n){
-        c.disabled = true;
-        c.classList.remove("good","bad");
+        c.disabled = true; c.classList.remove("good","bad");
         if (right.indexOf(n) > -1){ c.classList.add("good"); c.querySelector(".box").textContent = "✓"; }
         else if (st.sel.indexOf(n) > -1){ c.classList.add("bad"); c.querySelector(".box").textContent = "✕"; }
       });
@@ -1019,8 +1501,7 @@ function mountQuiz(host, questions, key){
       why.innerHTML = "<b>Pourquoi :</b> " + Q.why;
       tally();
     }
-
-    check.addEventListener("click", function(){ if (!st.done && st.sel.length) { grade(); save(); } });
+    check.addEventListener("click", function(){ if (!st.done && st.sel.length){ grade(); save(); } });
 
     paint();
     if (st.done) grade();
@@ -1045,78 +1526,97 @@ function mountQuiz(host, questions, key){
 
 Array.prototype.forEach.call(document.querySelectorAll(".quizmount"), function(el){
   var k = el.getAttribute("data-key");
-  mountQuiz(el, k === "qcm" ? QCM : EQ, k);
+  mountQuiz(el, k === "tp" ? QCM_TP : (k === "feuille" ? QCM_FEUILLE : EQ), k);
 });
 
-/* ---------------- exercices chiffrés ---------------- */
-var SERIES = [
- {tag:"Série A", nm:"Les conversions", items:[
-  {id:"a1", txt:"Convertir 2 500 mAh en ampères-heures.", unit:"Ah", ans:2.5,
-   tip:"1 Ah = 1 000 mAh : pour passer des mAh aux Ah, on divise par 1 000.",
-   sol:'<span class="line">2 500 ÷ 1 000 = 2,5</span><p>Soit <b>2,5 Ah</b>.</p>'},
-  {id:"a2", txt:"Convertir 0,45 Ah en milliampères-heures.", unit:"mAh", ans:450,
-   tip:"Dans l'autre sens, on multiplie par 1 000.",
-   sol:'<span class="line">0,45 × 1 000 = 450</span><p>Soit <b>450 mAh</b>.</p>'},
-  {id:"a3", txt:"Convertir 90 min en heures (écriture décimale).", unit:"h", ans:1.5,
-   tip:"1 h = 60 min : on divise les minutes par 60.",
-   sol:'<span class="line">90 ÷ 60 = 1,5</span><p>Soit <b>1,5 h</b>. Attention, ce n\'est pas 1,30.</p>'},
-  {id:"a4", txt:"Convertir 2 h 30 min en heures (écriture décimale).", unit:"h", ans:2.5,
-   tip:"Convertis seulement les minutes, puis ajoute les heures entières.",
-   sol:'<span class="line">30 ÷ 60 = 0,5</span><span class="line">2 + 0,5 = 2,5</span><p>Soit <b>2,5 h</b>.</p>'},
-  {id:"a5", txt:"Convertir 250 mA en ampères.", unit:"A", ans:0.25,
-   tip:"1 A = 1 000 mA.",
-   sol:'<span class="line">250 ÷ 1 000 = 0,25</span><p>Soit <b>0,25 A</b>.</p>'}
- ]},
- {tag:"Série B", nm:"La capacité, Q = I × t", items:[
-  {id:"b1", txt:"Un accumulateur débite un courant de 0,5 A pendant 4 h. Calculer la quantité d'électricité Q fournie.", unit:"Ah", ans:2,
-   tip:"Tout est déjà dans les bonnes unités : applique la formule directement.",
-   sol:'<span class="line">Q = I × t</span><span class="line">Q = 0,5 × 4</span><span class="line">Q = 2 Ah</span>'},
-  {id:"b2", txt:"Une batterie de capacité 12 Ah débite un courant de 3 A. Pendant combien d'heures peut-elle le fournir ?", unit:"h", ans:4,
-   tip:"On cherche t : à partir de Q = I × t, on isole t = Q ÷ I.",
-   sol:'<span class="line">t = Q ÷ I</span><span class="line">t = 12 ÷ 3</span><span class="line">t = 4 h</span>'},
-  {id:"b3", txt:"Un accumulateur de 1,5 Ah se vide complètement en 30 min. Quelle intensité a-t-il débitée ?", unit:"A", ans:3,
-   tip:"30 min ne s'écrit pas « 30 » dans la formule : convertis d'abord en heures.",
-   sol:'<span class="line">30 min = 30 ÷ 60 = 0,5 h</span><span class="line">I = Q ÷ t</span><span class="line">I = 1,5 ÷ 0,5</span><span class="line">I = 3 A</span>'},
-  {id:"b4", txt:"Un chargeur délivre 800 mA pendant 2 h 30. Quelle quantité d'électricité a-t-il fournie ?", unit:"Ah", ans:2,
-   tip:"Deux conversions avant de multiplier : les mA en A, et 2 h 30 en heures.",
-   sol:'<span class="line">800 mA = 0,8 A</span><span class="line">2 h 30 = 2,5 h</span><span class="line">Q = 0,8 × 2,5</span><span class="line">Q = 2 Ah</span>'}
- ]},
- {tag:"Série C", nm:"L'énergie, E = Q × U", items:[
-  {id:"c1", txt:"Une batterie de voiture porte l'indication 12 V — 40 Ah. Calculer l'énergie qu'elle stocke.", unit:"Wh", ans:480,
-   tip:"E = Q × U, avec Q en Ah et U en V.",
-   sol:'<span class="line">E = Q × U</span><span class="line">E = 40 × 12</span><span class="line">E = 480 Wh</span>'},
-  {id:"c2", txt:"L'accumulateur d'un téléphone est marqué 3,7 V et 4 000 mAh. Calculer l'énergie stockée.", unit:"Wh", ans:14.8,
-   tip:"Convertis d'abord les 4 000 mAh en Ah, sinon le résultat est 1 000 fois trop grand.",
-   sol:'<span class="line">4 000 mAh = 4 Ah</span><span class="line">E = Q × U</span><span class="line">E = 4 × 3,7</span><span class="line">E = 14,8 Wh</span>'},
-  {id:"c3", txt:"Une batterie stocke 720 Wh sous une tension de 12 V. Quelle est sa capacité ?", unit:"Ah", ans:60,
-   tip:"On cherche Q : à partir de E = Q × U, on isole Q = E ÷ U.",
-   sol:'<span class="line">Q = E ÷ U</span><span class="line">Q = 720 ÷ 12</span><span class="line">Q = 60 Ah</span>'},
-  {id:"c4", txt:"Un pack d'accumulateurs stocke 2,16 Wh et sa capacité est de 0,6 Ah. Quelle est sa tension ?", unit:"V", ans:3.6,
-   tip:"Cette fois on isole U = E ÷ Q.",
-   sol:'<span class="line">U = E ÷ Q</span><span class="line">U = 2,16 ÷ 0,6</span><span class="line">U = 3,6 V</span><p>C\'est exactement la lampe à manivelle de ton exercice 3.</p>'}
- ]},
- {tag:"Série D", nm:"En série, en parallèle", items:[
-  {id:"d1", txt:"Quatre accumulateurs de 1,2 V et 2 000 mAh sont montés en série. Quelle est la tension de l'ensemble ?", unit:"V", ans:4.8,
-   tip:"En série, les tensions s'additionnent.",
-   sol:'<span class="line">U = 4 × 1,2</span><span class="line">U = 4,8 V</span>'},
-  {id:"d2", txt:"Même montage : quelle est la capacité de l'ensemble ?", unit:"Ah", ans:2,
-   tip:"En série, la capacité ne s'additionne pas : elle reste celle d'un seul élément.",
-   sol:'<span class="line">2 000 mAh = 2 Ah</span><p>En série la capacité <b>ne change pas</b> : l\'ensemble fait toujours <b>2 Ah</b>.</p>'},
-  {id:"d3", txt:"Même montage : quelle énergie l'ensemble stocke-t-il ?", unit:"Wh", ans:9.6,
-   tip:"Reprends la tension et la capacité trouvées aux deux questions précédentes.",
-   sol:'<span class="line">E = Q × U</span><span class="line">E = 2 × 4,8</span><span class="line">E = 9,6 Wh</span>'},
-  {id:"d4", txt:"Trois piles de 1,5 V et 800 mAh sont montées en parallèle. Quelle est la capacité de l'ensemble ?", unit:"Ah", ans:2.4,
-   tip:"En parallèle, c'est l'inverse de la série : ce sont les capacités qui s'additionnent.",
-   sol:'<span class="line">800 mAh = 0,8 Ah</span><span class="line">Q = 3 × 0,8</span><span class="line">Q = 2,4 Ah</span><p>La tension, elle, reste <b>1,5 V</b>.</p>'}
- ]}
-];
+/* ============ moteur : escaliers ============ */
+function mountEscalier(host, steps, key){
+  var saved = STATE.s[key] || {};
+  STATE.s[key] = saved;
+  host.innerHTML = "";
 
+  steps.forEach(function(S, si){
+    var card = document.createElement("div"); card.className = "step";
+    var head = document.createElement("div"); head.className = "step-h";
+    head.innerHTML = '<span class="e"></span><span class="t"></span><span class="st"></span>';
+    head.children[0].textContent = S.e;
+    head.children[1].textContent = S.t;
+    var stEl = head.children[2];
+    card.appendChild(head);
+
+    if (S.rule){
+      var rb = document.createElement("div"); rb.className = "rule-box";
+      rb.innerHTML = '<span class="lbl">La règle</span>';
+      rb.appendChild(document.createTextNode(S.rule));
+      card.appendChild(rb);
+    }
+
+    var wrap = document.createElement("div"); wrap.className = "micros";
+    card.appendChild(wrap);
+
+    S.qs.forEach(function(Q, qi){
+      var id = si + "-" + qi;
+      var row = document.createElement("div"); row.className = "micro";
+      var mq = document.createElement("span"); mq.className = "mq"; mq.textContent = Q[0];
+      var mo = document.createElement("span"); mo.className = "mo";
+      var mw = document.createElement("span"); mw.className = "mw"; mw.hidden = true;
+      row.appendChild(mq); row.appendChild(mo); row.appendChild(mw);
+
+      Q[1].forEach(function(label, oi){
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = label;
+        b.addEventListener("click", function(){
+          if (saved[id] !== undefined) return;
+          saved[id] = oi; paintRow(); save(); status();
+        });
+        mo.appendChild(b);
+      });
+
+      function paintRow(){
+        var pick = saved[id];
+        if (pick === undefined) return;
+        var ok = pick === Q[2];
+        row.classList.add(ok ? "good" : "bad");
+        Array.prototype.forEach.call(mo.children, function(b, oi){
+          b.disabled = true;
+          if (oi === pick) b.classList.add(ok ? "pick-ok" : "pick-no");
+          else if (!ok && oi === Q[2]) b.classList.add("show-ok");
+        });
+        if (Q[3]){ mw.hidden = false; mw.innerHTML = Q[3]; }
+      }
+      paintRow();
+      wrap.appendChild(row);
+    });
+
+    function status(){
+      var good = 0, done = 0;
+      S.qs.forEach(function(Q, qi){
+        var pick = saved[si + "-" + qi];
+        if (pick !== undefined){ done++; if (pick === Q[2]) good++; }
+      });
+      stEl.textContent = done === 0 ? S.qs.length + " questions" : good + " / " + S.qs.length + " justes";
+      card.classList.toggle("done", done === S.qs.length && good === S.qs.length);
+    }
+    status();
+    host.appendChild(card);
+  });
+}
+
+Array.prototype.forEach.call(document.querySelectorAll(".escalier"), function(el){
+  var k = el.getAttribute("data-key");
+  if (ESC[k]) mountEscalier(el, ESC[k], k);
+});
+
+/* ============ moteur : exercices chiffrés ============ */
 var ALL_EX = [];
 SERIES.forEach(function(s){ s.items.forEach(function(it){ ALL_EX.push(it); }); });
 
 var exHost = document.getElementById("exos");
 var exScore = document.getElementById("ex-score");
 var exProg = document.getElementById("ex-prog");
+document.getElementById("ex-total").textContent = ALL_EX.length;
+
+var TIER = {1:["t1","Découverte"], 2:["t2","Entraînement"], 3:["t3","Niveau DS"]};
 
 function parseNum(s){
   s = String(s).replace(/\s/g, "").replace(",", ".").replace(/[^0-9.\-]/g, "");
@@ -1128,71 +1628,43 @@ function parseNum(s){
 function buildExos(){
   exHost.innerHTML = "";
   SERIES.forEach(function(S){
-    var head = document.createElement("div");
-    head.className = "serie-h";
+    var wrap = document.createElement("div"); wrap.className = "serie";
+    var head = document.createElement("div"); head.className = "serie-h";
     head.innerHTML = '<span class="tag"></span><span class="nm"></span><span class="cnt"></span>';
-    head.children[0].textContent = S.tag;
+    head.children[0].textContent = "Série " + S.tag;
     head.children[1].textContent = S.nm;
     head.children[2].textContent = S.items.length + " exercices";
-    var wrap = document.createElement("div");
-    wrap.className = "serie";
     wrap.appendChild(head);
 
     S.items.forEach(function(X, i){
       var st = STATE.x[X.id] || {v:"", done:false, ok:false};
       STATE.x[X.id] = st;
 
-      var card = document.createElement("div");
-      card.className = "ex";
-      var q = document.createElement("div");
-      q.className = "st-q";
-      q.innerHTML = '<span class="qnum"></span><span class="txt"></span>';
-      q.children[0].textContent = S.tag.replace("Série ", "") + (i+1);
+      var card = document.createElement("div"); card.className = "ex";
+      var q = document.createElement("div"); q.className = "st-q";
+      q.innerHTML = '<span class="qnum"></span><span class="txt"></span><span class="tier"></span>';
+      q.children[0].textContent = S.tag + (i+1);
       q.children[1].textContent = X.txt;
+      q.children[2].className = "tier " + TIER[X.n][0];
+      q.children[2].textContent = TIER[X.n][1];
       card.appendChild(q);
 
-      var row = document.createElement("div");
-      row.className = "answer";
+      var row = document.createElement("div"); row.className = "answer";
       var input = document.createElement("input");
       input.type = "text"; input.inputMode = "decimal"; input.value = st.v || "";
-      input.setAttribute("aria-label", "Ta réponse pour l'exercice " + q.children[0].textContent);
-      var unit = document.createElement("span");
-      unit.className = "unit"; unit.textContent = X.unit;
-      var go = document.createElement("button");
-      go.type = "button"; go.className = "btn"; go.textContent = "Vérifier";
-      var verdict = document.createElement("span");
-      verdict.className = "verdict";
+      input.setAttribute("aria-label", "Ta réponse pour l'exercice " + S.tag + (i+1));
+      var unit = document.createElement("span"); unit.className = "unit"; unit.textContent = X.unit;
+      var go = document.createElement("button"); go.type = "button"; go.className = "btn"; go.textContent = "Vérifier";
+      var verdict = document.createElement("span"); verdict.className = "verdict";
       row.appendChild(input); row.appendChild(unit); row.appendChild(go); row.appendChild(verdict);
       card.appendChild(row);
 
-      var tip = document.createElement("p");
-      tip.className = "tip"; tip.hidden = true; tip.textContent = X.tip;
+      var tip = document.createElement("p"); tip.className = "tip"; tip.hidden = true; tip.textContent = X.tip;
       card.appendChild(tip);
-
-      var sol = document.createElement("div");
-      sol.className = "sol"; sol.hidden = true;
+      var sol = document.createElement("div"); sol.className = "sol"; sol.hidden = true;
       card.appendChild(sol);
 
-      function grade(){
-        var v = parseNum(input.value);
-        if (v === null){ verdict.style.color = "var(--muted)"; verdict.textContent = "Écris un nombre"; return; }
-        var tol = Math.max(Math.abs(X.ans) * 0.002, 0.005);
-        st.v = input.value; st.ok = Math.abs(v - X.ans) <= tol; st.done = true;
-        input.disabled = true; go.hidden = true;
-        card.classList.add("done");
-        card.classList.toggle("wrong", !st.ok);
-        verdict.style.color = st.ok ? "var(--ok)" : "var(--no)";
-        verdict.textContent = st.ok ? "Juste" : "Faux — la réponse est " + fr(X.ans) + " " + X.unit;
-        tip.hidden = st.ok;
-        sol.hidden = false;
-        sol.innerHTML = X.sol;
-        tallyEx(); save();
-      }
-
-      go.addEventListener("click", grade);
-      input.addEventListener("keydown", function(e){ if (e.key === "Enter"){ e.preventDefault(); grade(); } });
-
-      if (st.done){
+      function show(){
         input.disabled = true; go.hidden = true;
         card.classList.add("done");
         card.classList.toggle("wrong", !st.ok);
@@ -1201,6 +1673,16 @@ function buildExos(){
         tip.hidden = st.ok;
         sol.hidden = false; sol.innerHTML = X.sol;
       }
+      function grade(){
+        var v = parseNum(input.value);
+        if (v === null){ verdict.style.color = "var(--muted)"; verdict.textContent = "Écris un nombre"; return; }
+        var tol = Math.max(Math.abs(X.ans) * 0.002, 0.005);
+        st.v = input.value; st.ok = Math.abs(v - X.ans) <= tol; st.done = true;
+        show(); tallyEx(); save();
+      }
+      go.addEventListener("click", grade);
+      input.addEventListener("keydown", function(e){ if (e.key === "Enter"){ e.preventDefault(); grade(); } });
+      if (st.done) show();
 
       wrap.appendChild(card);
     });
@@ -1224,29 +1706,9 @@ document.getElementById("ex-reset").addEventListener("click", function(){
   STATE.x = {}; save(); buildExos();
   document.getElementById("calculs").scrollIntoView({behavior:"smooth", block:"start"});
 });
-
 buildExos();
 
-/* ---------------- légender le schéma ---------------- */
-var LG_ANS = [
-  "Lame de cuivre (borne +)",
-  "Lame de zinc (borne −)",
-  "Pont salin",
-  "Solution de sulfate de cuivre (ions Cu²⁺)",
-  "Solution de sulfate de zinc (ions Zn²⁺)",
-  "Sens de déplacement des électrons",
-  "Voltmètre"
-];
-var LG_OPTS = [
-  "Pont salin",
-  "Lame de zinc (borne −)",
-  "Voltmètre",
-  "Solution de sulfate de cuivre (ions Cu²⁺)",
-  "Lame de cuivre (borne +)",
-  "Sens de déplacement des électrons",
-  "Solution de sulfate de zinc (ions Zn²⁺)"
-];
-
+/* ============ moteur : légende ============ */
 var lgList = document.getElementById("lg-list");
 var lgVerdict = document.getElementById("lg-verdict");
 var lgRows = [];
@@ -1255,23 +1717,17 @@ function buildLg(){
   lgList.innerHTML = ""; lgRows = [];
   var saved = STATE.g;
   LG_ANS.forEach(function(_, i){
-    var li = document.createElement("li");
-    li.className = "lg-row";
-    var n = document.createElement("span");
-    n.className = "n"; n.textContent = String(i+1);
+    var li = document.createElement("li"); li.className = "lg-row";
+    var n = document.createElement("span"); n.className = "n"; n.textContent = String(i+1);
     var sel = document.createElement("select");
     sel.setAttribute("aria-label", "Étiquette du repère " + (i+1));
-    var o0 = document.createElement("option");
-    o0.value = ""; o0.textContent = "— choisir —";
+    var o0 = document.createElement("option"); o0.value = ""; o0.textContent = "— choisir —";
     sel.appendChild(o0);
     LG_OPTS.forEach(function(t){
-      var o = document.createElement("option");
-      o.value = t; o.textContent = t;
-      sel.appendChild(o);
+      var o = document.createElement("option"); o.value = t; o.textContent = t; sel.appendChild(o);
     });
     if (saved && saved[i]) sel.value = saved[i];
-    var mark = document.createElement("span");
-    mark.className = "mark";
+    var mark = document.createElement("span"); mark.className = "mark";
     li.appendChild(n); li.appendChild(sel); li.appendChild(mark);
     lgList.appendChild(li);
     lgRows.push({li:li, sel:sel, mark:mark});
@@ -1282,8 +1738,7 @@ function buildLg(){
 document.getElementById("lg-check").addEventListener("click", function(){
   var good = 0, vals = [];
   lgRows.forEach(function(r, i){
-    var v = r.sel.value;
-    vals.push(v);
+    var v = r.sel.value; vals.push(v);
     r.li.classList.remove("good","bad");
     if (v === LG_ANS[i]){ r.li.classList.add("good"); r.mark.textContent = "✓"; r.mark.style.color = "var(--ok)"; good++; }
     else if (v === ""){ r.mark.textContent = "·"; r.mark.style.color = "var(--muted)"; }
@@ -1293,8 +1748,24 @@ document.getElementById("lg-check").addEventListener("click", function(){
   lgVerdict.style.color = good === LG_ANS.length ? "var(--ok)" : "var(--no)";
   lgVerdict.textContent = good + " / " + LG_ANS.length + (good === LG_ANS.length ? " — légende juste" : " — corrige les croix");
 });
-
 buildLg();
+
+/* ============ moteur : réciter ============ */
+var recHost = document.getElementById("reciter-list");
+RECITER.forEach(function(R, i){
+  var card = document.createElement("div"); card.className = "rc";
+  var k = document.createElement("p"); k.className = "k";
+  k.textContent = (i+1) + ". " + R[0];
+  var btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Afficher la réponse modèle";
+  var a = document.createElement("div"); a.className = "a"; a.hidden = true; a.innerHTML = R[1];
+  btn.addEventListener("click", function(){
+    a.hidden = !a.hidden;
+    btn.textContent = a.hidden ? "Afficher la réponse modèle" : "Masquer";
+  });
+  card.appendChild(k); card.appendChild(btn); card.appendChild(a);
+  recHost.appendChild(card);
+});
+
 })();
 </script>
 </body>
